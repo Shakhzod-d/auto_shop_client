@@ -4,7 +4,12 @@ import { IoSearchOutline } from "react-icons/io5";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import { NavSelect } from "../ui/nav-select";
 
-const auto = [{ id: 1, label: "Auto", path: "auto" }];
+const auto = [
+  { id: 1, label: "Auto", path: "/" },
+  { id: 2, label: "Biz haqimizda", path: "/about" },
+  { id: 3, label: "Jamoa", path: "/team" },
+  { id: 4, label: "Bo'glanish", path: "/contact" },
+];
 const other = [
   { id: 1, label: "Boshqa Transportlar", path: "auto" },
   { id: 2, label: "Skuter va Mopedlar", path: "auto" },

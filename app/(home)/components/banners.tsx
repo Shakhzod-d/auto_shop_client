@@ -1,22 +1,47 @@
 import { Button } from "../../../components/ui/button";
-
-export const Banners = () => {
+interface Props {
+  banner_img: string;
+  w?: string;
+  title: string;
+  desc: string;
+  p: string;
+  btn: boolean;
+  img_two: boolean;
+}
+export const Banners = ({
+  banner_img,
+  desc,
+  title,
+  w,
+  p,
+  btn,
+  img_two,
+}: Props) => {
   return (
-    <section className="w-full bg-[url('/imgs/home-hero.jpg')]  bg-no-repeat bg-cover py-[25px]">
-      <div className="container">
-        <div className="w-[650px] text-white">
-          <h2 className="text-[55px]  font-bold mb-4">
-            So‘nggi Avtomobil Yangiliklari va Texnologiya Sharhlari
-          </h2>
-          <p className="text-[22px] font-medium mb-8">
-            Bizning platformamizda avtomobil yangiliklari, texnologik
-            yangiliklar va elektr avtomobillar haqida eng so‘nggi ma'lumotlarni
-            topishingiz mumkin. O‘zbekistonlik avtomobil ishqibozlari uchun
-            yangiliklar, sharhlar va qo‘llanmalar – barchasi bir joyda!
-          </p>
-          <Button className=" px-[51px] bg-[#4DA6FF] font-semibold h-[50px]">Batafsil</Button>
+    <section>
+      <div
+        className="w-full  py-[25px] mb-[100px] bg-no-repeat bg-cover"
+        style={{ padding: p, backgroundImage: `url(${banner_img})` }}
+      >
+        <div className="container">
+          <div className={`w-full text-white`} style={{ maxWidth: w }}>
+            <h2 className="text-[55px]  font-bold mb-4">{title}</h2>
+            <p className="text-[22px] font-medium mb-8">{desc}</p>
+            {btn && (
+              <Button className=" px-[51px] bg-[#4DA6FF] font-semibold h-[50px]">
+                Batafsil
+              </Button>
+            )}
+          </div>
         </div>
       </div>
+      {img_two && (
+        <img
+          src="/imgs/advertisement.png"
+          alt=""
+          className="w-full mb-[115px]"
+        />
+      )}
     </section>
   );
 };
