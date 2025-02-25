@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Button } from "../../../components/ui/button";
 interface Props {
   banner_img: string;
@@ -36,7 +37,9 @@ export const Banners = ({
         </div>
       </div>
       {img_two && (
-        <img
+        <Image
+        width={1440}
+        height={450}
           src="/imgs/advertisement.png"
           alt=""
           className="w-full mb-[115px]"

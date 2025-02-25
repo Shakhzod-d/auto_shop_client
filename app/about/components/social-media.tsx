@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 const socialArr = [
   {
     id: 1,
@@ -55,11 +57,11 @@ export const SocialMedia = () => {
       <div className="w-full max-w-[700px] m-auto">
         <h2 className="text-[36px] font-bold text-center mb-4">
           Bizni Kuzatib Boring va <br />
-          Yangiliklardan Xabardor Bo'ling!
+          Yangiliklardan Xabardor {`Bo'ling!`}
         </h2>
         <p className="text-center text-[20px] text-[#666666] mb-8">
           Yangiliklar, maxsus takliflar va eksklyuziv kontentdan xabardor
-          bo'lish uchun ijtimoiy tarmoqlarda bizga obuna bo'ling.
+          {`bo'lish`} uchun ijtimoiy tarmoqlarda bizga obuna{` bo'ling.`}
         </p>
       </div>
       <div className="w-full grid grid-cols-4 justify-between gap-8 mb-[120px]">
@@ -68,14 +70,20 @@ export const SocialMedia = () => {
             className="w-[254px] h-[220px] bg-[#F8F8F8] flex flex-col justify-center items-center"
             key={item.id}
           >
-            <img src={item.img} alt="" className="mb-5" />
+            <Image
+              src={item.img}
+              alt=""
+              className="mb-5"
+              width={50}
+              height={80}
+            />
             <p className="text-[21px] font-medium mb-5">{item.userName}</p>
             <a
               href={item.link}
               target="_blank"
               className="text-[#3399FF] text-[19px] font-medium"
             >
-              Obuna bo'lish
+              {`Obuna bo'lish`}
             </a>
           </div>
         ))}

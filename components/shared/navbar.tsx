@@ -1,8 +1,11 @@
+"use client";
+
 import { Button } from "../ui/button";
 import Image from "next/image";
 import { IoSearchOutline } from "react-icons/io5";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import { NavSelect } from "../ui/nav-select";
+import Link from "next/link";
 
 const auto = [
   { id: 1, label: "Auto", path: "/" },
@@ -32,7 +35,7 @@ export const Navbar = () => {
           <div className="items-center flex gap-4">
             <IoSearchOutline size={20} className="cursor-pointer" />
             <span className="flex  items-center gap-[5px] cursor-pointer">
-              O'z
+              {`o'z`}
               <MdKeyboardArrowDown />
             </span>
             <Button
@@ -48,7 +51,7 @@ export const Navbar = () => {
           <ul className="flex items-center gap-6">
             <NavSelect data={auto} initialTitle="Auto" />
             <li className="text-[#333333] text-[19px] font-medium cursor-pointer">
-              Yangi Modellar
+              <Link href={"/news/new-cars"}>Yangi Modellar</Link>
             </li>
             <NavSelect data={other} initialTitle="Boshqa Transportlar" />
             <NavSelect data={other} initialTitle="Energetika" />

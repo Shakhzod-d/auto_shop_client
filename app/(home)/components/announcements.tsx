@@ -1,5 +1,6 @@
 import { FiArrowLeftCircle } from "react-icons/fi";
 import { announcementsList } from "../../../lib/constants";
+import Image from "next/image";
 
 export const Announcements = () => {
   return (
@@ -24,7 +25,7 @@ export const Announcements = () => {
             className="w-[305px] h-[330px] bg-[#F8F8F8] rounded-sm"
             key={item.id}
           >
-            <img src={item.img} alt="" className="mb-4" />
+            <Image src={item.img} id="1" width={305} height={150} alt="img" />
             <div className="px-[5px] text-[#666666] text-[18px]">
               {item.msg}
             </div>
