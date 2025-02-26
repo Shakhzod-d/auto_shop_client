@@ -8,12 +8,10 @@ import { NavSelect } from "../ui/nav-select";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { auto, energy, other } from "../../lib/constants";
-import { cn } from "../../lib/utils";
 
 export const Navbar = () => {
   const navigate = useRouter();
   const pathname = usePathname();
-
   return (
     <header className="mb-10 font-montserrat">
       <div className="container">
@@ -25,6 +23,7 @@ export const Navbar = () => {
             src={"/imgs/logo.png"}
             alt="logo"
             onClick={() => navigate.push("/")}
+            className="cursor-pointer"
           />
           <div className="items-center flex gap-4">
             <IoSearchOutline size={20} className="cursor-pointer" />
@@ -41,9 +40,7 @@ export const Navbar = () => {
           <ul className="flex items-center gap-6">
             <NavSelect data={auto} initialTitle="Auto" />
             <li
-              className={cn(
-                "text-[#333333] text-[19px] font-medium cursor-pointer hover:text-[#4DA6FF]"
-              )}
+              className="text-[#333333] text-[19px] font-medium cursor-pointer"
               style={{ color: pathname == "/news/newsCar" ? "#4DA6FF" : "" }}
             >
               <Link href={"/news/newsCar"}>Yangi Modellar</Link>

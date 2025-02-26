@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export const Info = () => {
   return (
     <section className="">
@@ -16,7 +18,7 @@ export const Info = () => {
 
       <div className="my-[130px] w-full  bg-[#F8F8F8] py-[30px]">
         <div className="container flex justify-between">
-          <img src="/imgs/about-image.png" alt="" />
+          <Image src="/imgs/about-image.png" alt="" width={500} height={600}/>
           <div className="w-full max-w-[678px]">
             <h3 className="text-[36px] font-bold mb-4">
               Bizning Loyiha 2025-yilning Noyabr Oyida Faoliyatini Boshlagan

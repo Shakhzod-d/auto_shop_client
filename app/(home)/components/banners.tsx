@@ -38,10 +38,10 @@ export const Banners = ({
       </div>
       {img_two && (
         <Image
+          width={1440}
+          height={450}
           src="/imgs/advertisement.png"
           alt=""
-          width={1000}
-          height={100}
           className="w-full mb-[115px]"
         />
       )}

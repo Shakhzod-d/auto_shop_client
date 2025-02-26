@@ -9,13 +9,7 @@ export const NewsList = () => {
       <p className="text-[28px] font-semibold mb-8">{`Ko'proq Yangiliklar`}</p>
       {homeNewsList.map((item) => (
         <div className="flex gap-4 mb-[38px]" key={item?.id}>
-          <Image
-            src={item.img}
-            alt=""
-            className="w-[220px] h-[120px]"
-            width={220}
-            height={120}
-          />
+          <Image src={item ? item?.img : ""} alt="" height={120} width={220} />
           <div>
             <h3
               className="text-[20px] text-[#000000] font-medium mb-4 title"
