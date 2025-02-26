@@ -115,3 +115,111 @@ export const teamBanner = {
   img: "/imgs/home-hero.jpg",
   desc: `Bizning platformamizda avtomobil yangiliklari, texnologik yangiliklar va elektr avtomobillar haqida eng so‘nggi ma'lumotlarni topishingiz mumkin. O‘zbekistonlik avtomobil ishqibozlari uchun yangiliklar, sharhlar va qo‘llanmalar – barchasi bir joyda!`,
 };
+
+export const newCarNews = [
+  {
+    id: "1",
+    title: "2024 Toyota Land Cruiser",
+    img: "/imgs/card-car.jpg",
+    desc: "Retro uslubdagi, turbo dvigatelli va hashamatli interyer variantlariga ega ixcham, yo‘ldan tashqari yo‘lga yo‘naltirilgan SUV.",
+  },
+  {
+    id: "2",
+    title: "2024 Toyota Land Cruiser",
+    img: "/imgs/card-car.jpg",
+    desc: "Retro uslubdagi, turbo dvigatelli va hashamatli interyer variantlariga ega ixcham, yo‘ldan tashqari yo‘lga yo‘naltirilgan SUV.",
+  },
+  {
+    id: "3",
+    title: "2024 Toyota Land Cruiser",
+    img: "/imgs/card-car.jpg",
+    desc: "Retro uslubdagi, turbo dvigatelli va hashamatli interyer variantlariga ega ixcham, yo‘ldan tashqari yo‘lga yo‘naltirilgan SUV.",
+  },
+  {
+    id: "4",
+    title: "2024 Toyota Land Cruiser",
+    img: "/imgs/card-car.jpg",
+    desc: "Retro uslubdagi, turbo dvigatelli va hashamatli interyer variantlariga ega ixcham, yo‘ldan tashqari yo‘lga yo‘naltirilgan SUV.",
+  },
+];
+
+export const newsBar = [
+  { id: "1", title: "Master E-Tech", img: "/imgs/card-car.jpg" },
+  { id: "2", title: "Master E-Tech", img: "/imgs/card-car.jpg" },
+  { id: "3", title: "Master E-Tech", img: "/imgs/card-car.jpg" },
+  { id: "4", title: "Master E-Tech", img: "/imgs/card-car.jpg" },
+  { id: "5", title: "Master E-Tech", img: "/imgs/card-car.jpg" },
+];
+
+export const newsData = {
+  energy: {
+    bannerImg: "/imgs/tesla-banner.jpg",
+    bannertext: "So‘nggi Elektr Avtomobillar Yangiliklari   ",
+    newsCard: newCarNews,
+    w: "1019",
+  },
+  newsCar: {
+    bannerImg: "/imgs/new-car-banner.png",
+    bannertext: "So‘nggi Avtomobil Modellari Yangiliklari",
+    newsCard: newCarNews,
+    w: "1019",
+  },
+  bikes: {
+    bannerImg: "/imgs/bike-banner.jpg",
+    bannertext: "So‘nggi Skuter va Mapedlar Yangiliklari   ",
+    newsCard: newCarNews,
+    w: "1019",
+  },
+  tracks: {
+    bannerImg: "/imgs/track-banner.jpg",
+    bannertext: "So‘nggi Yuk Avtomobillar Yangiliklari     ",
+    newsCard: newCarNews,
+    w: "1019",
+  },
+  motobike: {
+    bannerImg: "/imgs/bike-banner.jpg",
+    bannertext: "So‘nggi Skuter va Mapedlar Yangiliklari   ",
+    newsCard: newCarNews,
+    w: "1019px",
+  },
+  airplanes: {
+    bannerImg: "/imgs/airplane-banner.png",
+    bannertext: "Uchoqlar Yangiliklari ",
+    newsCard: newCarNews,
+    w: "431px",
+  },
+  motoBikes: {
+    bannerImg: "/imgs/moto-banner.jpg",
+    bannertext: "Mototsikllar Yangiliklari ",
+    newsCard: newCarNews,
+    w: "484px",
+  },
+  renewable: {
+    bannerImg: "/imgs/panel-banner.jpg",
+    bannertext: "Qayta Tiklanuvchi Energiyalar Yangiliklari",
+    newsCard: newCarNews,
+    w: "900px",
+  },
+  climate: {
+    bannerImg: "/imgs/eco-car-banner.jpg",
+    bannertext: "Avtomobil Sanoatidagi Iqlim Yangiliklari",
+    newsCard: newCarNews,
+    w: "900pxz",
+  },
+};
+
+
+export const auto = [
+  { id: 2, label: "Elektirlik", path: "/news/energy" },
+  { id: 3, label: " Ichki Yonuvchi Dvigatellik", path: "/news/newsCar" },
+];
+export const other = [
+  { id: 1, label: "Mototsikllar", path: "/news/motoBikes" },
+  { id: 2, label: "Skuter va Mopedlar", path: "/news/bikes" },
+  { id: 3, label: "Yuk Mashinalar", path: "/news/tracks" },
+  { id: 4, label: "Uchoqlar", path: "/news/airplanes" },
+];
+export const energy = [
+  { id: 2, label: "qayta tiklanuvchi", path: "/news/renewable" },
+  { id: 1, label: "Iqlim", path: "/news/climate" },
+];
