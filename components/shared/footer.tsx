@@ -1,10 +1,7 @@
-import {
-  FaFacebook,
-  FaInstagram,
-  FaTelegram,
-} from "react-icons/fa6";
+import { FaFacebook, FaInstagram, FaTelegram } from "react-icons/fa6";
 import { FooterData } from "../../lib/constants";
 import { AiOutlineYoutube } from "react-icons/ai";
+import Link from "next/link";
 
 export const Footer = () => {
   const date = new Date();
@@ -14,9 +11,13 @@ export const Footer = () => {
         <div className="flex justify-between pb-16 border-b mb-16 text-[#FFFFFF]">
           <div className="flex flex-col gap-4 ">
             {FooterData.arr1.map((item, i) => (
-              <p className="text-[19px]  font-medium" key={i}>
+              <Link
+                className="text-[19px]  font-medium"
+                key={i}
+                href={item.path}
+              >
                 {item.label}
-              </p>
+              </Link>
             ))}
           </div>
           <div className="flex flex-col gap-4 ">

@@ -84,9 +84,9 @@ export const announcementsList = [
 
 export const FooterData = {
   arr1: [
-    { label: "Biz Haqimizda", path: "/" },
-    { label: "Jamoa", path: "/" },
-    { label: "Bog’lanish", path: "/" },
+    { label: "Biz Haqimizda", path: "/about" },
+    { label: "Jamoa", path: "/team" },
+    { label: "Bog’lanish", path: "/contact" },
     { label: "Online Shop", path: "/" },
     { label: "Premyera", path: "/" },
   ],
