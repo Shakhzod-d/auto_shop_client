@@ -5,11 +5,11 @@ import { CardList } from "../components/card-list";
 import { NewsBar } from "../components/news-bar";
 
 interface Props {
-  params: { path: "newsCar" | "bikes" | "energy" | "tracks" };
+  params: any;
 }
 
 export default function News({ params }: Props) {
-  const data = newsData[params.path];
+  const data = newsData[params.path as keyof typeof newsData];
 
   return (
     <>
@@ -25,6 +25,7 @@ export default function News({ params }: Props) {
         </div>
         <NewsAdvertisement />
       </main>
+      <h2>hello</h2>
     </>
   );
 }
