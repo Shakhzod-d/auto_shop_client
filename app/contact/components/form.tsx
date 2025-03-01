@@ -35,7 +35,7 @@ export function CustomForm() {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="">
-        <div className="grid   grid-cols-2 gap-8 mb-[48px]">
+        <div className="w-full  grid  grid-cols-1 tablet-max:grid-cols-2 gap-8 mb-8 sm:mb-10 tablet-max:mb-[48px]">
           <FormField
             control={form.control}
             name="name"
@@ -45,7 +45,7 @@ export function CustomForm() {
                   <Input
                     placeholder="Ismingiz"
                     {...field}
-                    className="w-[400px] h-[50px] border border-[#DDDDDD] placeholder:text-[15px] placeholder:text-[#666666]"
+                    className="w-full max-w-[400px] h-[50px] border border-[#DDDDDD] placeholder:text-[15px] placeholder:text-[#666666]"
                   />
                 </FormControl>
 
@@ -62,7 +62,7 @@ export function CustomForm() {
                   <Input
                     placeholder="Telefon raqamingiz"
                     {...field}
-                    className="w-[400px] h-[50px] border border-[#DDDDDD] placeholder:text-[15px] placeholder:text-[#666666]"
+                    className="w-full max-w-[400px] h-[50px] border border-[#DDDDDD] placeholder:text-[15px] placeholder:text-[#666666]"
                   />
                 </FormControl>
 
@@ -79,7 +79,7 @@ export function CustomForm() {
                   <Input
                     placeholder="Elektron pochtangiz"
                     {...field}
-                    className="w-[400px] h-[50px] border border-[#DDDDDD] placeholder:text-[15px] placeholder:text-[#666666]"
+                    className="w-full max-w-[400px] h-[50px] border border-[#DDDDDD] placeholder:text-[15px] placeholder:text-[#666666]"
                   />
                 </FormControl>
 
@@ -96,7 +96,7 @@ export function CustomForm() {
                   <Input
                     placeholder="Mavzu"
                     {...field}
-                    className="w-[400px] h-[50px] border border-[#DDDDDD] placeholder:text-[15px] placeholder:text-[#666666]"
+                    className="w-full max-w-[400px] h-[50px] border border-[#DDDDDD] placeholder:text-[15px] placeholder:text-[#666666]"
                   />
                 </FormControl>
 
@@ -113,7 +113,7 @@ export function CustomForm() {
                   <Textarea
                     {...field}
                     placeholder="Xabar"
-                    className="min-h-[120px]"
+                    className="min-h-[120px] max-w-[400px]"
                   />
                 </FormControl>
 

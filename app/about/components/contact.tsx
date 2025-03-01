@@ -65,7 +65,7 @@ export const Contacts = () => {
                   className="flex gap-[10px] text-[#666666] items-center sm:text-[18px] tablet-max:text-xl"
                   key={item.id}
                 >
-                  <div className=" w-[52px] h-[52px] tablet-max:w-[58px] tablet-max:h-[58px] rounded-full border border-[#666666] flex justify-center items-center text-[#666666]">
+                  <div className="w-[52px] h-[52px] tablet-max:w-[58px] tablet-max:h-[58px] rounded-full border border-[#666666] flex justify-center items-center text-[#666666]">
                     <Icon />
                   </div>
                   {item.label}
