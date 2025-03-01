@@ -38,17 +38,19 @@ export const AuthForm = ({ variant, onSubmit }: Props) => {
   return (
     <div>
       <div className="w-full max-w-[532px] mb-[35px]">
-        <h1 className="text-[36px] font-bold mb-4 flex items-center gap-4">
+        <h1 className="text-[28px] sm:text-[32px] lg:text-[36px] font-bold mb-4 flex items-center gap-3">
           {data.title}
           {variant == "register" && <IoMdPersonAdd size={38} />}
           {variant == "resetPassword" && <LuLockKeyhole size={38} />}
         </h1>
-        <p className="text-xl text-[#666666] font-lora">{data.desc}</p>
+        <p className="text-[18px] lg:text-xl text-[#666666] font-lora">
+          {data.desc}
+        </p>
       </div>
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
-          className="flex flex-col gap-4 relative"
+          className="flex flex-col gap-8 "
         >
           {data?.form?.inputs?.map((item) => (
             <>
@@ -59,29 +61,39 @@ export const AuthForm = ({ variant, onSubmit }: Props) => {
                 name={item.name}
                 render={({ field }) => (
                   <FormItem>
-                    <label>{item.label}</label>
-                    <FormControl>
-                      <Input
-                        placeholder={item.plaseholder}
-                        {...field}
-                        className="w-[400px] h-[50px] border border-[#DDDDDD] placeholder:text-[15px] placeholder:text-[#666666]"
-                      />
-                    </FormControl>
-
-                    <FormMessage />
+                    <label className="text-[#666666]">{item.label}</label>
+                    {/* @ts-ignore */}
+                    <div className="  flex sm-xl:items-center sm-xl:gap-4  lg:w-[635px] flex-col sm-xl:flex-row">
+                      {/* {item.name == "password" && variant == "login" && (
+                        <p
+                          className=" max-w-[400px] sm-xl:w-full block sm-xl:hidden bottom-[40px] text-[#3399FF] text-[18px] lg:text-xl font-lora cursor-pointer border text-end"
+                          onClick={() => setAuthType("resetPassword")}
+                        >
+                          Parolni Unutdingizmi ?
+                        </p>
+                      )} */}
+                      <div>
+                        <FormControl>
+                          <Input
+                            placeholder={item.plaseholder}
+                            {...field}
+                            className="w-[400px] h-[50px] border border-[#DDDDDD] placeholder:text-[15px] placeholder:text-[#666666]"
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </div>
+                      {item.name == "password" && variant == "login" && (
+                        <p
+                          className="max-w-[400px] sm-xl:w-full   text-end sm-xl:text-start bottom-[40px] text-[#3399FF] text-[18px] lg:text-xl font-lora cursor-pointer"
+                          onClick={() => setAuthType("resetPassword")}
+                        >
+                          Parolni Unutdingizmi ?
+                        </p>
+                      )}
+                    </div>
                   </FormItem>
                 )}
               />
-              <div className="relative ">
-                {item.name == "password" && variant == "login" && (
-                  <p
-                    className="absolute right-[-90px] bottom-[40px] text-[#3399FF] text-xl font-lora cursor-pointer"
-                    onClick={() => setAuthType("resetPassword")}
-                  >
-                    Parolni Unutdingizmi ?
-                  </p>
-                )}
-              </div>
             </>
           ))}
           {data.checkbox && (
@@ -114,7 +126,7 @@ export const AuthForm = ({ variant, onSubmit }: Props) => {
             </Button>
           </div>
           {variant === "login" && (
-            <p className=" mt-[32px] text-xl font-lora ">
+            <p className=" mt-[32px] text-[18px] lg:text-xl font-lora ">
               Akkauntingiz yo’qmi ?{" "}
               <span
                 className="text-[#3399FF] cursor-pointer"

@@ -32,7 +32,7 @@ export const Verify = () => {
   return (
     <div>
       <div className="w-full max-w-[540px] mb-[35px]">
-        <h1 className="text-[36px] font-bold mb-4 flex items-center gap-4">
+        <h1 className="text-[24px] sm:text-[36px] font-bold mb-4 flex items-center gap-3">
           Yuborilgan Kodni Kiriting
           <AiOutlineMessage size={38} />
         </h1>
@@ -55,19 +55,19 @@ export const Verify = () => {
                     <InputOTPGroup>
                       <InputOTPSlot
                         index={0}
-                        className="w-[90px] h-[70px] mr-3 border-[#666666] text-xl"
+                        className="w-[70px] h-[60px] sm:w-[90px] sm:h-[70px] mr-3 border-[#666666] text-xl border"
                       />
                       <InputOTPSlot
                         index={1}
-                        className="w-[90px] h-[70px] mr-3 border border-[#666666] text-xl"
+                        className="w-[70px] h-[60px] sm:w-[90px] sm:h-[70px] mr-3 border-[#666666] text-xl border"
                       />
                       <InputOTPSlot
                         index={2}
-                        className="w-[90px] h-[70px] mr-3 border border-[#666666] text-xl"
+                        className="w-[70px] h-[60px] sm:w-[90px] sm:h-[70px] mr-3 border-[#666666] text-xl border"
                       />
                       <InputOTPSlot
                         index={3}
-                        className="w-[90px] h-[70px] mr-3 border border-[#666666] text-xl"
+                        className="w-[70px] h-[60px] sm:w-[90px] sm:h-[70px] mr-3 border-[#666666] text-xl border"
                       />
                     </InputOTPGroup>
                   </InputOTP>
