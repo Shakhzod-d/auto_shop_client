@@ -1,15 +1,22 @@
-"use client"
+"use client";
 
 import { Clock4Icon } from "lucide-react";
 import Image from "next/image";
 
 interface Props {
   data: { id: string; title: string; desc: string; img: string };
+  onClick: (data: boolean) => void;
 }
 
-export const Card = ({ data }: Props) => {
+export const Card = ({ data, onClick }: Props) => {
+  const onChange = () => {
+    onClick(true);
+  };
   return (
-    <div className="w-[390px] cursor-pointer">
+    <div
+      className="w-[398px] tablet-middle:w-[335px] tablet-max:w-[390px] cursor-pointer"
+      onClick={onChange}
+    >
       <Image
         src={data.img}
         alt="cardImg"
@@ -17,8 +24,10 @@ export const Card = ({ data }: Props) => {
         height={240}
         className="mb-8 rounded-[4px]"
       />
-      <h4 className="text-[28px] font-semibold mb-4">{data.title}</h4>
-      <span className="flex items-center gap-1 text-[#666666] mb-4">
+      <h4 className="text-[24px] tablet-max:text-[28px] font-semibold mb-4">
+        {data.title}
+      </h4>
+      <span className="flex items-center gap-1 text-[#666666] mb-4 break-words">
         <Clock4Icon />
         12 daqiqa oldin
       </span>

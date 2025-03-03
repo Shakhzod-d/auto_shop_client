@@ -9,10 +9,12 @@ import { NavSelect } from "../ui/nav-select";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { auto, energy, other } from "../../lib/constants";
+import { useHelper } from "../../store/helper.store";
 
 export const Navbar = () => {
   const navigate = useRouter();
   const pathname = usePathname();
+  const { setIsModal } = useHelper();
   return (
     <header className="mb-0 tablet-max:mb-10 font-montserrat">
       <div className="container">
@@ -41,6 +43,7 @@ export const Navbar = () => {
             <RxHamburgerMenu
               size={36}
               color="#666666"
+              onClick={setIsModal}
               className="tablet-max:hidden"
             />
           </div>

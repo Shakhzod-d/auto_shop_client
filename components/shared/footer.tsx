@@ -10,7 +10,7 @@ export const Footer = () => {
       <div className="container">
         <div
           className="grid grid-cols-1 sm:grid-cols-2 gap-14 lg:gap-0
-         justify-between lg:grid-cols-4 pb-16 border-b mb-16 text-[#FFFFFF] items-center text-center"
+         justify-between lg:grid-cols-4 pb-16 border-b mb-16 text-[#FFFFFF] items-center text-center sm:text-start"
         >
           <div className="flex flex-col gap-4 ">
             {FooterData.arr1.map((item, i) => (
@@ -25,16 +25,17 @@ export const Footer = () => {
           </div>
           <div className="flex flex-col gap-4 sm:justify-self-end">
             {FooterData.arr2.map((item, i) => (
-              <p className="text-[19px] text-[#FFFFFF] font-medium" key={i}>
+              <Link className="text-[19px] text-[#FFFFFF] font-medium" key={i} href={item.path}>
+                
                 {item.label}
-              </p>
+              </Link>
             ))}
           </div>
           <div className="flex flex-col gap-4 ">
             {FooterData.arr3.map((item, i) => (
-              <p className="text-[19px] text-[#FFFFFF] font-medium" key={i}>
+              <Link className="text-[19px] text-[#FFFFFF] font-medium" key={i} href={item.path}>
                 {item.label}
-              </p>
+              </Link>
             ))}
           </div>
           <div className="">
@@ -47,7 +48,7 @@ export const Footer = () => {
             </span>
           </div>
         </div>
-        <div className="flex flex-col justify-center text-center sm:flex-row  sm:justify-between items-center text-[#FFFFFF] ">
+        <div className="flex flex-col justify-center text-center sm:text-start sm:flex-row  sm:justify-between items-center text-[#FFFFFF] ">
           <h2 className="text-[45px] font-bold ]">AutoShop</h2>
           <p className="text-[18px] w-[300px] text-start tablet-max:w-full tablet-max:text-end">
             © {date.getFullYear()} AutoShop Yangiliklar. Barcha huquqlar

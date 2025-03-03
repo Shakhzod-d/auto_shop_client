@@ -27,7 +27,7 @@ export const Banners = ({
       >
         <div className="container">
           <div className={`w-full text-white`} style={{ maxWidth: w }}>
-            <h2 className="text-[34px]  tablet-middle:text-[45px] tablet-max:text-[55px]  font-bold mb-4">
+            <h2 className="text-[28px]  tablet-middle:text-[45px] tablet-max:text-[55px]  font-bold mb-4">
               {title}
             </h2>
             <p className="tablet-middle:text-[22px] font-medium mb-8">{desc}</p>
