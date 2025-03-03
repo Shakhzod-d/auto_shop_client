@@ -6,7 +6,7 @@ type Store = {
 };
 
 export const useHelper = create<Store>()((set) => ({
-  isModal: true,
+  isModal: false,
   setIsModal: () => {
     set((state) => ({ isModal: !state.isModal }));
   },
