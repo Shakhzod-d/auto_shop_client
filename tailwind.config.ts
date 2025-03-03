@@ -64,6 +64,7 @@ export default {
         "tablet-max": "980px",
         "tablet-middle": "745px",
         "sm-xl": "670px",
+        "laptop-mn": "1120px",
       },
     },
   },

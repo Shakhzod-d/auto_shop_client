@@ -82,6 +82,20 @@ export const announcementsList = [
             dummy text ever since the 1500s`,
     img: "/imgs/cola.png",
   },
+  {
+    id: 5,
+    msg: `  Lorem Ipsum is simply dummy text of the printing and
+            typesetting industry. Lorem Ipsum has been the industry's standard
+            dummy text ever since the 1500s`,
+    img: "/imgs/cola.png",
+  },
+  {
+    id: 6,
+    msg: `  Lorem Ipsum is simply dummy text of the printing and
+            typesetting industry. Lorem Ipsum has been the industry's standard
+            dummy text ever since the 1500s`,
+    img: "/imgs/cola.png",
+  },
 ];
 
 export const FooterData = {
@@ -93,17 +107,17 @@ export const FooterData = {
     { label: "Premyera", path: "/" },
   ],
   arr2: [
-    { label: "Elektr Avtomobillar", path: "/" },
-    { label: "Ichki Yonuvchi Dvigatellik", path: "/" },
-    { label: "Yuk Avtomobillar", path: "/" },
-    { label: "Skuter va Mopedlar", path: "/" },
-    { label: "Yangi Modellar", path: "/" },
+    { label: "Elektr Avtomobillar", path: "/news/energy" },
+    { label: "Ichki Yonuvchi Dvigatellik", path: "/news/newsCar" },
+    { label: "Yuk Avtomobillar", path: "/news/tracks" },
+    { label: "Skuter va Mopedlar", path: "/news/bikes" },
+    { label: "Yangi Modellar", path: "/news/newsCar" },
   ],
   arr3: [
-    { label: "Mototsikllar", path: "/" },
-    { label: "Uchoqlar", path: "/" },
-    { label: "Qayta Tiklanuvchi Energiya", path: "/" },
-    { label: "Iqlim", path: "/" },
+    { label: "Mototsikllar", path: "/news/motoBikes" },
+    { label: "Uchoqlar", path: "/news/airplanes" },
+    { label: "Qayta Tiklanuvchi Energiya", path: "/news/renewable" },
+    { label: "Iqlim", path: "/news/climate" },
   ],
 };
 
@@ -295,4 +309,16 @@ export const AuthData = {
       ],
     },
   },
+};
+
+export const ModalSelectData = {
+  auto: {
+    title: "Auto",
+    items: [
+      { id: 1, label: "Elektr Avtomobillar", path: "/news/energy" },
+      { id: 2, label: " Ichki Yonuvchi Dvigatellik", path: "/news/newsCar" },
+    ],
+  },
+  other: { title: "Boshqa Transportlar", items: other },
+  energy: { title: "Energetika", items: energy },
 };

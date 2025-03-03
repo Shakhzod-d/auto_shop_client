@@ -1,9 +1,11 @@
 "use client";
 
 import { Footer } from "../components/shared/footer";
+import AutoShopModal from "../components/shared/modal";
 import { Navbar } from "../components/shared/navbar";
 
 import { usePathname } from "next/navigation";
+import { useHelper } from "../store/helper.store";
 
 const AppLayout = ({
   children,
@@ -12,8 +14,10 @@ const AppLayout = ({
 }>) => {
   const pathname = usePathname();
   const isAuth = pathname.startsWith("/auth");
+  const { isModal } = useHelper();
   return (
     <>
+      {isModal && <AutoShopModal />}
       {!isAuth && <Navbar />}
       {children}
       {!isAuth && <Footer />}

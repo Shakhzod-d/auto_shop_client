@@ -1,7 +1,9 @@
-import { FiArrowLeftCircle } from "react-icons/fi";
-
-import Image from "next/image";
-import { announcementsList } from "../../../lib/constants";
+"use client";
+import { CarouselSize } from "../../../components/ui/custom-slider";
+import {
+  CarouselNext,
+  CarouselPrevious,
+} from "../../../components/ui/carousel";
 
 export const Announcements = () => {
   return (
@@ -16,23 +18,11 @@ export const Announcements = () => {
           </p>
         </div>
         <div className="flex items-center gap-4 text-[#666666]">
-          <FiArrowLeftCircle size={48} className="cursor-pointer" />
-          <FiArrowLeftCircle size={48} className="rotate-180 cursor-pointer" />
+          <CarouselPrevious />
+          <CarouselNext />
         </div>
       </div>
-      <div className="flex gap-[6px] overflow-x-auto border">
-        {announcementsList.map((item) => (
-          <div
-            className="w-[305px]!important h-[330px] bg-[#F8F8F8] rounded-sm"
-            key={item.id}
-          >
-            <Image src={item.img} id="1" width={305} height={150} alt="img" />
-            <div className="px-[5px] text-[#666666] text-[18px]">
-              {item.msg}
-            </div>
-          </div>
-        ))}
-      </div>
+      <CarouselSize />
     </section>
   );
 };

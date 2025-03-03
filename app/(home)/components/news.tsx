@@ -8,23 +8,23 @@ import { Button } from "../../../components/ui/button";
 export const NewsDetail = () => {
   return (
     <div className="w-full max-w-[750px]">
-      <Button className="text-sm bg-[#3399FF]  h-[26px] w-[137px] mb-2">
+      <Button className=" text-[10px] xl:text-[12px] bg-[#3399FF]  h-[26px] px-[5px] mb-2">
         Elektr Avtomobillar
       </Button>
-      <h5 className="text-[28px] font-semibold mb-4">
+      <h5 className="text-xl sm:text-[28px] font-semibold mb-4">
         {` Toyota 1000 km masofani bosib o'tishga mo'ljallangan yangi avlod elektr
         avtomobillarini taqdim etdi`}
       </h5>
-      <div className="flex items-center gap-6 mb-8 text-[#666666]">
-        <span className="flex items-center gap-[10px]">
+      <div className="flex items-center gap-3 sm:gap-6 mb-8 text-[#666666]">
+        <span className="flex items-center gap-1 sm:gap-[10px] text-[15px] sm:text-xl">
           <LuClock4 />2 sog’ot oldin
         </span>
-        <span className="flex items-center gap-[10px]">
+        <span className="flex items-center gap-1 sm:gap-[10px] text-[15px] sm:text-xl">
           <MdFiberManualRecord size={25} />
           John Smith
         </span>
-        <span className="flex items-center gap-[10px]">
-          <Image src="/msg.svg" alt="" width={25} height={25} />
+        <span className="flex items-center gap-1 sm:gap-[10px] text-[15px] sm:text-xl">
+          <Image src="/msg.svg" alt="" width={25} height={25}  className="w-5 sm:w-[25px]"/>
           John Smith
         </span>
       </div>
@@ -35,7 +35,7 @@ export const NewsDetail = () => {
         width={720}
         height={350}
       />
-      <p className="text-xl text-[#666666] mb-8">
+      <p className="text-xl text-[#666666] mb-8 font-lora">
         {` Toyota kompaniyasi diapazon va unumdorlikni sezilarli darajada oshirish
         uchun mo'ljallangan akkumulyatorli elektr transport vositalarining
         (BEVs) keyingi avlodi uchun rejalarini e'lon qildi. 2026-yilgacha ishga
@@ -56,7 +56,13 @@ export const NewsDetail = () => {
         <IoMdAdd size={30} />
         {` Ko’proq Yangiliklar`}
       </span>
-      <Image src="/imgs/home-news-img.png" alt="" width={400} height={300} />
+      <Image
+        src="/imgs/home-news-img.png"
+        alt=""
+        width={400}
+        height={300}
+        className="w-full tablet-max:w-[400px]"
+      />
     </div>
   );
 };
