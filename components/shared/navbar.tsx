@@ -4,17 +4,19 @@ import { RxHamburgerMenu } from "react-icons/rx";
 import { Button } from "../ui/button";
 import Image from "next/image";
 import { IoSearchOutline } from "react-icons/io5";
-import { MdKeyboardArrowDown } from "react-icons/md";
 import { NavSelect } from "../ui/nav-select";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { auto, energy, other } from "../../lib/constants";
 import { useHelper } from "../../store/helper.store";
+import LanguageSelector from "../ui/langueSelect";
 
 export const Navbar = () => {
   const navigate = useRouter();
   const pathname = usePathname();
   const { setIsModal } = useHelper();
+;
+
   return (
     <header className="mb-0 tablet-max:mb-10 font-montserrat">
       <div className="container">
@@ -30,10 +32,7 @@ export const Navbar = () => {
           />
           <div className="items-center flex gap-4">
             <IoSearchOutline size={20} className="cursor-pointer " />
-            <span className="flex  items-center gap-[5px] cursor-pointer uppercase ">
-              {`O'z`}
-              <MdKeyboardArrowDown />
-            </span>
+            <LanguageSelector />
             <Button
               className="py-[12px]     w-[130px]  h-10 md:w-[142px] md:h-11 bg-[#4DA6FF] rounded-md text-white font-semibold hidden tablet-middle:block"
               onClick={() => navigate.push("/auth")}
