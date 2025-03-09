@@ -1,7 +1,6 @@
 "use client";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { Button } from "../ui/button";
-import Image from "next/image";
 import { IoSearchOutline } from "react-icons/io5";
 import { NavSelect } from "../ui/nav-select";
 import Link from "next/link";
@@ -20,20 +19,17 @@ export default function Navbar({ categoryData }: Props) {
   const pathname = usePathname();
   const { setIsModal } = useHelper();
   const data = NavbarSelectData(categoryData ? categoryData : []);
- 
+
   return (
     <header className="mb-0 tablet-max:mb-10 font-montserrat">
       <div className="container">
         <div className=" flex justify-between items-center py-5  tablet-max:border-b border-[#888888]  tablet-max:mb-10 ">
-          <Image
-            width={252}
-            height={100}
-            loading="lazy"
-            src={"/imgs/logo.png"}
-            alt="logo"
+          <h1
             onClick={() => navigate.push("/")}
-            className="cursor-pointer"
-          />
+            className="cursor-pointer text-[#4DA6FF] font-bold font-merriweather text-[40px] italic"
+          >
+            {"// AutoShop"}
+          </h1>
           <div className="items-center flex gap-4">
             <IoSearchOutline size={20} className="cursor-pointer " />
             <LanguageSelector />

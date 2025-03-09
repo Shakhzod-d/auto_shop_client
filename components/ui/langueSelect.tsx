@@ -16,17 +16,17 @@ type Language = {
 const languages: Language[] = [
   {
     code: "uz",
-    name: "O'Z",
+    name: "O'z",
     flag: "/uz.svg",
   },
   {
     code: "ru",
-    name: "RU",
+    name: "Ru",
     flag: "/ru.svg",
   },
   {
     code: "en",
-    name: "EN",
+    name: "En",
     flag: "/en.svg",
   },
 ];
@@ -72,8 +72,7 @@ export default function LanguageSelector({ onChange }: LanguageSelectorProps) {
         className="flex items-center gap-2 cursor-pointer"
         onClick={() => setIsOpen(!isOpen)}
       >
-        <Image src={selectedLanguage.flag} width={20} height={20} alt="flag" />
-        <span className="font-medium text-[#666666] text-[21px]">
+        <span className="font-medium text-[#666666] text-[18px]">
           {selectedLanguage.name}
         </span>
         <ChevronDown

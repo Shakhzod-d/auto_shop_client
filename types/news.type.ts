@@ -43,6 +43,7 @@ export interface MainImage {
 }
 
 export interface Subcategory {
+  banner: BannerData;
   id: string;
   is_active: boolean;
   is_deleted: boolean;
@@ -56,7 +57,18 @@ export interface Subcategory {
   title_ru: string;
   title_en: string;
 }
-
+export interface BannerData {
+  id: string;
+  is_active: boolean;
+  is_deleted: boolean;
+  created_at: string;
+  updated_at: string;
+  deleted_at: any;
+  file_name: string;
+  path: string;
+  size: number;
+  mime_type: string;
+}
 export interface NewsDetailType {
   category: string;
   title: string;
@@ -65,3 +77,10 @@ export interface NewsDetailType {
   desc: string;
   img: string;
 }
+
+export type NewsListType = {
+  img: string;
+  title: string;
+  created: number;
+  id: string;
+};

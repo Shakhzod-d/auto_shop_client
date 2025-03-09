@@ -10,35 +10,25 @@ import { NewsList } from "./components/news-list";
 import { fetchItemsServ } from "../../services/itemsServ";
 import { NewsResType } from "../../types/news.type";
 import { useEffect, useState } from "react";
-import { NewsDetailType } from "../../types/news.type";
+
+import { newsDataMap } from "../../utils/map-data";
 
 export default function Home() {
   const API = process.env.NEXT_PUBLIC_API_URL;
 
   const { data: news } = useQuery<NewsResType>({
-    queryFn: () => fetchItemsServ(`${API}/news`,),
+    queryFn: () => fetchItemsServ(`${API}/news`),
     queryKey: ["fetchItemsServ"],
     staleTime: 0,
   });
-
-  const [NewsDetailData, setNewsDetailData] = useState<NewsDetailType>({
-    category: "",
-    createdDate: "",
-    desc: news ? news?.data[0]?.content_uz : "",
-    msgTotal: news?.data[0] ? news?.data[0]?.comment_count : 0,
-    title: news ? news?.data[0]?.title_uz : "",
-    img: "",
-  });
+  const [detailId, setDetailId] = useState<string>("");
   useEffect(() => {
-    setNewsDetailData({
-      category: "",
-      createdDate: news?.data[0] ? news?.data[0].created_at : "",
-      desc: news?.data[0] ? news?.data[0].content_uz : "",
-      msgTotal: news?.data[0] ? news?.data[0].comment_count : 0,
-      title: news?.data[0] ? news?.data[0]?.title_uz : "",
-      img: news ? news?.data[0]?.main_image?.path : "",
-    });
+    setDetailId(news?.data[0]?.id ? news?.data[0].id : "");
   }, [news]);
+  const { resultNews, newsDetail } = newsDataMap(
+    news?.data ? news.data : [],
+    detailId
+  );
 
   return (
     <>
@@ -53,12 +43,12 @@ export default function Home() {
       />
       <main className="container">
         <section className="mb-[155px]">
-          <h3 className="text-[28px] sm:text-[32px] tablet-max:text-4xl font-bold mb-10">
+          <h3 className="text-[28px] sm:text-[32px] tablet-max:text-4xl font-bold mb-10 font-merriweather">
             So’nggi Yangiliklar
           </h3>
-          <div className="flex justify-between  gap-[60px] flex-col items-center xl:flex-row">
-            <NewsDetail data={NewsDetailData} />
-            <NewsList />
+          <div className="flex justify-between  gap-[60px] flex-col items-center xl:items-start xl:flex-row  ">
+            <NewsDetail data={newsDetail} />
+            <NewsList data={resultNews} setDetailId={setDetailId}/>
           </div>
         </section>
         <Carousel

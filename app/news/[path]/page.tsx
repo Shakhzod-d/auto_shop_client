@@ -16,6 +16,8 @@ export default function News({
 }) {
   const paramsId = use(params);
   const data = newsData["newsCar"];
+  const IMG_URL = process.env.NEXT_PUBLIC_IMG_API;
+
   const [isDetail, setIsDetail] = useState(false);
   const API = process.env.NEXT_PUBLIC_API_URL;
 
@@ -27,20 +29,25 @@ export default function News({
     queryKey: ["fetchItemsServ"],
     staleTime: 0,
   });
-console.log(news);
 
+  // const NewsData: any = news?.data?.map((item) => {
+  //   return {
+  //     id: item?.id,
+  //     title: item?.title_uz,
+  //     desc: item?.content_en,
+  //     img: IMG_URL + "/" + item?.main_image?.path,
+  //   };
+  // });
+  const bannerImg: any = `${IMG_URL}${news?.data[0]?.subcategory.banner.path}`,
+    bannerTitle = news?.data ? news?.data[0]?.subcategory.title_uz : "";
   return (
     <>
-      <Banner
-        img={data.bannerImg ?? "/default-banner.jpg"}
-        text={data.bannertext}
-        w={data.w}
-      />
+      <Banner img={bannerImg} text={bannerTitle} w={data.w} />
       <main className="bigContainer">
         <div className="flex gap-[46px] mb-16 flex-col items-center xl:flex-row xl:items-start">
           <CardList
             data={data.newsCard}
-            title={data.bannertext}
+            title={bannerTitle}
             setIsDetail={setIsDetail}
             isDetail={isDetail}
           />

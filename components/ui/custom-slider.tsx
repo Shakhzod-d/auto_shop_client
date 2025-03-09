@@ -15,7 +15,7 @@ export function CarouselSize() {
               key={item.id}
             >
               <Image src={item.img} id="1" width={305} height={150} alt="img" className="mb-4"/>
-              <div className="px-[5px] text-[#666666] text-[17px] font-lora">
+              <div className="px-[5px] text-[#666666] text-[18px] font-montserrat">
                 {item.msg}
               </div>
             </div>

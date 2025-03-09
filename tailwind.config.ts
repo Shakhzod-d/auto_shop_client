@@ -12,6 +12,7 @@ export default {
       fontFamily: {
         montserrat: ["var(--font-montserrat)"],
         lora: ["var(--font-lora)"],
+        merriweather: ["var(--font-merriweather)"],
       },
       colors: {
         background: "hsl(var(--background))",

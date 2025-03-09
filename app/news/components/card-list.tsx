@@ -17,7 +17,7 @@ export const CardList = ({ data, title, isDetail, setIsDetail }: Props) => {
         {isDetail ? "Mavzuga Doir Yangiliklari" : title}
       </h3>
       <div className="w-full max-w-[830px] grid grid-cols-1 tablet-middle:grid-cols-2 gap-[50px] gap-y-[87px]">
-        {data.map((item) => (
+        {data?.map((item) => (
           <Card data={item} key={item.id} onClick={setIsDetail} />
         ))}
       </div>

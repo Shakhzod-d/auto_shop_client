@@ -24,7 +24,6 @@ const AppLayout = ({
     queryKey: ["fetchCategoryServ"],
     staleTime: 0,
   });
-  console.log({ categoryData });
 
   return (
     <>
