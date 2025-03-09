@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Montserrat, Lora } from "next/font/google";
+import { Montserrat, Lora, Merriweather } from "next/font/google";
 import "./index.css";
 import AppLayout from "./AppLayout";
 import QueryProvider from "../providers/queryProvider";
@@ -21,6 +21,11 @@ const lora = Lora({
   variable: "--font-lora",
 });
 
+const merriweather = Merriweather({
+  weight: ["300", "400", "400", "700", "900"],
+  subsets: ["latin"],
+  variable: "--font-merriweather",
+});
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -28,7 +33,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${montserrat.variable} ${lora.variable} antialiased`}>
+      <body className={`${montserrat.variable} ${lora.variable} ${merriweather.variable} antialiased`}>
         <QueryProvider>
           <AppLayout>{children}</AppLayout>
         </QueryProvider>
