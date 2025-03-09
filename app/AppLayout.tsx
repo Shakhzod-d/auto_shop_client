@@ -2,10 +2,13 @@
 
 import { Footer } from "../components/shared/footer";
 import AutoShopModal from "../components/shared/modal";
-import { Navbar } from "../components/shared/navbar";
+import Navbar from "../components/shared/navbar";
 
 import { usePathname } from "next/navigation";
 import { useHelper } from "../store/helper.store";
+import { fetchItemsServ } from "../services/itemsServ";
+import { useQuery } from "@tanstack/react-query";
+import { CategoryReqTypes } from "../types";
 
 const AppLayout = ({
   children,
@@ -15,10 +18,20 @@ const AppLayout = ({
   const pathname = usePathname();
   const isAuth = pathname.startsWith("/auth");
   const { isModal } = useHelper();
+  const API = process.env.NEXT_PUBLIC_API_URL;
+  const { data: categoryData } = useQuery<CategoryReqTypes>({
+    queryFn: () => fetchItemsServ(`${API}/category`),
+    queryKey: ["fetchCategoryServ"],
+    staleTime: 0,
+  });
+  console.log({ categoryData });
+
   return (
     <>
       {isModal && <AutoShopModal />}
-      {!isAuth && <Navbar />}
+      {!isAuth && (
+        <Navbar categoryData={categoryData ? categoryData.data : []} />
+      )}
       {children}
       {!isAuth && <Footer />}
     </>

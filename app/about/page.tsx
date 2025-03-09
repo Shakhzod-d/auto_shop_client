@@ -1,3 +1,4 @@
+"use client"
 import { Banners } from "../(home)/components/banners";
 import { Contacts } from "./components/contact";
 import { Info } from "./components/info";

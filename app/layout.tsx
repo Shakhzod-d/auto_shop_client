@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Montserrat, Lora } from "next/font/google";
 import "./index.css";
 import AppLayout from "./AppLayout";
+import QueryProvider from "../providers/queryProvider";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -19,6 +20,7 @@ const lora = Lora({
   subsets: ["latin"],
   variable: "--font-lora",
 });
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -27,7 +29,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${montserrat.variable} ${lora.variable} antialiased`}>
-        <AppLayout>{children}</AppLayout>
+        <QueryProvider>
+          <AppLayout>{children}</AppLayout>
+        </QueryProvider>
       </body>
     </html>
   );

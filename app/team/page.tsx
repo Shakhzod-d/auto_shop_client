@@ -1,3 +1,4 @@
+"use client"
 import { Banners } from "../(home)/components/banners";
 
 export default function Team() {

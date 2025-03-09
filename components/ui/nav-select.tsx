@@ -4,7 +4,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { MdKeyboardArrowDown } from "react-icons/md";
 interface Props {
   initialTitle: string;
-  data: { label: string; path: string; id: number }[];
+  data: { label: string; path: string; id: string }[];
 }
 export const NavSelect = ({ data, initialTitle }: Props) => {
   const navigate = useRouter();

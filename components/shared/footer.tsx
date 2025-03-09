@@ -1,3 +1,4 @@
+"use client";
 import { FaFacebook, FaInstagram, FaTelegram } from "react-icons/fa6";
 import { FooterData } from "../../lib/constants";
 import { AiOutlineYoutube } from "react-icons/ai";
@@ -25,21 +26,30 @@ export const Footer = () => {
           </div>
           <div className="flex flex-col gap-4 sm:justify-self-end">
             {FooterData.arr2.map((item, i) => (
-              <Link className="text-[19px] text-[#FFFFFF] font-medium" key={i} href={item.path}>
-                
+              <Link
+                className="text-[19px] text-[#FFFFFF] font-medium"
+                key={i}
+                href={item.path}
+              >
                 {item.label}
               </Link>
             ))}
           </div>
           <div className="flex flex-col gap-4 ">
             {FooterData.arr3.map((item, i) => (
-              <Link className="text-[19px] text-[#FFFFFF] font-medium" key={i} href={item.path}>
+              <Link
+                className="text-[19px] text-[#FFFFFF] font-medium"
+                key={i}
+                href={item.path}
+              >
                 {item.label}
               </Link>
             ))}
           </div>
           <div className="">
-            <p className="text-[20px] font-medium mb-4 sm:justify-self-center">Obuna Bo’ling</p>
+            <p className="text-[20px] font-medium mb-4 sm:justify-self-center">
+              Obuna Bo’ling
+            </p>
             <span className="flex items-center gap-4 sm:justify-self-center justify-center sm:justify-start">
               <FaTelegram size={30} />
               <FaInstagram size={30} />
