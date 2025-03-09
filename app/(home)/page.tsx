@@ -1,3 +1,5 @@
+"use client";
+import { useQuery } from "@tanstack/react-query";
 import { Carousel } from "../../components/ui/carousel";
 import { HomeBanner } from "../../lib/constants";
 import { Announcements } from "./components/announcements";
@@ -5,8 +7,39 @@ import { Banners } from "./components/banners";
 import { GmailInput } from "./components/gmail-input";
 import { NewsDetail } from "./components/news";
 import { NewsList } from "./components/news-list";
+import { fetchItemsServ } from "../../services/itemsServ";
+import { NewsResType } from "../../types/news.type";
+import { useEffect, useState } from "react";
+import { NewsDetailType } from "../../types/news.type";
 
 export default function Home() {
+  const API = process.env.NEXT_PUBLIC_API_URL;
+
+  const { data: news } = useQuery<NewsResType>({
+    queryFn: () => fetchItemsServ(`${API}/news`,),
+    queryKey: ["fetchItemsServ"],
+    staleTime: 0,
+  });
+
+  const [NewsDetailData, setNewsDetailData] = useState<NewsDetailType>({
+    category: "",
+    createdDate: "",
+    desc: news ? news?.data[0]?.content_uz : "",
+    msgTotal: news?.data[0] ? news?.data[0]?.comment_count : 0,
+    title: news ? news?.data[0]?.title_uz : "",
+    img: "",
+  });
+  useEffect(() => {
+    setNewsDetailData({
+      category: "",
+      createdDate: news?.data[0] ? news?.data[0].created_at : "",
+      desc: news?.data[0] ? news?.data[0].content_uz : "",
+      msgTotal: news?.data[0] ? news?.data[0].comment_count : 0,
+      title: news?.data[0] ? news?.data[0]?.title_uz : "",
+      img: news ? news?.data[0]?.main_image?.path : "",
+    });
+  }, [news]);
+
   return (
     <>
       <Banners
@@ -24,7 +57,7 @@ export default function Home() {
             So’nggi Yangiliklar
           </h3>
           <div className="flex justify-between  gap-[60px] flex-col items-center xl:flex-row">
-            <NewsDetail />
+            <NewsDetail data={NewsDetailData} />
             <NewsList />
           </div>
         </section>

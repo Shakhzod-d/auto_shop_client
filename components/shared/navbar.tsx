@@ -1,22 +1,26 @@
 "use client";
 import { RxHamburgerMenu } from "react-icons/rx";
-
 import { Button } from "../ui/button";
 import Image from "next/image";
 import { IoSearchOutline } from "react-icons/io5";
 import { NavSelect } from "../ui/nav-select";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { auto, energy, other } from "../../lib/constants";
+
 import { useHelper } from "../../store/helper.store";
 import LanguageSelector from "../ui/langueSelect";
+import { Category } from "../../types";
+import { NavbarSelectData } from "../../utils/map-data";
 
-export const Navbar = () => {
+interface Props {
+  categoryData: Category[];
+}
+export default function Navbar({ categoryData }: Props) {
   const navigate = useRouter();
   const pathname = usePathname();
   const { setIsModal } = useHelper();
-;
-
+  const data = NavbarSelectData(categoryData ? categoryData : []);
+ 
   return (
     <header className="mb-0 tablet-max:mb-10 font-montserrat">
       <div className="container">
@@ -48,25 +52,38 @@ export const Navbar = () => {
           </div>
         </div>
         <nav className="hidden tablet-max:block">
-          <ul className="flex items-center gap-6">
-            <NavSelect data={auto} initialTitle="Auto" />
-            <li
-              className="text-[#333333] text-[19px] font-medium cursor-pointer"
-              style={{ color: pathname == "/news/newsCar" ? "#4DA6FF" : "" }}
-            >
-              <Link href={"/news/newsCar"}>Yangi Modellar</Link>
-            </li>
-            <NavSelect data={other} initialTitle="Boshqa Transportlar" />
-            <NavSelect data={energy} initialTitle="Energetika" />
-            <li className="text-[#333333] text-[19px] font-medium cursor-pointer hover:text-[#4DA6FF]">
-              Premyera
-            </li>
-            <li className="text-[#333333] text-[19px] font-medium cursor-pointer hover:text-[#4DA6FF]">
-              Online Shop
-            </li>
-          </ul>
+          <div className="flex items-center gap-6">
+            {data?.map((item, i) => {
+              if (item.isSubCategory) {
+                return (
+                  <NavSelect
+                    data={item.subcategory}
+                    initialTitle={item.label}
+                    key={i}
+                  />
+                );
+              } else {
+                return (
+                  <div
+                    key={item.subcategory[0]?.id}
+                    className="text-[#333333] text-[19px] font-medium cursor-pointer"
+                    style={{
+                      color:
+                        pathname == `/news/${item?.subcategory[0]?.path}`
+                          ? "#4DA6FF"
+                          : "",
+                    }}
+                  >
+                    <Link href={`/news/${item?.subcategory[0]?.path}`}>
+                      {item.label}
+                    </Link>
+                  </div>
+                );
+              }
+            })}
+          </div>
         </nav>
       </div>
     </header>
   );
-};
+}

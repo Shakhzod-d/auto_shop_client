@@ -4,6 +4,8 @@ import { useState, useRef, useEffect } from "react";
 import { ChevronDown } from "lucide-react";
 import { cn } from "../../lib/utils";
 import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 type Language = {
   code: string;
@@ -35,6 +37,7 @@ interface LanguageSelectorProps {
 
 export default function LanguageSelector({ onChange }: LanguageSelectorProps) {
   const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname();
   const [selectedLanguage, setSelectedLanguage] = useState(languages[0]);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
@@ -94,12 +97,20 @@ export default function LanguageSelector({ onChange }: LanguageSelectorProps) {
                 role="menuitem"
                 onClick={() => handleLanguageChange(language)}
               >
-                <Image
-                  src={language.flag}
-                  width={20}
-                  height={20}
-                  alt="flag"
-                />
+                <Link
+                  key={language.code}
+                  href={`/${language.code}${pathname.replace(
+                    /^\/(en|uz|ru)/,
+                    ""
+                  )}`}
+                >
+                  <Image
+                    src={language.flag}
+                    width={20}
+                    height={20}
+                    alt="flag"
+                  />
+                </Link>
                 <span className="font-medium">{language.name}</span>
               </button>
             ))}

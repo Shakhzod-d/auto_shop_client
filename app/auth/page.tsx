@@ -8,6 +8,7 @@ import { Success } from "./components/success";
 import { useAuth } from "../../store/auth-store";
 import { Login } from "./components/login";
 
+
 export default function Auth() {
   const { success, successType, authType } = useAuth();
   return (

@@ -4,15 +4,31 @@ import { NewsAdvertisement } from "../components/advertisement";
 import { CardList } from "../components/card-list";
 import { NewsBar } from "../components/news-bar";
 import { newsData } from "../../../lib/constants";
-import { useState } from "react";
+import { use, useState } from "react";
+import { NewsResType } from "../../../types/news.type";
+import { useQuery } from "@tanstack/react-query";
+import { fetchItemsServ } from "../../../services/itemsServ";
 
-interface Props {
-  params: any;
-}
-
-export default function News({ params }: Props) {
-  const data = newsData[params.path as keyof typeof newsData];
+export default function News({
+  params,
+}: {
+  params: Promise<{ path: string }>;
+}) {
+  const paramsId = use(params);
+  const data = newsData["newsCar"];
   const [isDetail, setIsDetail] = useState(false);
+  const API = process.env.NEXT_PUBLIC_API_URL;
+
+  const { data: news } = useQuery<NewsResType>({
+    queryFn: () =>
+      fetchItemsServ(
+        `${API}/news?page=1&page_size=10&subcategory_id=${paramsId.path}`
+      ),
+    queryKey: ["fetchItemsServ"],
+    staleTime: 0,
+  });
+console.log(news);
+
   return (
     <>
       <Banner

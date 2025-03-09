@@ -1,3 +1,4 @@
+"use client"
 import { Banners } from "../(home)/components/banners";
 import { SendMessage } from "./components/send-msg";
 
