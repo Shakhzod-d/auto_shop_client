@@ -84,3 +84,39 @@ export type NewsListType = {
   created: number;
   id: string;
 };
+
+// -----------------ads
+
+export interface AdsResData {
+  status_code: number;
+  message: string;
+  data: Ads[];
+}
+
+export interface Ads {
+  is_active: boolean;
+  type: string;
+  description_uz: string;
+  description_ru: string;
+  description_en: string;
+  url: string;
+  image: Image;
+  deleted_at: any;
+  id: string;
+  is_deleted: boolean;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface Image {
+  id: string;
+  is_active: boolean;
+  is_deleted: boolean;
+  created_at: string;
+  updated_at: string;
+  deleted_at: any;
+  file_name: string;
+  path: string;
+  size: number;
+  mime_type: string;
+}

@@ -1,18 +1,19 @@
 "use client";
-import { newsBar } from "../../../lib/constants";
 import Image from "next/image";
 import { LuClock4 } from "react-icons/lu";
 import { MdFiberManualRecord } from "react-icons/md";
-
-export const NewsBar = () => {
+interface Props {
+  data: any[] | undefined;
+}
+export const NewsBar = ({ data }: Props) => {
   return (
-    <aside className="w-full xl:w-[444px] border">
+    <aside className="w-full xl:w-[444px] ">
       <h4 className="text-xl sm:text-[28px] font-bold mb-8">
         Ko’proq Yangiliklar
       </h4>
       <div className="flex xl:block justify-between flex-wrap">
-        <div className="grid grid-cols-1 gap-0 laptop-min:grid-cols-2 laptop-min:gap-4 xl:block">
-          {newsBar.map((item) => (
+        <div className="grid grid-cols-1 gap-0 laptop-min:grid-cols-2 laptop-min:gap-4 xl:block overflow-auto overflow-y-scroll h-[540px] scrollbar-hide mb-3">
+          {data?.map((item) => (
             <div className="flex gap-3 mb-8" key={item.id}>
               <Image
                 src={item.img}
@@ -43,7 +44,7 @@ export const NewsBar = () => {
           alt="img"
           width={444}
           height={550}
-          className="w-[230px] h-[300]"
+          className=" w-[230px] h-[300] sm:w-[444px] sm:h-[550px]"
         />
       </div>
     </aside>
