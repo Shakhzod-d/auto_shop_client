@@ -1,14 +1,24 @@
+
 import { Card } from "./card";
 import { NewsDetail } from "./news-detail";
 
 interface Props {
-  data: { id: string; title: string; desc: string; img: string }[];
+  data:
+    | {
+        id: string;
+        title: string;
+        desc: string;
+        img: string;
+        created: number;
+      }[]
+    | undefined;
   title: string;
   isDetail: boolean;
   setIsDetail: (data: boolean) => void;
 }
 
 export const CardList = ({ data, title, isDetail, setIsDetail }: Props) => {
+
   return (
     <section className="">
       {isDetail && <NewsDetail />}

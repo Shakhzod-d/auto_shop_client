@@ -8,7 +8,7 @@ import { GmailInput } from "./components/gmail-input";
 import { NewsDetail } from "./components/news";
 import { NewsList } from "./components/news-list";
 import { fetchItemsServ } from "../../services/itemsServ";
-import { NewsResType } from "../../types/news.type";
+import { AdsResData, NewsResType } from "../../types/news.type";
 import { useEffect, useState } from "react";
 
 import { newsDataMap } from "../../utils/map-data";
@@ -21,6 +21,12 @@ export default function Home() {
     queryKey: ["fetchItemsServ"],
     staleTime: 0,
   });
+  const { data: ads } = useQuery<AdsResData>({
+    queryFn: () => fetchItemsServ(`${API}/ad?type=carousel`),
+    queryKey: ["fetchItemsAds"],
+    staleTime: 0,
+  });
+
   const [detailId, setDetailId] = useState<string>("");
   useEffect(() => {
     setDetailId(news?.data[0]?.id ? news?.data[0].id : "");
@@ -48,7 +54,7 @@ export default function Home() {
           </h3>
           <div className="flex justify-between  gap-[60px] flex-col items-center xl:items-start xl:flex-row  ">
             <NewsDetail data={newsDetail} />
-            <NewsList data={resultNews} setDetailId={setDetailId}/>
+            <NewsList data={resultNews} setDetailId={setDetailId} />
           </div>
         </section>
         <Carousel
@@ -57,7 +63,7 @@ export default function Home() {
           }}
           className="w-full"
         >
-          <Announcements />
+          <Announcements data={ads ? ads?.data : []} />
         </Carousel>
       </main>
       <GmailInput />

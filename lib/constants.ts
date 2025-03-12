@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import { RegisterFormSchema } from "./validation";
 export const homeNewsList = [
   {

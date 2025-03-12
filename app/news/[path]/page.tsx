@@ -30,28 +30,33 @@ export default function News({
     staleTime: 0,
   });
 
-  // const NewsData: any = news?.data?.map((item) => {
-  //   return {
-  //     id: item?.id,
-  //     title: item?.title_uz,
-  //     desc: item?.content_en,
-  //     img: IMG_URL + "/" + item?.main_image?.path,
-  //   };
-  // });
+  const NewsData: any[] | undefined = news?.data?.map((item) => {
+    return {
+      id: item?.id,
+      title: item?.title_uz,
+      desc: item?.content_en,
+      img: IMG_URL + item?.main_image?.path,
+      created: item.created_at,
+    };
+  });
+  const newsCardList = NewsData?.filter((_, i) => i <= 3);
+  const newsBar = NewsData?.filter((_, i) => i > 3);
+
   const bannerImg: any = `${IMG_URL}${news?.data[0]?.subcategory.banner.path}`,
     bannerTitle = news?.data ? news?.data[0]?.subcategory.title_uz : "";
+
   return (
     <>
       <Banner img={bannerImg} text={bannerTitle} w={data.w} />
       <main className="bigContainer">
         <div className="flex gap-[46px] mb-16 flex-col items-center xl:flex-row xl:items-start">
           <CardList
-            data={data.newsCard}
+            data={newsCardList}
             title={bannerTitle}
             setIsDetail={setIsDetail}
             isDetail={isDetail}
           />
-          <NewsBar />
+          <NewsBar data={newsBar} />
         </div>
         <NewsAdvertisement />
       </main>
