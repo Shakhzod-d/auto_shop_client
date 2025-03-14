@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { Button } from "../../../components/ui/button";
 import Image from "next/image";
 
@@ -19,6 +20,7 @@ export const Banners = ({
   btn,
   img_two,
 }: Props) => {
+  const { t } = useTranslation();
   return (
     <section>
       <div
@@ -30,10 +32,12 @@ export const Banners = ({
             <h2 className="text-[28px]  tablet-middle:text-[45px] tablet-max:text-[55px]  font-bold mb-4 font-merriweather">
               {title}
             </h2>
-            <p className="tablet-middle:text-[22px] font-medium mb-8 font-lora">{desc}</p>
+            <p className="tablet-middle:text-[22px] font-medium mb-8 font-lora">
+              {desc}
+            </p>
             {btn && (
               <Button className=" px-[51px] bg-[#4DA6FF] font-semibold h-[50px]">
-                Batafsil
+              {t("btn.detail")}
               </Button>
             )}
           </div>

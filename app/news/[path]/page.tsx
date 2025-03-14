@@ -3,11 +3,10 @@ import { Banner } from "../../../components/ui/banner";
 import { NewsAdvertisement } from "../components/advertisement";
 import { CardList } from "../components/card-list";
 import { NewsBar } from "../components/news-bar";
-import { newsData } from "../../../lib/constants";
 import { use, useState } from "react";
 import { NewsResType } from "../../../types/news.type";
 import { useQuery } from "@tanstack/react-query";
-import { fetchItemsServ } from "../../../services/itemsServ";
+import { fetchItemsServ } from "../../../services/items-serv";
 
 export default function News({
   params,
@@ -15,7 +14,7 @@ export default function News({
   params: Promise<{ path: string }>;
 }) {
   const paramsId = use(params);
-  const data = newsData["newsCar"];
+
   const IMG_URL = process.env.NEXT_PUBLIC_IMG_API;
 
   const [isDetail, setIsDetail] = useState(false);
@@ -29,6 +28,8 @@ export default function News({
     queryKey: ["fetchItemsServ"],
     staleTime: 0,
   });
+
+  console.log({ news });
 
   const NewsData: any[] | undefined = news?.data?.map((item) => {
     return {
@@ -47,7 +48,7 @@ export default function News({
 
   return (
     <>
-      <Banner img={bannerImg} text={bannerTitle} w={data.w} />
+      <Banner img={bannerImg} text={bannerTitle} w={"900px"} />
       <main className="bigContainer">
         <div className="flex gap-[46px] mb-16 flex-col items-center xl:flex-row xl:items-start">
           <CardList

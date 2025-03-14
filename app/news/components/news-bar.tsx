@@ -1,15 +1,17 @@
 "use client";
 import Image from "next/image";
+import { useTranslation } from "react-i18next";
 import { LuClock4 } from "react-icons/lu";
 import { MdFiberManualRecord } from "react-icons/md";
 interface Props {
   data: any[] | undefined;
 }
 export const NewsBar = ({ data }: Props) => {
+  const { t } = useTranslation();
   return (
     <aside className="w-full xl:w-[444px] ">
       <h4 className="text-xl sm:text-[28px] font-bold mb-8">
-        Ko’proq Yangiliklar
+        {t("news.newsBar")}
       </h4>
       <div className="flex xl:block justify-between flex-wrap">
         <div className="grid grid-cols-1 gap-0 laptop-min:grid-cols-2 laptop-min:gap-4 xl:block overflow-auto overflow-y-scroll h-[540px] scrollbar-hide mb-3">

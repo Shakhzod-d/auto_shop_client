@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { Montserrat, Lora, Merriweather } from "next/font/google";
 import "./index.css";
-import AppLayout from "./AppLayout";
-import QueryProvider from "../providers/queryProvider";
+import AppLayout from "./app-layout";
+import QueryProvider from "../providers/query-provider";
+
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -33,7 +34,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${montserrat.variable} ${lora.variable} ${merriweather.variable} antialiased`}>
+      <body
+        className={`${montserrat.variable} ${lora.variable} ${merriweather.variable} antialiased`}
+      >
         <QueryProvider>
           <AppLayout>{children}</AppLayout>
         </QueryProvider>

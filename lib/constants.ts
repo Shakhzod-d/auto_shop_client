@@ -1,4 +1,5 @@
 "use client";
+import { Language } from "../types";
 import { RegisterFormSchema } from "./validation";
 export const homeNewsList = [
   {
@@ -167,62 +168,6 @@ export const newsBar = [
   { id: "5", title: "Master E-Tech", img: "/imgs/card-car.jpg" },
 ];
 
-export const newsData = {
-  energy: {
-    bannerImg: "/imgs/tesla-banner.jpg",
-    bannertext: "So‘nggi Elektr Avtomobillar Yangiliklari   ",
-    newsCard: newCarNews,
-    w: "1019",
-  },
-  newsCar: {
-    bannerImg: "/imgs/new-car-banner.png",
-    bannertext: "So‘nggi Avtomobil Modellari Yangiliklari",
-    newsCard: newCarNews,
-    w: "1019",
-  },
-  bikes: {
-    bannerImg: "/imgs/bike-banner.jpg",
-    bannertext: "So‘nggi Skuter va Mapedlar Yangiliklari   ",
-    newsCard: newCarNews,
-    w: "1019",
-  },
-  tracks: {
-    bannerImg: "/imgs/track-banner.jpg",
-    bannertext: "So‘nggi Yuk Avtomobillar Yangiliklari     ",
-    newsCard: newCarNews,
-    w: "1019",
-  },
-  motobike: {
-    bannerImg: "/imgs/bike-banner.jpg",
-    bannertext: "So‘nggi Skuter va Mapedlar Yangiliklari   ",
-    newsCard: newCarNews,
-    w: "1019px",
-  },
-  airplanes: {
-    bannerImg: "/imgs/airplane-banner.png",
-    bannertext: "Uchoqlar Yangiliklari ",
-    newsCard: newCarNews,
-    w: "431px",
-  },
-  motoBikes: {
-    bannerImg: "/imgs/moto-banner.jpg",
-    bannertext: "Mototsikllar Yangiliklari ",
-    newsCard: newCarNews,
-    w: "484px",
-  },
-  renewable: {
-    bannerImg: "/imgs/panel-banner.jpg",
-    bannertext: "Qayta Tiklanuvchi Energiyalar Yangiliklari",
-    newsCard: newCarNews,
-    w: "900px",
-  },
-  climate: {
-    bannerImg: "/imgs/eco-car-banner.jpg",
-    bannertext: "Avtomobil Sanoatidagi Iqlim Yangiliklari",
-    newsCard: newCarNews,
-    w: "900pxz",
-  },
-};
 
 export const auto = [
   { id: 2, label: "Elektirlik", path: "/news/energy" },
@@ -340,3 +285,21 @@ export const formatTimeDifference = (timestamp: number): string => {
     return date.toLocaleDateString("uz-UZ"); // Masalan, 07.03.2025
   }
 };
+
+export const languages: Language[] = [
+  {
+    code: "uz",
+    name: "O'z",
+    flag: "/uz.svg",
+  },
+  {
+    code: "ru",
+    name: "Ru",
+    flag: "/ru.svg",
+  },
+  {
+    code: "en",
+    name: "En",
+    flag: "/en.svg",
+  },
+];

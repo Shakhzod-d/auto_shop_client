@@ -6,10 +6,11 @@ import { NavSelect } from "../ui/nav-select";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 
-import { useHelper } from "../../store/helper.store";
-import LanguageSelector from "../ui/langueSelect";
+import { useHelper } from "../../store/helper-store";
+import LanguageSelector from "../ui/langue-select";
 import { Category } from "../../types";
 import { NavbarSelectData } from "../../utils/map-data";
+import { useTranslation } from "react-i18next";
 
 interface Props {
   categoryData: Category[];
@@ -19,7 +20,7 @@ export default function Navbar({ categoryData }: Props) {
   const pathname = usePathname();
   const { setIsModal } = useHelper();
   const data = NavbarSelectData(categoryData ? categoryData : []);
-
+  const { t } = useTranslation();
   return (
     <header className="mb-0 tablet-max:mb-10 font-montserrat">
       <div className="container">
@@ -37,7 +38,7 @@ export default function Navbar({ categoryData }: Props) {
               className="py-[12px]     w-[130px]  h-10 md:w-[142px] md:h-11 bg-[#4DA6FF] rounded-md text-white font-semibold hidden tablet-middle:block"
               onClick={() => navigate.push("/auth")}
             >
-              Kirish
+              {t("btn.entrance")}
             </Button>
             <RxHamburgerMenu
               size={36}

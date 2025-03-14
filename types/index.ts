@@ -40,7 +40,7 @@ export type CategoryType = {
 
 export interface MapCategoryType {
   label: string;
-  path:Subcategory[]| string;
+  path: Subcategory[] | string;
   isSubCategory: boolean;
   subcategory: MapSubcategory[] | [];
 }
@@ -49,4 +49,12 @@ export type MapSubcategory = {
   id: string;
   path: string;
   label: string;
+};
+
+export type LangType = "en" | "uz" | "ru";
+
+export type Language = {
+  code: LangType;
+  name: string;
+  flag: string;
 };
