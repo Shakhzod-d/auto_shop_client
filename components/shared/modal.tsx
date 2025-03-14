@@ -9,7 +9,7 @@ import {
   FaInstagram,
   FaLinkedin,
 } from "react-icons/fa6";
-import { useHelper } from "../../store/helper.store";
+import { useHelper } from "../../store/helper-store";
 import { ModalSelect } from "../ui/modal-select";
 import { ModalSelectData } from "../../lib/constants";
 

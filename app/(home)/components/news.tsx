@@ -6,6 +6,7 @@ import Image from "next/image";
 import { Button } from "../../../components/ui/button";
 import { NewsRes } from "../../../types/news.type";
 import { formatTimeDifference } from "../../../lib/constants";
+import { useTranslation } from "react-i18next";
 
 interface Props {
   data: NewsRes;
@@ -13,7 +14,7 @@ interface Props {
 const IMG_URL = process.env.NEXT_PUBLIC_IMG_API;
 export const NewsDetail = ({ data }: Props) => {
   const createdTime = formatTimeDifference(Number(data.created_at));
-
+  const { t } = useTranslation();
   return (
     <div className="w-full max-w-[750px]">
       <Button className=" text-[10px] xl:text-[12px] bg-[#3399FF]  h-[26px] px-[5px] mb-2">
@@ -56,11 +57,11 @@ export const NewsDetail = ({ data }: Props) => {
         }}
       ></p>
       <Button className="bg-[#4DA6FF] w-[166px] h-[50px] mb-[66px]">
-        {` To’liq Ma’lumot`}
+        {t("btn.full_information")}
       </Button>
       <span className="flex items-center gap-[10px] text-[20px] mb-16">
         <IoMdAdd size={30} />
-        {` Ko’proq Yangiliklar`}
+        {t("btn.more_news")}
       </span>
       <Image
         src="/imgs/home-news-img.png"

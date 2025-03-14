@@ -5,11 +5,11 @@ import AutoShopModal from "../components/shared/modal";
 import Navbar from "../components/shared/navbar";
 
 import { usePathname } from "next/navigation";
-import { useHelper } from "../store/helper.store";
-import { fetchItemsServ } from "../services/itemsServ";
+import { useHelper } from "../store/helper-store";
+import { fetchItemsServ } from "../services/items-serv";
 import { useQuery } from "@tanstack/react-query";
 import { CategoryReqTypes } from "../types";
-
+import "../lib/i18n";
 const AppLayout = ({
   children,
 }: Readonly<{

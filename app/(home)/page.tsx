@@ -7,15 +7,16 @@ import { Banners } from "./components/banners";
 import { GmailInput } from "./components/gmail-input";
 import { NewsDetail } from "./components/news";
 import { NewsList } from "./components/news-list";
-import { fetchItemsServ } from "../../services/itemsServ";
+import { fetchItemsServ } from "../../services/items-serv";
 import { AdsResData, NewsResType } from "../../types/news.type";
 import { useEffect, useState } from "react";
 
 import { newsDataMap } from "../../utils/map-data";
+import { useTranslation } from "react-i18next";
 
 export default function Home() {
   const API = process.env.NEXT_PUBLIC_API_URL;
-
+  const { t } = useTranslation();
   const { data: news } = useQuery<NewsResType>({
     queryFn: () => fetchItemsServ(`${API}/news`),
     queryKey: ["fetchItemsServ"],
@@ -28,9 +29,11 @@ export default function Home() {
   });
 
   const [detailId, setDetailId] = useState<string>("");
+
   useEffect(() => {
     setDetailId(news?.data[0]?.id ? news?.data[0].id : "");
   }, [news]);
+
   const { resultNews, newsDetail } = newsDataMap(
     news?.data ? news.data : [],
     detailId
@@ -47,10 +50,11 @@ export default function Home() {
         btn={true}
         img_two={true}
       />
+
       <main className="container">
         <section className="mb-[155px]">
           <h3 className="text-[28px] sm:text-[32px] tablet-max:text-4xl font-bold mb-10 font-merriweather">
-            So’nggi Yangiliklar
+            {t("home.latest_news")}
           </h3>
           <div className="flex justify-between  gap-[60px] flex-col items-center xl:items-start xl:flex-row  ">
             <NewsDetail data={newsDetail} />
