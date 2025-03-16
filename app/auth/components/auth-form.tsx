@@ -12,20 +12,24 @@ import {
 } from "../../../components/ui/form";
 import { Input } from "../../../components/ui/input";
 import { Button } from "../../../components/ui/button";
-import { Checkbox } from "../../../components/ui/checkbox";
+// import { Checkbox } from "../../../components/ui/checkbox";
 import { useAuth } from "../../../store/auth-store";
-import { AuthFormType } from "../../../types/auth.type";
+import { AuthFormType, FormVariant } from "../../../types/auth.type";
 import { LuLockKeyhole } from "react-icons/lu";
+import { Loader2 } from "lucide-react";
+import { useTranslation } from "react-i18next";
 interface Props {
-  variant: "register" | "login" | "resetPassword";
+  variant: FormVariant;
+  loading: boolean;
   onSubmit: (data: AuthFormType) => void;
 }
-export const AuthForm = ({ variant, onSubmit }: Props) => {
+export const AuthForm = ({ variant, onSubmit, loading }: Props) => {
+  const { t } = useTranslation();
   const data = AuthData[variant];
-
   const { setAuthType } = useAuth();
 
-  const formSchema = data.form.validate;
+  const formSchemaFun = data.form.validate;
+  const formSchema = formSchemaFun(t);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -35,16 +39,28 @@ export const AuthForm = ({ variant, onSubmit }: Props) => {
     if (variant === "register" || variant === "resetPassword")
       setAuthType("login");
   };
+  const btnText = (variant: FormVariant) => {
+    switch (variant) {
+      case "login":
+        return t("btn.entrance");
+      case "register":
+        return t("btn.register");
+      case "resetPassword":
+        return "Tasdiqlash";
+      default:
+        break;
+    }
+  };
   return (
     <div>
       <div className="w-full max-w-[532px] mb-[35px]">
         <h1 className="text-[28px] sm:text-[32px] lg:text-[36px] font-bold mb-4 flex items-center gap-3">
-          {data.title}
+          {t(data.title)}
           {variant == "register" && <IoMdPersonAdd size={38} />}
           {variant == "resetPassword" && <LuLockKeyhole size={38} />}
         </h1>
         <p className="text-[18px] lg:text-xl text-[#666666] font-lora">
-          {data.desc}
+          {t(data.desc)}
         </p>
       </div>
       <Form {...form}>
@@ -57,25 +73,16 @@ export const AuthForm = ({ variant, onSubmit }: Props) => {
               <FormField
                 key={item.id}
                 control={form.control}
-                //   @ts-ignore
+                // @ts-ignore
                 name={item.name}
                 render={({ field }) => (
                   <FormItem>
-                    <label className="text-[#666666]">{item.label}</label>
-                    {/* @ts-ignore */}
+                    <label className="text-[#666666]">{t(item.label)}</label>
                     <div className="  flex sm-xl:items-center sm-xl:gap-4  lg:w-[635px] flex-col sm-xl:flex-row">
-                      {/* {item.name == "password" && variant == "login" && (
-                        <p
-                          className=" max-w-[400px] sm-xl:w-full block sm-xl:hidden bottom-[40px] text-[#3399FF] text-[18px] lg:text-xl font-lora cursor-pointer border text-end"
-                          onClick={() => setAuthType("resetPassword")}
-                        >
-                          Parolni Unutdingizmi ?
-                        </p>
-                      )} */}
                       <div>
                         <FormControl>
                           <Input
-                            placeholder={item.plaseholder}
+                            placeholder={t(item.placeholder)}
                             {...field}
                             className="w-[400px] h-[50px] border border-[#DDDDDD] placeholder:text-[15px] placeholder:text-[#666666]"
                           />
@@ -87,7 +94,7 @@ export const AuthForm = ({ variant, onSubmit }: Props) => {
                           className="max-w-[400px] sm-xl:w-full   text-end sm-xl:text-start bottom-[40px] text-[#3399FF] text-[18px] lg:text-xl font-lora cursor-pointer"
                           onClick={() => setAuthType("resetPassword")}
                         >
-                          Parolni Unutdingizmi ?
+                          {t("login.forget_pass")}
                         </p>
                       )}
                     </div>
@@ -96,17 +103,17 @@ export const AuthForm = ({ variant, onSubmit }: Props) => {
               />
             </>
           ))}
-          {data.checkbox && (
+          {/* {data.checkbox && (
             <div className="flex items-center space-x-2 text-[#666666] mb-12">
               <Checkbox id="terms" className="w-[19px] h-[19px] " />
               <label
                 htmlFor="terms"
                 className="text-[18px] text-[#666666] font-lora cursor-pointer"
               >
-                Foydalanish shartiga rozilik bildiraman
+                {t("register.checkLabel")}
               </label>
             </div>
-          )}
+          )} */}
           <div className="flex items-center w-full max-w-[378px] justify-between">
             {data.closebtn && (
               <Button
@@ -114,25 +121,26 @@ export const AuthForm = ({ variant, onSubmit }: Props) => {
                 onClick={closeBtnChange}
                 className="w-[166px] h-[50px] bg-[#4DA6FFCC]"
               >
-                Orqaga
+                {t("btn.back")}
               </Button>
             )}
-            <Button type="submit" className="w-[166px] h-[50px] bg-[#4DA6FF]">
-              {variant == "register"
-                ? `Ro’yhatdan O’tish`
-                : variant === "login"
-                ? "Kirish"
-                : "Tasdiqlash"}
+            <Button
+              type="submit"
+              className="w-[166px] h-[50px] bg-[#4DA6FF]"
+              disabled={loading}
+            >
+              {loading && <Loader2 className="animate-spin" />}
+              {!loading && btnText(variant)}
             </Button>
           </div>
           {variant === "login" && (
             <p className=" mt-[32px] text-[18px] lg:text-xl font-lora ">
-              Akkauntingiz yo’qmi ?{" "}
+              {t("login.register")}
               <span
                 className="text-[#3399FF] cursor-pointer"
                 onClick={() => setAuthType("register")}
               >
-                Ro’yxatdan o’tish
+                {t("login.register_url")}
               </span>
             </p>
           )}

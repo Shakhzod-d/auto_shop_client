@@ -16,7 +16,7 @@ export const Announcements = ({ data }: Props) => {
     return {
       img: IMG_URl + item.image.path,
       url: item.url,
-      text: item.description_uz,
+      text: item.description,
     };
   });
   return (

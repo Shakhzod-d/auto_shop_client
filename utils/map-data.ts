@@ -4,7 +4,7 @@ import { NewsRes } from "../types/news.type";
 export const NavbarSelectData = (data: Category[] | []): MapCategoryType[] => {
   const result: MapCategoryType[] = data?.map((item) => {
     return {
-      label: item?.name_uz,
+      label: item?.name,
       path: item?.subcategories ? item.subcategories : "",
       isSubCategory: item?.subcategories?.length >= 2,
       subcategory: !item.subcategories
@@ -13,7 +13,7 @@ export const NavbarSelectData = (data: Category[] | []): MapCategoryType[] => {
             return {
               id: item.id,
               path: item.id,
-              label: item.name_uz,
+              label: item.name,
             };
           }),
     };
@@ -26,7 +26,7 @@ export const newsDataMap = (data: NewsRes[] | [], id: string) => {
     if (item.id !== id) {
       return {
         img: item.main_image.path,
-        title: item.title_uz,
+        title: item.title,
         created: item.created_at,
         id: item.id,
       };

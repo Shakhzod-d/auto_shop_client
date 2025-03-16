@@ -18,27 +18,53 @@ import {
 import { Button } from "../../../components/ui/button";
 
 import { useAuth } from "../../../store/auth-store";
+import { REGEXP_ONLY_DIGITS } from "input-otp";
+import { useMutation } from "@tanstack/react-query";
+import { postItemsServ } from "@/services/items-serv";
+import { OTPData, OTPRes } from "@/types/auth.type";
+import { Loader2 } from "lucide-react";
+import { errorToast } from "@/lib/toast";
+import { useTranslation } from "react-i18next";
 
 export const Verify = () => {
-  const { setRegisterType, setSuccess, setSuccessType } = useAuth();
+  const { t } = useTranslation();
+  const { setRegisterType, setSuccess, setSuccessType, user_id } = useAuth();
   const form = useForm<z.infer<typeof OTPSchema>>({
     resolver: zodResolver(OTPSchema),
   });
-  const onSubmit = (data: any) => {
-    console.log(data);
-    setSuccess(true);
-    setSuccessType("register");
+
+  const API = process.env.NEXT_PUBLIC_API_URL;
+  const { mutate: createCategoryFn, isPending: loading } = useMutation({
+    mutationFn: (obj: OTPData) =>
+      postItemsServ<OTPData, OTPRes>(`${API}/auth/activate`, obj),
+    onSuccess: (data) => {
+      console.log({ data });
+
+      if (data.status_code >= 200 && data.status_code < 400) {
+        setSuccess(true);
+        setSuccessType("register");
+      }
+      if (data.status_code == 400) {
+        errorToast(t("verify.error_msg"));
+      }
+    },
+    onError: (error: any) => {
+      console.log({ error });
+    },
+  });
+  const onSubmit = (data: { otp: string }) => {
+    console.log(user_id);
+
+    createCategoryFn({ user_id, otp: data.otp });
   };
   return (
     <div>
       <div className="w-full max-w-[540px] mb-[35px]">
         <h1 className="text-[24px] sm:text-[36px] font-bold mb-4 flex items-center gap-3">
-          Yuborilgan Kodni Kiriting
+          {t("verify.title")}
           <AiOutlineMessage size={38} />
         </h1>
-        <p className="text-xl text-[#666666] font-lora">
-          {`email manzilingizni  tasdiqlash uchun *****@gmailga yuborilgan kodni kiriting.`}
-        </p>
+        <p className="text-xl text-[#666666] font-lora">{t("verify.desc")}</p>
       </div>
       <Form {...form}>
         <form
@@ -51,7 +77,11 @@ export const Verify = () => {
             render={({ field }) => (
               <FormItem>
                 <FormControl>
-                  <InputOTP maxLength={4} {...field}>
+                  <InputOTP
+                    maxLength={6}
+                    {...field}
+                    pattern={REGEXP_ONLY_DIGITS}
+                  >
                     <InputOTPGroup>
                       <InputOTPSlot
                         index={0}
@@ -69,6 +99,14 @@ export const Verify = () => {
                         index={3}
                         className="w-[70px] h-[60px] sm:w-[90px] sm:h-[70px] mr-3 border-[#666666] text-xl border"
                       />
+                      <InputOTPSlot
+                        index={4}
+                        className="w-[70px] h-[60px] sm:w-[90px] sm:h-[70px] mr-3 border-[#666666] text-xl border"
+                      />
+                      <InputOTPSlot
+                        index={5}
+                        className="w-[70px] h-[60px] sm:w-[90px] sm:h-[70px] mr-3 border-[#666666] text-xl border"
+                      />
                     </InputOTPGroup>
                   </InputOTP>
                 </FormControl>
@@ -84,10 +122,14 @@ export const Verify = () => {
               className="w-[166px] h-[50px] bg-[#4DA6FFCC]"
               onClick={() => setRegisterType("register")}
             >
-              Orqaga
+              {t("btn.back")}
             </Button>
-            <Button type="submit" className="w-[166px] h-[50px] bg-[#4DA6FF]">
-              Yuborish
+            <Button
+              type="submit"
+              className="w-[166px] h-[50px] bg-[#4DA6FF]"
+              disabled={loading}
+            >
+              {loading ? <Loader2 className="animate-spin" /> : t("btn.send")}
             </Button>
           </div>
         </form>

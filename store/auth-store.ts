@@ -1,7 +1,8 @@
 import { create } from "zustand";
 type RegisterType = "register" | "verify";
-type SuccessType = "register" | "login" |'resetPassword';
+type SuccessType = "register" | "login" | "resetPassword";
 type Store = {
+  user_id: string;
   success: boolean;
   successType: SuccessType;
   authType: SuccessType;
@@ -10,9 +11,11 @@ type Store = {
   setSuccessType: (data: SuccessType) => void;
   setSuccess: (data: boolean) => void;
   setAuthType: (data: SuccessType) => void;
+  setUserId: (id: string) => void;
 };
 
 export const useAuth = create<Store>()((set) => ({
+  user_id: "",
   authType: "login",
   registerType: "register",
   success: false,
@@ -36,5 +39,8 @@ export const useAuth = create<Store>()((set) => ({
     set(() => ({
       success: data,
     }));
+  },
+  setUserId: (id: string) => {
+    set(() => ({ user_id: id }));
   },
 }));

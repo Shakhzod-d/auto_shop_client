@@ -1,6 +1,6 @@
 "use client";
 import { Language } from "../types";
-import { RegisterFormSchema } from "./validation";
+import { LoginFormSchema, RegisterFormSchema } from "./validation";
 export const homeNewsList = [
   {
     id: 0,
@@ -168,7 +168,6 @@ export const newsBar = [
   { id: "5", title: "Master E-Tech", img: "/imgs/card-car.jpg" },
 ];
 
-
 export const auto = [
   { id: 2, label: "Elektirlik", path: "/news/energy" },
   { id: 3, label: " Ichki Yonuvchi Dvigatellik", path: "/news/newsCar" },
@@ -186,8 +185,8 @@ export const energy = [
 
 export const AuthData = {
   register: {
-    title: "Ro’yhatdan O’tish",
-    desc: `Foydalanuvchi sifatida ro'yxatdan o'tish uchun ma'lumotlaringizni kiriting`,
+    title: "register.title",
+    desc: `register.desc`,
     checkbox: true,
     closebtn: true,
     form: {
@@ -195,37 +194,37 @@ export const AuthData = {
       inputs: [
         {
           id: "1",
-          plaseholder: "Emailingiz...",
-          label: "Email",
+          placeholder: "register.form.email_placeholder",
+          label: "register.form.email_label",
           name: "email",
         },
         {
           id: "2",
-          plaseholder: "Parolingiz...",
-          label: "Parol",
+          placeholder: "register.form.pass_placeholder",
+          label: "register.form.pass_label",
           name: "password",
         },
       ],
     },
   },
   login: {
-    title: "Autoshop.uz  Platformasiga Xush Kelibsiz!",
-    desc: `Akkauntga kirish uchun ma'lumotlarni kiriting`,
+    title: "login.title",
+    desc: `login.desc`,
     checkbox: false,
     closebtn: false,
     form: {
-      validate: RegisterFormSchema,
+      validate: LoginFormSchema,
       inputs: [
         {
           id: "1",
-          plaseholder: "autoshop@gmail.com...",
-          label: "Email",
+          placeholder: "autoshop@gmail.com...",
+          label: "register.form.email_label",
           name: "email",
         },
         {
           id: "2",
-          plaseholder: "autoshop1122",
-          label: "Parol",
+          placeholder: "********",
+          label: "register.form.pass_label",
           name: "password",
         },
       ],
@@ -241,13 +240,13 @@ export const AuthData = {
       inputs: [
         {
           id: "1",
-          plaseholder: "Emailingiz",
+          placeholder: "Emailingiz",
           label: "Email",
           name: "email",
         },
         {
           id: "2",
-          plaseholder: "Parolingiz...",
+          placeholder: "Parolingiz...",
           label: "Yangi Parol",
           name: "password",
         },

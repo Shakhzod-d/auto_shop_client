@@ -3,7 +3,7 @@ import { Banner } from "../../../components/ui/banner";
 import { NewsAdvertisement } from "../components/advertisement";
 import { CardList } from "../components/card-list";
 import { NewsBar } from "../components/news-bar";
-import { use, useState } from "react";
+import { use } from "react";
 import { NewsResType } from "../../../types/news.type";
 import { useQuery } from "@tanstack/react-query";
 import { fetchItemsServ } from "../../../services/items-serv";
@@ -17,7 +17,6 @@ export default function News({
 
   const IMG_URL = process.env.NEXT_PUBLIC_IMG_API;
 
-  const [isDetail, setIsDetail] = useState(false);
   const API = process.env.NEXT_PUBLIC_API_URL;
 
   const { data: news } = useQuery<NewsResType>({
@@ -29,13 +28,11 @@ export default function News({
     staleTime: 0,
   });
 
-  console.log({ news });
-
   const NewsData: any[] | undefined = news?.data?.map((item) => {
     return {
       id: item?.id,
-      title: item?.title_uz,
-      desc: item?.content_en,
+      title: item?.title,
+      desc: item?.content,
       img: IMG_URL + item?.main_image?.path,
       created: item.created_at,
     };
@@ -44,7 +41,7 @@ export default function News({
   const newsBar = NewsData?.filter((_, i) => i > 3);
 
   const bannerImg: any = `${IMG_URL}${news?.data[0]?.subcategory.banner.path}`,
-    bannerTitle = news?.data ? news?.data[0]?.subcategory.title_uz : "";
+    bannerTitle = news?.data ? news?.data[0]?.subcategory.title : "";
 
   return (
     <>
@@ -54,8 +51,8 @@ export default function News({
           <CardList
             data={newsCardList}
             title={bannerTitle}
-            setIsDetail={setIsDetail}
-            isDetail={isDetail}
+            isDetail={false}
+            categoryId={paramsId.path}
           />
           <NewsBar data={newsBar} />
         </div>
