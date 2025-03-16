@@ -18,11 +18,24 @@ export const ContactsFormSchema = z.object({
   }),
 });
 
-export const RegisterFormSchema = z.object({
-  email: z.string().email({ message: "inter to form email" }),
-  password: z.string({ message: "inter to password" }),
-});
+export const RegisterFormSchema = (t: (key: string) => string) => {
+  return z.object({
+    email: z
+      .string({ message: t("register.validation.email") })
+      .email({ message: t("register.validation.invalid_email") }),
+    password: z.string({ message: t("register.validation.password") }),
+  });
+};
 
 export const OTPSchema = z.object({
   otp: z.string().min(4, { message: "parolni tuliq kiriting" }),
 });
+
+export const LoginFormSchema = (t: (key: string) => string) => {
+  return z.object({
+    email: z
+      .string({ message: t("register.validation.email") })
+      .email({ message: t("register.validation.invalid_email") }),
+    password: z.string({ message: t("login.validation.password") }),
+  });
+};

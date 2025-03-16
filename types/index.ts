@@ -11,9 +11,7 @@ export interface Category {
   created_at: string;
   updated_at: string;
   deleted_at: any;
-  name_uz: string;
-  name_ru: string;
-  name_en: string;
+  name: string;
   subcategories: Subcategory[];
 }
 
@@ -24,12 +22,8 @@ export interface Subcategory {
   created_at: string;
   updated_at: string;
   deleted_at: any;
-  name_uz: string;
-  name_ru: string;
-  name_en: string;
-  title_uz: string;
-  title_ru: string;
-  title_en: string;
+  name: string;
+  title: string;
 }
 
 export type CategoryType = {

@@ -21,7 +21,7 @@ export const NewsDetail = ({ data }: Props) => {
         Elektr Avtomobillar
       </Button>
       <h5 className="text-xl sm:text-[28px] font-semibold mb-4 font-merriweather">
-        {data.title_uz}
+        {data.title}
       </h5>
       <div className="flex items-center gap-3 sm:gap-6 mb-8 text-[#666666]">
         <span className="flex items-center gap-1 sm:gap-[10px] text-[15px] sm:text-xl">
@@ -53,7 +53,7 @@ export const NewsDetail = ({ data }: Props) => {
       <p
         className="text-xl text-[#666666] mb-8 font-merriweather"
         dangerouslySetInnerHTML={{
-          __html: data.content_uz ? data.content_uz : "",
+          __html: data.content ? data.content : "",
         }}
       ></p>
       <Button className="bg-[#4DA6FF] w-[166px] h-[50px] mb-[66px]">

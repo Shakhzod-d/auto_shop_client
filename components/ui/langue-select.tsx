@@ -8,11 +8,14 @@ import { Language } from "../../types";
 import { languages } from "../../lib/constants";
 import { useTranslation } from "react-i18next";
 import { getLocaleStorage, setLocaleStorage } from "../../utils/locale-storage";
+import { useHelper } from "@/store/helper-store";
 
 export default function LanguageSelector() {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedLanguage, setSelectedLanguage] = useState<Language|null>(null);
-
+  const [selectedLanguage, setSelectedLanguage] = useState<Language | null>(
+    null
+  );
+  const { setLang } = useHelper();
   const { i18n } = useTranslation();
 
   const handleLanguageChange = (language: Language) => {
@@ -20,6 +23,7 @@ export default function LanguageSelector() {
     setLocaleStorage("lang", language.code);
     setIsOpen(false);
     i18n.changeLanguage(language.code);
+    setLang(language.code);
   };
 
   useEffect(() => {

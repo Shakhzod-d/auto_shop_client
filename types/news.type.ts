@@ -13,12 +13,8 @@ export interface NewsRes {
   created_at: string;
   updated_at: string;
   deleted_at: any;
-  title_uz: string;
-  title_en: string;
-  title_ru: string;
-  content_uz: string;
-  content_en: string;
-  content_ru: string;
+  title: string;
+  content: string;
   slug: string;
   source: string;
   is_draft: boolean;
@@ -50,12 +46,8 @@ export interface Subcategory {
   created_at: string;
   updated_at: string;
   deleted_at: any;
-  name_uz: string;
-  name_ru: string;
-  name_en: string;
-  title_uz: string;
-  title_ru: string;
-  title_en: string;
+  name: string;
+  title: string;
 }
 export interface BannerData {
   id: string;
@@ -96,9 +88,7 @@ export interface AdsResData {
 export interface Ads {
   is_active: boolean;
   type: string;
-  description_uz: string;
-  description_ru: string;
-  description_en: string;
+  description: string;
   url: string;
   image: Image;
   deleted_at: any;
@@ -119,4 +109,33 @@ export interface Image {
   path: string;
   size: number;
   mime_type: string;
+}
+
+export interface NewsOneRes {
+  status_code: number;
+  message: string;
+  data: NewsOneData;
+}
+
+export interface NewsOneData {
+  id: string;
+  is_active: boolean;
+  is_deleted: boolean;
+  created_at: string;
+  updated_at: string;
+  deleted_at: any;
+  title_uz: string;
+  title_en: string;
+  title_ru: string;
+  content_uz: string;
+  content_en: string;
+  content_ru: string;
+  slug: string;
+  source: string;
+  is_draft: boolean;
+  is_main: boolean;
+  main_image: MainImage;
+  category: Category;
+  subcategory: Subcategory;
+  comments: any[];
 }

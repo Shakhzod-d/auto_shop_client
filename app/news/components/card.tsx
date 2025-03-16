@@ -3,6 +3,7 @@
 import { Clock4Icon } from "lucide-react";
 import Image from "next/image";
 import { formatTimeDifference } from "../../../lib/constants";
+import { useRouter } from "next/navigation";
 
 interface Props {
   data: {
@@ -12,13 +13,14 @@ interface Props {
     img: string;
     created: number;
   };
-  onClick: (data: boolean) => void;
+  categoryId: string;
 }
 
-export const Card = ({ data, onClick }: Props) => {
+export const Card = ({ data, categoryId }: Props) => {
   const createdTime = formatTimeDifference(Number(data.created));
+  const router = useRouter();
   const onChange = () => {
-    onClick(true);
+    router.push(`/news/${categoryId}/${data.id}`);
   };
   return (
     <div

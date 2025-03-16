@@ -13,13 +13,15 @@ import { useEffect, useState } from "react";
 
 import { newsDataMap } from "../../utils/map-data";
 import { useTranslation } from "react-i18next";
+import { useHelper } from "@/store/helper-store";
 
 export default function Home() {
   const API = process.env.NEXT_PUBLIC_API_URL;
+  const { lang } = useHelper();
   const { t } = useTranslation();
   const { data: news } = useQuery<NewsResType>({
     queryFn: () => fetchItemsServ(`${API}/news`),
-    queryKey: ["fetchItemsServ"],
+    queryKey: ["fetchItemsServ", lang],
     staleTime: 0,
   });
   const { data: ads } = useQuery<AdsResData>({
