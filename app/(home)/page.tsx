@@ -30,6 +30,7 @@ export default function Home() {
     staleTime: 0,
   });
 
+
   const [detailId, setDetailId] = useState<string>("");
 
   useEffect(() => {

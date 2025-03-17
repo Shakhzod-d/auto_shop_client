@@ -2,6 +2,12 @@ import { Category } from ".";
 
 export interface NewsResType {
   data: NewsRes[];
+  total_elements: number;
+  total_pages: number;
+  page_size: number;
+  current_page: number;
+  from: number;
+  to: number;
   status_code: number;
   message: string;
 }
@@ -75,6 +81,7 @@ export type NewsListType = {
   title: string;
   created: number;
   id: string;
+  category: string;
 };
 
 // -----------------ads
@@ -124,12 +131,8 @@ export interface NewsOneData {
   created_at: string;
   updated_at: string;
   deleted_at: any;
-  title_uz: string;
-  title_en: string;
-  title_ru: string;
-  content_uz: string;
-  content_en: string;
-  content_ru: string;
+  title: string;
+  content: string;
   slug: string;
   source: string;
   is_draft: boolean;

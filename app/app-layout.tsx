@@ -11,6 +11,7 @@ import { useQuery } from "@tanstack/react-query";
 import { CategoryReqTypes } from "../types";
 import { ToastContainer } from "react-toastify";
 import "../lib/i18n";
+import { AppLoading } from "@/components/ui/app-loading";
 const AppLayout = ({
   children,
 }: Readonly<{
@@ -21,13 +22,14 @@ const AppLayout = ({
   const isAuth = pathname.startsWith("/auth");
   const { isModal } = useHelper();
   const API = process.env.NEXT_PUBLIC_API_URL;
-  const { data: categoryData } = useQuery<CategoryReqTypes>({
+  const { data: categoryData, isLoading } = useQuery<CategoryReqTypes>({
     queryFn: () => fetchItemsServ(`${API}/category`),
     queryKey: ["fetchCategoryServ", lang],
     staleTime: 0,
   });
-
-  return (
+  return isLoading ? (
+    <AppLoading />
+  ) : (
     <>
       {isModal && <AutoShopModal />}
       {!isAuth && (

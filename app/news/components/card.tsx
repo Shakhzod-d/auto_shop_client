@@ -43,7 +43,7 @@ export const Card = ({ data, categoryId }: Props) => {
       </span>
 
       <p
-        className="text-[#666666] text-[18px]"
+        className="text-[#666666] text-[18px] line-clamp-4"
         dangerouslySetInnerHTML={{
           __html: data.desc ? data.desc : "",
         }}

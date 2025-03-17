@@ -4,6 +4,7 @@ import Image from "next/image";
 
 import { Button } from "../../../components/ui/button";
 import { NewsListType } from "../../../types/news.type";
+import { formatTimeDifference } from "@/lib/constants";
 interface Props {
   data: NewsListType[];
   setDetailId: (data: string) => void;
@@ -38,10 +39,10 @@ export const NewsList = ({ data, setDetailId }: Props) => {
               </h2>
               <span className="flex items-center gap-[10px] text-[#666666] text-[16px] mb-4">
                 <LuClock4 />
-                {item?.created}
+                {formatTimeDifference(Number(item.created))}
               </span>
               <Button className=" text-[10px] xl:text-[12px] bg-[#3399FF]  h-[26px] px-[5px] mb-2">
-                {"Elektr Avtomobillar"}
+                {item.category}
               </Button>
             </div>
           </div>

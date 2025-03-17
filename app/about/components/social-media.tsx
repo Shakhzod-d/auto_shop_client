@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { useTranslation } from "react-i18next";
 
 const socialArr = [
   {
@@ -52,16 +53,15 @@ const socialArr = [
 ];
 
 export const SocialMedia = () => {
+  const { t } = useTranslation();
   return (
     <section className="container">
       <div className="w-full max-w-[700px] m-auto">
         <h2 className="text-[28px] tablet-middle:text-[36px] font-bold tablet-middle:text-center mb-4">
-          Bizni Kuzatib Boring va <br />
-          Yangiliklardan Xabardor {`Bo'ling!`}
+          {t("about.social.title")}
         </h2>
         <p className="text-start tablet-middle:text-center tablet-middle:text-[20px] text-[#666666] mb-8">
-          Yangiliklar, maxsus takliflar va eksklyuziv kontentdan xabardor
-          {`bo'lish`} uchun ijtimoiy tarmoqlarda bizga obuna{` bo'ling.`}
+          {t("about.social.desc")}
         </p>
       </div>
       <div className="w-full grid m-auto  grid-cols-2 justify-center items-center text-center tablet-middle:grid-cols-3 xl:grid-cols-4 tablet-middle:justify-between  gap-4 xl:gap-8  mb-20 tablet-max:mb-[120px]">
@@ -85,7 +85,7 @@ export const SocialMedia = () => {
               target="_blank"
               className="text-[#3399FF] tablet-middle:text-[19px] font-medium"
             >
-              {`Obuna bo'lish`}
+              {t("about.social.link")}
             </a>
           </div>
         ))}

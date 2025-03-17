@@ -1,23 +1,16 @@
 import { z } from "zod";
 
-export const ContactsFormSchema = z.object({
-  name: z.string().min(2, {
-    message: "Username must be at least 2 characters.",
-  }),
-  phone: z.string().min(2, {
-    message: "Username must be at least 2 characters.",
-  }),
-  mail: z.string().min(2, {
-    message: "Username must be at least 2 characters.",
-  }),
-  topic: z.string().min(2, {
-    message: "Username must be at least 2 characters.",
-  }),
-  msg: z.string().min(2, {
-    message: "Username must be at least 2 characters.",
-  }),
-});
-
+export const ContactsFormSchemaFun = (t: (key: string) => string) => {
+  return z.object({
+    name: z.string().min(1, { message: t("contact.validation.name") }),
+    phone: z.string().min(9, { message: t("contact.validation.phone") }),
+    mail: z
+      .string({ message: t("email.validation.email") })
+      .email({ message: t("contact.validation.err_email") }),
+    topic: z.string().min(1, { message: t("contact.validation.message") }),
+    msg: z.string().min(1, { message: t("contact.validation.message") }),
+  });
+};
 export const RegisterFormSchema = (t: (key: string) => string) => {
   return z.object({
     email: z
@@ -37,5 +30,10 @@ export const LoginFormSchema = (t: (key: string) => string) => {
       .string({ message: t("register.validation.email") })
       .email({ message: t("register.validation.invalid_email") }),
     password: z.string({ message: t("login.validation.password") }),
+  });
+};
+export const CommentFormSchema = (t: (key: string) => string) => {
+  return z.object({
+    text: z.string({ message: t("news.validation.commit") }),
   });
 };
