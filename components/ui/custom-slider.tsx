@@ -6,6 +6,8 @@ interface Props {
   data: { img: string; url: string; text: string }[] | [];
 }
 export function CarouselSize({ data }: Props) {
+  console.log({ data });
+
   return (
     <>
       <CarouselContent>

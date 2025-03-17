@@ -29,6 +29,7 @@ export const newsDataMap = (data: NewsRes[] | [], id: string) => {
         title: item.title,
         created: item.created_at,
         id: item.id,
+        category: item.category.name,
       };
     }
   });

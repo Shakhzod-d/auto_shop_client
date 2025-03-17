@@ -38,11 +38,14 @@ export default function Detail() {
       desc: item?.content,
       img: IMG_URL + item?.main_image?.path,
       created: item.created_at,
+      source: item.source,
+      categoryId: item.subcategory.id,
     };
   });
 
-  const newsCardList = NewsData?.filter((_, i) => i <= 3);
-  const newsBar = NewsData?.filter((_, i) => i > 3);
+  const newsCardList = NewsData?.filter(
+    (item, i) => i <= 3 && item.id !== params.id
+  );
 
   return (
     <>
@@ -55,10 +58,11 @@ export default function Detail() {
             isDetail={true}
             categoryId={params.path}
             detailData={newsOne?.data}
+            comment={newsOne?.data.comments.length}
           />
-          <NewsBar data={newsBar} />
+          <NewsBar data={NewsData} />
         </div>
-        <NewsAdvertisement />
+        <NewsAdvertisement data={[]} />
       </main>
     </>
   );

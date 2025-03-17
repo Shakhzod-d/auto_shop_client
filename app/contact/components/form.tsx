@@ -14,9 +14,12 @@ import {
   FormMessage,
 } from "../../../components/ui/form";
 import { Textarea } from "../../../components/ui/textarea";
-import { ContactsFormSchema } from "../../../lib/validation";
+import { useTranslation } from "react-i18next";
+import { ContactsFormSchemaFun } from "@/lib/validation";
 
 export function CustomForm() {
+  const { t } = useTranslation();
+  const ContactsFormSchema = ContactsFormSchemaFun(t);
   const form = useForm<z.infer<typeof ContactsFormSchema>>({
     resolver: zodResolver(ContactsFormSchema),
     defaultValues: {
@@ -43,7 +46,7 @@ export function CustomForm() {
               <FormItem>
                 <FormControl>
                   <Input
-                    placeholder="Ismingiz"
+                    placeholder={t("contact.input.name")}
                     {...field}
                     className="w-full max-w-[400px] h-[50px] border border-[#DDDDDD] placeholder:text-[15px] placeholder:text-[#666666]"
                   />
@@ -60,7 +63,7 @@ export function CustomForm() {
               <FormItem>
                 <FormControl>
                   <Input
-                    placeholder="Telefon raqamingiz"
+                    placeholder={t("contact.input.phone")}
                     {...field}
                     className="w-full max-w-[400px] h-[50px] border border-[#DDDDDD] placeholder:text-[15px] placeholder:text-[#666666]"
                   />
@@ -77,7 +80,7 @@ export function CustomForm() {
               <FormItem>
                 <FormControl>
                   <Input
-                    placeholder="Elektron pochtangiz"
+                    placeholder={t("contact.input.email")}
                     {...field}
                     className="w-full max-w-[400px] h-[50px] border border-[#DDDDDD] placeholder:text-[15px] placeholder:text-[#666666]"
                   />
@@ -94,7 +97,7 @@ export function CustomForm() {
               <FormItem>
                 <FormControl>
                   <Input
-                    placeholder="Mavzu"
+                    placeholder={t("contact.input.topic")}
                     {...field}
                     className="w-full max-w-[400px] h-[50px] border border-[#DDDDDD] placeholder:text-[15px] placeholder:text-[#666666]"
                   />
@@ -112,7 +115,7 @@ export function CustomForm() {
                 <FormControl>
                   <Textarea
                     {...field}
-                    placeholder="Xabar"
+                    placeholder={t("contact.input.msg")}
                     className="min-h-[120px] max-w-[400px]"
                   />
                 </FormControl>
@@ -123,7 +126,7 @@ export function CustomForm() {
           />
         </div>
         <Button type="submit" className="w-[166px] h-[50px] bg-[#4DA6FF]">
-          Yuborish
+          {t("btn.send")}
         </Button>
       </form>
     </Form>

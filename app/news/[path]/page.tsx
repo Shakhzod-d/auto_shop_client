@@ -4,7 +4,7 @@ import { NewsAdvertisement } from "../components/advertisement";
 import { CardList } from "../components/card-list";
 import { NewsBar } from "../components/news-bar";
 import { use } from "react";
-import { NewsResType } from "../../../types/news.type";
+import { AdsResData, NewsResType } from "../../../types/news.type";
 import { useQuery } from "@tanstack/react-query";
 import { fetchItemsServ } from "../../../services/items-serv";
 
@@ -19,6 +19,17 @@ export default function News({
 
   const API = process.env.NEXT_PUBLIC_API_URL;
 
+  // Ads
+
+  const { data: ads } = useQuery<AdsResData>({
+    queryFn: () => fetchItemsServ(`${API}/ad?type=grid`),
+    queryKey: ["fetchItemsAds"],
+    staleTime: 0,
+  });
+
+  console.log({ ads });
+
+  // news
   const { data: news } = useQuery<NewsResType>({
     queryFn: () =>
       fetchItemsServ(
@@ -35,8 +46,11 @@ export default function News({
       desc: item?.content,
       img: IMG_URL + item?.main_image?.path,
       created: item.created_at,
+      categoryId: item.subcategory.id,
+      source: item.source,
     };
   });
+
   const newsCardList = NewsData?.filter((_, i) => i <= 3);
   const newsBar = NewsData?.filter((_, i) => i > 3);
 
@@ -53,10 +67,11 @@ export default function News({
             title={bannerTitle}
             isDetail={false}
             categoryId={paramsId.path}
+            comment={0}
           />
           <NewsBar data={newsBar} />
         </div>
-        <NewsAdvertisement />
+        <NewsAdvertisement data={ads?.data??[]} />
       </main>
     </>
   );

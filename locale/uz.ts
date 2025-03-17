@@ -19,7 +19,12 @@ export const LangueUz = {
   },
   news: {
     newsBar: "Ko'proq Yangiliklar",
+    commit: "Sharhlar",
+    validation: {
+      commit: "Izoh Qoldiring",
+    },
   },
+
   register: {
     title: "Ro’yhatdan O’tish",
     desc: "Foydalanuvchi sifatida ro'yxatdan o'tish uchun ma'lumotlaringizni kiriting",
@@ -51,8 +56,97 @@ export const LangueUz = {
     register: "Akkauntingiz yo’qmi ?  ",
     validation: {
       password: "Parolni kiriting",
-      error:"Foydalanuvchi nomi yoki parol noto'g'ri!",
-      success:"Muaffaqiyatli!"
+      error: "Foydalanuvchi nomi yoki parol noto'g'ri!",
+      success: "Muaffaqiyatli!",
+    },
+  },
+
+  about: {
+    banner: {
+      title: "Biz Haqimizda",
+      desc: "«AutoShop.uz» - O‘zbekistondagi eng faol onlayn avtomobil nashrlardan biri. Sayt o‘z oldiga O‘zbekiston va jahonda ro‘y berayotgan eng muhim avtomobil olamidagi voqea-hodisalar haqida tezkor, aniq va xolis axborot berishni maqsad qilib qo‘ygan.",
+    },
+    info: {
+      box_title: "Nega Aynan Bizni Tanlashingiz Kerak",
+      box_desc:
+        "Google Analytics ma’lumotlariga ko‘ra, saytga har kuni 100 ming kishi tashrif buyuradi. Saytdan foydalanish mutlaqo bepul bo‘lib, faqatgina internet traffik sarflanadi.",
+      info_title:
+        "Bizning Loyiha 2025-yilning Noyabr Oyida Faoliyatini Boshlagan",
+      desc: ` OAV sifatida 0000 raqami bilan davlat ro‘yxatidan o‘tgan. Loyiha
+              muassisi «SSSSSS» MChJ hisoblanadi. <br />
+              <br />
+              Sayt O‘zbekiston Respublikasi hududida faoliyat olib boruvchi
+              davlat va jamoat tashkilotlari bilan qonunda belgilangan tartibda
+              hamkorlik o‘rnatgan holda ish olib boradi. <br />
+              <br />
+              «Autoshop.uz» sayti materiallaridan foydalanish shartlari
+              «Autoshop.uz» sayti tahririyati mavjud qonunchilikka ko‘ra saytda
+              nashr etilgan, qoidalar asosida ko‘chirib bosilgan ma’lumotlar
+              asosliligi uchun (manbasi ko‘rsatib yozilganligi evaziga)
+              javobgarlikni o‘z zimmasiga olmaydi. <br />
+              <br /> Saytda nashr qilingan maqola yuzasidan, uning muallifi va
+              sayt tahririyatining fikri bir xil bo‘lmasligi mumkin. Shuningdek,
+              sayt tahririyati o‘quvchilarining yuborgan xatlarining har biriga
+              alohida javob yozish majburiyatini olmaydi.`,
+    },
+    social: {
+      title: `Bizni Kuzatib Boring va
+Yangiliklardan Xabardor Bo'ling!`,
+      desc: "Yangiliklar, maxsus takliflar va eksklyuziv kontentdan xabardorbo'lish uchun ijtimoiy tarmoqlarda bizga obuna bo'ling.",
+      link: "Obuna bo'lish",
+    },
+    oav: {
+      title: `    Sayt Materiallaridan Boshqa Saytlar <br />
+          Yoki OAV Foydalanishi Shartlari:`,
+      condition1:
+        "Sayt O‘zbekiston Respublikasi hududida, mintaqa va chet ellarda faoliyat yuritayotgan internet saytlari, nashrlar bilan o‘zaro ma’lumot, maqolalar almashishni yo‘lga qo‘yadi.",
+      condition2:
+        "Saytdagi ma’lumotlardan faqat tahririyatdan yozma ravishda ruxsat olingandagina foydalanish talab etiladi.",
+      condition3:
+        "Materiallardan foydalanishda, sayt nomini (muallifini) berilayotgan materialning birinchi yoki uchinchi qatorigacha bo‘lgan hududda taqdim etish so‘raladi.",
+      condition4: "Masalan, «Bu haqda Autoshop.uz sayti xabar berdi».",
+      condition5:
+        "Bu o‘rinda nashr nomi - «Autoshop.uz» so‘ziga havola qo‘yilib, bu havola http://autoshop.uz/ sahifasiga yo‘naltirilgan bo‘lishi, qolaversa, «xabar beradi» so‘z birikmasiga havola qo‘yilib, bu havola «Autoshop.uz» saytidan olingan xabarga yo‘naltirilgan bo‘lishi kerak.",
+      condition6:
+        "Boshqa nashrlar bilan hamkorlikda ishlashdan doim mamnun bo‘lamiz.",
+    },
+    contact: {
+      title_one: "Murojat uchun",
+      title_two: "Reklama Uchun",
+      date: "Dush. - Shan. 9:00 - 18:00",
+    },
+  },
+  team: {
+    banner: {
+      title: "Jamoa Haqida",
+      desc: "Biz — avtomobil dunyosiga bo‘lgan ishtiyoq va mukammallikka intilishni o‘zida birlashtirgan jamoamiz. «Autoshop.uz» sayti orqasida turgan tajribali jurnalistlar, muhandislar va texnologiya ixlosmandlari sizga eng so‘nggi va ishonchli avtomobil yangiliklarini yetkazish uchun birlashgan.",
+    },
+  },
+  contact: {
+    info_title: "Bizga Xabar Yuboring",
+    desc: "Savollaringiz yoki fikrlaringiz bormi? Quyidagi shaklni to‘ldiring va tez orada siz bilan bog‘lanamiz. Sizning fikringiz biz uchun juda muhim!",
+    banner: {
+      title: "Biz bilan Bog'laning",
+      desc: "Savollaringiz bormi yoki qo‘shimcha ma’lumot olishni istaysizmi? Biz bilan bog‘laning va jamoamiz sizga yordam berishdan mamnun bo‘ladi. Istalgan vaqtda bizga yozing yoki qo‘ng‘iroq qiling!",
+    },
+    input: {
+      name: "Ismingiz",
+      phone: "Telefon raqamingiz",
+      email: "Elektron pochtangiz",
+      topic: "Mavzu",
+      msg: "Xabar",
+    },
+    validation: {
+      name: "Ismingiz kiriting !",
+      phone: "Telefon raqam kiriting !",
+      email: "Elektron pochtangiz kiriting !",
+      err_email: "Elektron pochtangiz manzili yaroqsiz !!",
+      topic: "mavzuni kiriting !",
+      msg: "xabarni kiriting !",
+    },
+    social: {
+      title_one: "Ijtimoiy Tarmoqlar",
+      title_two: "Murojaat uchun Tel",
     },
   },
 };
