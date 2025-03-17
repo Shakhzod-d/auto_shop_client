@@ -8,7 +8,7 @@ import { NewsRes } from "../../../types/news.type";
 import { formatTimeDifference } from "../../../lib/constants";
 import { useTranslation } from "react-i18next";
 import { useRouter } from "next/navigation";
-import { Link } from "lucide-react";
+import Link from "next/link";
 
 interface Props {
   data: NewsRes;
@@ -71,6 +71,7 @@ export const NewsDetail = ({ data }: Props) => {
           {t("btn.more_news")}
         </span>
       </Link>
+
       <Image
         src="/imgs/home-news-img.png"
         alt=""
