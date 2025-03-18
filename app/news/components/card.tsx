@@ -1,8 +1,8 @@
 "use client";
 
+import { formatTimeDifference } from "@/utils/map-data";
 import { Clock4Icon } from "lucide-react";
 import Image from "next/image";
-import { formatTimeDifference } from "../../../lib/constants";
 import { useRouter } from "next/navigation";
 
 interface Props {

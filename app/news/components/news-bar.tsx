@@ -1,5 +1,5 @@
 "use client";
-import { formatTimeDifference } from "@/lib/constants";
+import { formatTimeDifference } from "@/utils/map-data";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useTranslation } from "react-i18next";

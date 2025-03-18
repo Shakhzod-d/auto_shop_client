@@ -5,10 +5,10 @@ import { IoMdAdd } from "react-icons/io";
 import Image from "next/image";
 import { Button } from "../../../components/ui/button";
 import { NewsRes } from "../../../types/news.type";
-import { formatTimeDifference } from "../../../lib/constants";
 import { useTranslation } from "react-i18next";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { formatTimeDifference } from "@/utils/map-data";
 
 interface Props {
   data: NewsRes;

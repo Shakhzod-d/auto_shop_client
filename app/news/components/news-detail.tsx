@@ -1,8 +1,8 @@
-import { formatTimeDifference } from "@/lib/constants";
 import Image from "next/image";
 import React from "react";
 import { LuClock4 } from "react-icons/lu";
 import { Comment } from "./comment";
+import { formatTimeDifference } from "@/utils/map-data";
 interface Props {
   img: string;
   title: string;

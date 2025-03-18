@@ -5,12 +5,14 @@ import { ChevronDown } from "lucide-react";
 import { cn } from "../../lib/utils";
 import Image from "next/image";
 import { Language } from "../../types";
-import { languages } from "../../lib/constants";
 import { useTranslation } from "react-i18next";
 import { getLocaleStorage, setLocaleStorage } from "../../utils/locale-storage";
 import { useHelper } from "@/store/helper-store";
-
-export default function LanguageSelector() {
+import { languages } from "@/utils/constants";
+type Props = {
+  variant?: "modal" | "navbar";
+};
+export default function LanguageSelector({ variant }: Props) {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedLanguage, setSelectedLanguage] = useState<Language | null>(
     null
@@ -38,7 +40,7 @@ export default function LanguageSelector() {
   }, [i18n]);
 
   return (
-    <div className="relative inline-block text-left">
+    <div className="relative inline-block text-left select-none">
       <div
         className="flex items-center gap-2 cursor-pointer"
         onClick={() => setIsOpen(!isOpen)}
@@ -55,7 +57,11 @@ export default function LanguageSelector() {
       </div>
 
       {isOpen && (
-        <div className="absolute right-0 mt-2 w-40 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 z-10">
+        <div
+          className={`absolute mt-2 w-40 ${
+            variant == "modal" ? "right-[-110px]" : "right-0"
+          } rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 z-10 border-none`}
+        >
           <div className="py-1" role="menu" aria-orientation="vertical">
             {languages.map((language) => (
               <button

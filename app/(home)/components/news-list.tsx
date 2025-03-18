@@ -4,7 +4,7 @@ import Image from "next/image";
 
 import { Button } from "../../../components/ui/button";
 import { NewsListType } from "../../../types/news.type";
-import { formatTimeDifference } from "@/lib/constants";
+import { formatTimeDifference } from "@/utils/map-data";
 interface Props {
   data: NewsListType[];
   setDetailId: (data: string) => void;
@@ -14,7 +14,9 @@ export const NewsList = ({ data, setDetailId }: Props) => {
   return (
     <div className="w-full xl:w-[430px]   h-[100vh]">
       <p className="text-[26px] font-semibold mb-8 font-merriweather">{`Ko'proq Yangiliklar`}</p>
-      <div className="w-full xl:w-[430px] grid grid-col-1  tablet-middle:grid-cols-2  lg:grid-cols-3  xl:block h-full   overflow-auto overflow-y-scroll max-w-[1350px] scrollbar-hide">
+      <div className="w-full xl:w-[430px] grid grid-col-1 tablet-middle:grid-cols-2 lg:grid-cols-3 xl:block 
+h-full overflow-y-auto overflow-x-hidden max-w-[1350px] scrollbar-hide
+">
         {data.map((item, i) => (
           <div
             className="w-full tablet-middle:w-[355px] xl:w-[436px] flex gap-2 xl:gap-4 mb-[38px]"

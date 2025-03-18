@@ -38,3 +38,32 @@ export const newsDataMap = (data: NewsRes[] | [], id: string) => {
   const resultNews = allNews.filter((item) => item);
   return { resultNews, newsDetail };
 };
+
+export const ModalSelectMap = (data: Category[] | []) => {
+  return data.map((item) => {
+    return {
+      title: item.name,
+      items: item.subcategories.map((elm) => {
+        return { id: elm.id, label: elm.name, path: `/news/${elm.id}` };
+      }),
+    };
+  });
+};
+
+export const formatTimeDifference = (timestamp: number): string => {
+  const now = Date.now();
+  const diff = now - timestamp;
+  const seconds = Math.floor(diff / 1000);
+  const minutes = Math.floor(seconds / 60);
+  const hours = Math.floor(minutes / 60);
+  const days = Math.floor(hours / 24);
+
+  if (hours < 24) {
+    return hours > 0 ? `${hours} soat oldin` : `${minutes} daqiqa oldin`;
+  } else if (days < 3) {
+    return `${days} kun oldin`;
+  } else {
+    const date = new Date(timestamp);
+    return date.toLocaleDateString("uz-UZ"); // Masalan, 07.03.2025
+  }
+};

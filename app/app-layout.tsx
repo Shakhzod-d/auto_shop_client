@@ -31,12 +31,14 @@ const AppLayout = ({
     <AppLoading />
   ) : (
     <>
-      {isModal && <AutoShopModal />}
+      {isModal && (
+        <AutoShopModal data={categoryData ? categoryData.data : []} />
+      )}
       {!isAuth && (
         <Navbar categoryData={categoryData ? categoryData.data : []} />
       )}
       {children}
-      {!isAuth && <Footer />}
+      {!isAuth && <Footer data={categoryData?.data ?? []} />}
       <ToastContainer />
     </>
   );

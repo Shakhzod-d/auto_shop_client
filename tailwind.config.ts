@@ -66,11 +66,9 @@ export default {
         "tablet-middle": "745px",
         "sm-xl": "670px",
         "laptop-mn": "1120px",
+        "laptop-max": "1172px",
       },
     },
   },
-  plugins: [
-    require("tailwindcss-animate"),
-    require("tailwind-scrollbar-hide"),
-  ],
+  plugins: [require("tailwindcss-animate"), require("tailwind-scrollbar-hide")],
 } satisfies Config;
