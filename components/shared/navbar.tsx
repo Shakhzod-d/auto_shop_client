@@ -21,6 +21,7 @@ export default function Navbar({ categoryData }: Props) {
   const { setIsModal } = useHelper();
   const data = NavbarSelectData(categoryData ? categoryData : []);
   const { t } = useTranslation();
+
   return (
     <header className="mb-0 tablet-max:mb-10 font-montserrat">
       <div className="container">

@@ -1,6 +1,6 @@
 "use client";
 
-import { IoClose, IoChevronDown } from "react-icons/io5";
+import { IoClose } from "react-icons/io5";
 import {
   FaXTwitter,
   FaYoutube,
@@ -11,10 +11,25 @@ import {
 } from "react-icons/fa6";
 import { useHelper } from "../../store/helper-store";
 import { ModalSelect } from "../ui/modal-select";
-import { ModalSelectData } from "../../lib/constants";
+import { Category } from "@/types";
+import { useRouter } from "next/navigation";
+import LanguageSelector from "../ui/langue-select";
+import { ModalSelectMap } from "@/utils/map-data";
+import { useTranslation } from "react-i18next";
 
-const AutoShopModal = () => {
+interface Props {
+  data: Category[] | [];
+}
+const AutoShopModal = ({ data }: Props) => {
   const { setIsModal } = useHelper();
+  const { t } = useTranslation();
+  const router = useRouter();
+  const modalData = ModalSelectMap(data);
+  const AuthNavigate = () => {
+    setIsModal();
+
+    router.push("/auth");
+  };
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex  justify-end z-50">
@@ -34,36 +49,39 @@ const AutoShopModal = () => {
           </h1>
 
           <div className="space-y-4">
-            <ModalSelect data={ModalSelectData.auto} defaultActive={true} />
-
-            <p className=" text-[18px] font-medium">Yangi modellar</p>
-            <ModalSelect data={ModalSelectData.other} defaultActive={false} />
-            <ModalSelect data={ModalSelectData.energy} defaultActive={false} />
-            <p className=" text-[18px] font-medium">Premyera</p>
-            <p className=" text-[18px] font-medium">Online Shop</p>
+            {modalData.map((item, i) => {
+              if (i == 1 || item.items.length <= 1) {
+                return (
+                  <p className=" text-[18px] font-medium" key={i}>
+                    {item.title}
+                  </p>
+                );
+              }
+              return <ModalSelect key={i} data={item} defaultActive={i == 0} />;
+            })}
           </div>
 
           <div className="block tablet-middle:hidden">
             <div className="mt-6">
-              <div className="flex items-center gap-2 mt-1">
-                <div>{`O'Z`}</div>
-                <IoChevronDown className="h-4 w-4" />
-              </div>
+              <LanguageSelector variant="modal" />
             </div>
 
             {/* Login button */}
-            <button className="w-full bg-blue-400 text-white py-2 rounded-md mt-4 hover:bg-blue-500 transition-colors">
-              Kirish
+            <button
+              className="w-full bg-blue-400 text-white py-2 rounded-md mt-4 hover:bg-blue-500 transition-colors"
+              onClick={AuthNavigate}
+            >
+              {t("btn.entrance")}
             </button>
 
             {/* Contact */}
             <div className="mt-6">
-              <div>Murojaat Uchun</div>
+              <div>{t("about.contact.title_one")}</div>
               <div className="text-gray-600 mt-1">+998 93102-59-55</div>
             </div>
 
             <div className="mt-6">
-              <div className="mb-2">Ijtimoiy Tarmoqlar</div>
+              <div className="mb-2">{t("contact.social.title_one")}</div>
               <div className="flex space-x-3">
                 <div className="bg-gray-700 text-white p-1 rounded-md">
                   <FaXTwitter className="h-5 w-5" />

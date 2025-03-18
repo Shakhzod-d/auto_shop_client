@@ -1,7 +1,6 @@
 "use client";
 import { useQuery } from "@tanstack/react-query";
 import { Carousel } from "../../components/ui/carousel";
-import { HomeBanner } from "../../lib/constants";
 import { Announcements } from "./components/announcements";
 import { Banners } from "./components/banners";
 import { GmailInput } from "./components/gmail-input";
@@ -14,13 +13,14 @@ import { useEffect, useState } from "react";
 import { newsDataMap } from "../../utils/map-data";
 import { useTranslation } from "react-i18next";
 import { useHelper } from "@/store/helper-store";
+import { HomeBanner } from "@/utils/constants";
 
 export default function Home() {
   const API = process.env.NEXT_PUBLIC_API_URL;
   const { lang } = useHelper();
   const { t } = useTranslation();
   const { data: news } = useQuery<NewsResType>({
-    queryFn: () => fetchItemsServ(`${API}/news`),
+    queryFn: () => fetchItemsServ(`${API}/news?page=1&page_size=10`),
     queryKey: ["fetchItemsServ", lang],
     staleTime: 0,
   });
@@ -29,7 +29,6 @@ export default function Home() {
     queryKey: ["fetchItemsAds"],
     staleTime: 0,
   });
-
 
   const [detailId, setDetailId] = useState<string>("");
 

@@ -1,13 +1,11 @@
-"use client"
+"use client";
+import { ModalItemsData } from "@/types";
 import Link from "next/link";
 import { useState } from "react";
 import { IoChevronDown, IoChevronUp } from "react-icons/io5";
 interface Props {
   defaultActive: boolean;
-  data: {
-    title: string;
-    items: { id: number; label: string; path: string }[];
-  };
+  data: ModalItemsData | undefined;
 }
 export const ModalSelect = ({ data, defaultActive }: Props) => {
   const [isOpen, setIsOpen] = useState(defaultActive);
@@ -17,7 +15,7 @@ export const ModalSelect = ({ data, defaultActive }: Props) => {
         className="flex items-center gap-1 cursor-pointer"
         onClick={() => setIsOpen((c) => !c)}
       >
-        <h5 className="text-[18px] font-medium">{data.title}</h5>
+        <h5 className="text-[18px] font-medium">{data?.title}</h5>
         {isOpen ? (
           <IoChevronUp className="h-4 w-4" />
         ) : (
@@ -27,7 +25,7 @@ export const ModalSelect = ({ data, defaultActive }: Props) => {
 
       {isOpen && (
         <div className="pl-4 space-y-2">
-          {data.items.map((item) => (
+          {data?.items.map((item) => (
             <div key={item.id} className="mb-4">
               <Link
                 href={item.path}

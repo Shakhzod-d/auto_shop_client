@@ -52,3 +52,8 @@ export type Language = {
   name: string;
   flag: string;
 };
+
+export interface ModalItemsData {
+  title: string;
+  items: { id: string; label: string; path: string }[];
+}

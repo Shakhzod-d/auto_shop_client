@@ -1,5 +1,4 @@
 import { IoMdPersonAdd } from "react-icons/io";
-import { AuthData } from "../../../lib/constants";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -18,6 +17,7 @@ import { AuthFormType, FormVariant } from "../../../types/auth.type";
 import { LuLockKeyhole } from "react-icons/lu";
 import { Loader2 } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import { AuthData } from "@/utils/constants";
 interface Props {
   variant: FormVariant;
   loading: boolean;
@@ -68,10 +68,10 @@ export const AuthForm = ({ variant, onSubmit, loading }: Props) => {
           onSubmit={form.handleSubmit(onSubmit)}
           className="flex flex-col gap-8 "
         >
-          {data?.form?.inputs?.map((item) => (
+          {data?.form?.inputs?.map((item, i) => (
             <>
               <FormField
-                key={item.id}
+                key={i}
                 control={form.control}
                 // @ts-ignore
                 name={item.name}

@@ -34,6 +34,6 @@ export const LoginFormSchema = (t: (key: string) => string) => {
 };
 export const CommentFormSchema = (t: (key: string) => string) => {
   return z.object({
-    text: z.string({ message: t("news.validation.commit") }),
+    text: z.string().min(1,{ message: t("news.validation.commit") }),
   });
 };
