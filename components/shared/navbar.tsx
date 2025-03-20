@@ -53,14 +53,14 @@ export default function Navbar({ categoryData }: Props) {
   return (
     <header className="mb-0 tablet-max:mb-10 font-montserrat">
       <div className="container">
-        <div className=" flex justify-between items-center py-5  tablet-max:border-b border-[#888888]  tablet-max:mb-10 ">
+        <div className=" flex justify-between items-center py-5  tablet-max:border-b border-[#888888]  tablet-max:mb-10  ">
           <h1
             onClick={() => navigate.push("/")}
-            className="cursor-pointer text-[#4DA6FF] font-bold font-merriweather text-[40px] italic"
+            className="cursor-pointer text-[#4DA6FF] font-bold font-merriweather text-[32px] sm:text-[40px] italic w-[400px]"
           >
             {"// AutoShop"}
           </h1>
-          <div className="items-center flex gap-4">
+          <div className="items-center flex gap-4 w-full justify-end ">
             {headerComp[String(isSearch)]}
           </div>
         </div>

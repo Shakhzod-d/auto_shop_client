@@ -82,7 +82,7 @@ export const NewsDetail = ({ data, variant }: Props) => {
         >
           {t("btn.full_information")}
         </Button>
-        <Link href={`/news/all/home`}>
+        <Link href={`/news/all/all-news`}>
           <span className="flex items-center gap-[10px] text-[20px] mb-16 cursor-pointer">
             <IoMdAdd size={30} />
             {t("btn.more_news")}

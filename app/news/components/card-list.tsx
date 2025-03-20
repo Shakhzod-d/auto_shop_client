@@ -59,7 +59,7 @@ export const CardList = ({
         </h3>
         <div className="w-full max-w-[830px] grid grid-cols-1 tablet-middle:grid-cols-2 gap-[50px] gap-y-[87px] mb-10">
           {data?.map((item) => (
-            <Card data={item} key={item.id} categoryId={categoryId} />
+            <Card data={item} key={item?.id} categoryId={categoryId} />
           ))}
         </div>
         <Link href={`/news/all/${categoryId}`}>

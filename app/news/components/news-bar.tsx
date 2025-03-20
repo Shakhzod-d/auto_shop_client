@@ -65,7 +65,7 @@ export const NewsBar = ({ data, variant }: Props) => {
     ),
   };
   return (
-    <aside className="w-full  xl:max-w-[444px]  border">
+    <aside className="w-full  xl:max-w-[444px]  ">
       <h4 className="text-xl sm:text-[28px] font-bold mb-8">
         {t("news.newsBar")}
       </h4>

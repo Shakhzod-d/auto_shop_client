@@ -51,7 +51,9 @@ export default function News({
   const newsCardList = NewsData?.filter((_, i) => i <= 3);
   const newsBar = NewsData?.filter((_, i) => i > 3);
 
-  const bannerImg: any = `${IMG_URL}${news?.data[0]?.subcategory.banner.path}`,
+  const bannerImg: any = `${IMG_URL}${
+      news?.data ? news?.data[0]?.subcategory.banner.path : ""
+    }`,
     bannerTitle = news?.data ? news?.data[0]?.subcategory.title : "";
 
   return (
