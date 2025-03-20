@@ -15,7 +15,7 @@ export default function Detail() {
   const API = process.env.NEXT_PUBLIC_API_URL;
 
   const IMG_URL = process.env.NEXT_PUBLIC_IMG_API;
-  const { data: news } = useQuery<NewsResType>({
+  const { data: news, isLoading: newsLoading } = useQuery<NewsResType>({
     queryFn: () =>
       fetchItemsServ(
         `${API}/news?page=1&page_size=10&subcategory_id=${params.path}`
@@ -24,7 +24,7 @@ export default function Detail() {
     staleTime: 0,
   });
 
-  const { data: newsOne } = useQuery<NewsOneRes>({
+  const { data: newsOne, isLoading: newsOneLoading } = useQuery<NewsOneRes>({
     queryFn: () => fetchItemsServ(`${API}/news/one/${params.id}`),
     queryKey: ["fetchItemsOneNewsServ"],
     staleTime: 0,
@@ -49,18 +49,18 @@ export default function Detail() {
 
   return (
     <>
-      {/* <Banner img={bannerImg} text={bannerTitle} w={"900px"} /> */}
       <main className="bigContainer">
-        <div className="flex gap-[46px] mb-16 flex-col items-center xl:flex-row xl:items-start">
+        <div className="flex gap-[46px] mb-16 flex-col items-center xl:flex-row xl:items-start justify-between">
           <CardList
             data={newsCardList}
             title={""}
-            isDetail={true}
             categoryId={params.path}
             detailData={newsOne?.data}
             comment={newsOne?.data.comments.length}
+            loading
+            variant={newsOneLoading ? "isDetailLoading" : "isDetail"}
           />
-          <NewsBar data={NewsData} />
+          <NewsBar data={NewsData} variant={newsLoading ? "loading" : "data"} />
         </div>
         <NewsAdvertisement data={[]} />
       </main>

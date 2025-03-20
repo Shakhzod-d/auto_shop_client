@@ -19,7 +19,7 @@ export default function Home() {
   const API = process.env.NEXT_PUBLIC_API_URL;
   const { lang } = useHelper();
   const { t } = useTranslation();
-  const { data: news } = useQuery<NewsResType>({
+  const { data: news, isLoading: newsLoading } = useQuery<NewsResType>({
     queryFn: () => fetchItemsServ(`${API}/news?page=1&page_size=10`),
     queryKey: ["fetchItemsServ", lang],
     staleTime: 0,
@@ -59,8 +59,15 @@ export default function Home() {
             {t("home.latest_news")}
           </h3>
           <div className="flex justify-between  gap-[60px] flex-col items-center xl:items-start xl:flex-row  ">
-            <NewsDetail data={newsDetail} />
-            <NewsList data={resultNews} setDetailId={setDetailId} />
+            <NewsDetail
+              data={newsDetail}
+              variant={newsLoading ? "loading" : "data"}
+            />
+            <NewsList
+              data={resultNews}
+              setDetailId={setDetailId}
+              variant={newsLoading ? "loading" : "data"}
+            />
           </div>
         </section>
         <Carousel

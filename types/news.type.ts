@@ -11,6 +11,17 @@ export interface NewsResType {
   status_code: number;
   message: string;
 }
+export interface NewsSearchRes {
+  data: { data: NewsRes[] };
+  total_elements: number;
+  total_pages: number;
+  page_size: number;
+  current_page: number;
+  from: number;
+  to: number;
+  status_code: number;
+  message: string;
+}
 
 export interface NewsRes {
   id: string;

@@ -4,13 +4,16 @@ import { LangType } from "../types";
 
 type Store = {
   isModal: boolean;
+  isSearch: boolean;
   setIsModal: () => void;
   lang: string;
   setLang: (data: LangType) => void;
+  setIsSearch: () => void;
 };
 const langue = getLocaleStorage("lang");
 
 export const useHelper = create<Store>()((set) => ({
+  isSearch: false,
   isModal: false,
   lang: langue ? langue : "uz",
   setIsModal: () => {
@@ -18,5 +21,8 @@ export const useHelper = create<Store>()((set) => ({
   },
   setLang: (data) => {
     set(() => ({ lang: data }));
+  },
+  setIsSearch: () => {
+    set((state) => ({ isSearch: !state.isSearch }));
   },
 }));

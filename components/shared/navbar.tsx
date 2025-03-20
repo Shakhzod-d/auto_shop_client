@@ -1,7 +1,6 @@
 "use client";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { Button } from "../ui/button";
-import { IoSearchOutline } from "react-icons/io5";
 import { NavSelect } from "../ui/nav-select";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
@@ -11,16 +10,45 @@ import LanguageSelector from "../ui/langue-select";
 import { Category } from "../../types";
 import { NavbarSelectData } from "../../utils/map-data";
 import { useTranslation } from "react-i18next";
+import { SearchInput } from "./search-input";
+import { JSX } from "react";
+import { IoSearchOutline } from "react-icons/io5";
 
 interface Props {
   categoryData: Category[];
 }
 export default function Navbar({ categoryData }: Props) {
+  const { setIsModal, isSearch, setIsSearch } = useHelper();
   const navigate = useRouter();
   const pathname = usePathname();
-  const { setIsModal } = useHelper();
   const data = NavbarSelectData(categoryData ? categoryData : []);
   const { t } = useTranslation();
+  const headerComp: Record<string, JSX.Element> = {
+    true: <SearchInput />,
+    false: (
+      <>
+        <IoSearchOutline
+          size={20}
+          color={"#666666"}
+          onClick={setIsSearch}
+          className="cursor-pointer"
+        />
+        <LanguageSelector />
+        <Button
+          className="py-[12px]     w-[130px]  h-10 md:w-[142px] md:h-11 bg-[#4DA6FF] rounded-md text-white font-semibold hidden tablet-middle:block"
+          onClick={() => navigate.push("/auth")}
+        >
+          {t("btn.entrance")}
+        </Button>
+        <RxHamburgerMenu
+          size={36}
+          color="#666666"
+          onClick={setIsModal}
+          className="tablet-max:hidden"
+        />
+      </>
+    ),
+  };
 
   return (
     <header className="mb-0 tablet-max:mb-10 font-montserrat">
@@ -33,22 +61,10 @@ export default function Navbar({ categoryData }: Props) {
             {"// AutoShop"}
           </h1>
           <div className="items-center flex gap-4">
-            <IoSearchOutline size={20} className="cursor-pointer " />
-            <LanguageSelector />
-            <Button
-              className="py-[12px]     w-[130px]  h-10 md:w-[142px] md:h-11 bg-[#4DA6FF] rounded-md text-white font-semibold hidden tablet-middle:block"
-              onClick={() => navigate.push("/auth")}
-            >
-              {t("btn.entrance")}
-            </Button>
-            <RxHamburgerMenu
-              size={36}
-              color="#666666"
-              onClick={setIsModal}
-              className="tablet-max:hidden"
-            />
+            {headerComp[String(isSearch)]}
           </div>
         </div>
+
         <nav className="hidden tablet-max:block">
           <div className="flex items-center gap-6">
             {data?.map((item, i) => {
