@@ -7,7 +7,6 @@ import { use } from "react";
 import { AdsResData, NewsResType } from "../../../types/news.type";
 import { useQuery } from "@tanstack/react-query";
 import { fetchItemsServ } from "../../../services/items-serv";
-
 export default function News({
   params,
 }: {
@@ -27,10 +26,8 @@ export default function News({
     staleTime: 0,
   });
 
-  console.log({ ads });
-
   // news
-  const { data: news } = useQuery<NewsResType>({
+  const { data: news, isLoading } = useQuery<NewsResType>({
     queryFn: () =>
       fetchItemsServ(
         `${API}/news?page=1&page_size=10&subcategory_id=${paramsId.path}`
@@ -65,13 +62,14 @@ export default function News({
           <CardList
             data={newsCardList}
             title={bannerTitle}
-            isDetail={false}
             categoryId={paramsId.path}
             comment={0}
+            loading={isLoading}
+            variant={isLoading ? "cardListLoading" : "cardList"}
           />
-          <NewsBar data={newsBar} />
+          <NewsBar data={newsBar} variant={isLoading ? "loading" : "data"} />
         </div>
-        <NewsAdvertisement data={ads?.data??[]} />
+        <NewsAdvertisement data={ads?.data ?? []} />
       </main>
     </>
   );
