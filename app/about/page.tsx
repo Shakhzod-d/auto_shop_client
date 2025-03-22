@@ -9,6 +9,7 @@ export default function About() {
   const { t } = useTranslation();
   return (
     <>
+      {/* add Dockerfile */}
       <Banners
         btn={false}
         p="137px 0"
