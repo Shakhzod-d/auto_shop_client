@@ -1,6 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  output: "standalone",
   images: {
     domains: ["autoshop.fra1.cdn.digitaloceanspaces.com"],
     remotePatterns: [
