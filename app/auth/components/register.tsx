@@ -1,6 +1,10 @@
 import { errorToast } from "@/lib/toast";
 import { useAuth } from "../../../store/auth-store";
-import { AuthFormType, RegisterRes } from "../../../types/auth.type";
+import {
+  AuthFormType,
+  ForgetPassFormType,
+  RegisterRes,
+} from "../../../types/auth.type";
 import { AuthForm } from "./auth-form";
 
 import { Verify } from "./verify";
@@ -9,8 +13,14 @@ import { useMutation } from "@tanstack/react-query";
 import { useTranslation } from "react-i18next";
 
 const errMsg = [
-  { validation: "password is not strong enough", code: "register.validation.password_invalid" },
-  { validation: "User already exists!", code: "register.validation.exist_user" },
+  {
+    validation: "password is not strong enough",
+    code: "register.validation.password_invalid",
+  },
+  {
+    validation: "User already exists!",
+    code: "register.validation.exist_user",
+  },
 ];
 export const Register = () => {
   const { registerType, setRegisterType, setUserId } = useAuth();
@@ -24,8 +34,8 @@ export const Register = () => {
   };
 
   const { mutate: createCategoryFn, isPending: loading } = useMutation({
-    mutationFn: (obj: AuthFormType) =>
-      postItemsServ<AuthFormType, RegisterRes>(`${API}/auth/register`, obj),
+    mutationFn: (obj: AuthFormType | ForgetPassFormType) =>
+      postItemsServ<AuthFormType |ForgetPassFormType, RegisterRes>(`${API}/auth/register`, obj),
     onSuccess: (data) => {
       if (data.status_code >= 200 && data.status_code < 400) {
         setUserId(data.data.id);
@@ -40,7 +50,7 @@ export const Register = () => {
       errorToast(error.message || "Something went wrong");
     },
   });
-  const onSubmit = (data: AuthFormType) => {
+  const onSubmit = (data: AuthFormType | ForgetPassFormType) => {
     createCategoryFn(data);
     console.log({ register: data });
   };

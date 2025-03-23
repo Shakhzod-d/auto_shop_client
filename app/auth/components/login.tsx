@@ -1,6 +1,6 @@
 import { useMutation } from "@tanstack/react-query";
 import { useAuth } from "../../../store/auth-store";
-import { AuthFormType } from "../../../types/auth.type";
+import { AuthFormType, ForgetPassFormType } from "../../../types/auth.type";
 import { AuthForm } from "./auth-form";
 import { postItemsServ } from "@/services/items-serv";
 import { errorToast, successToast } from "@/lib/toast";
@@ -12,11 +12,12 @@ const API = process.env.NEXT_PUBLIC_API_URL;
 export const Login = () => {
   const router = useRouter();
   const { t } = useTranslation();
-  const { authType } = useAuth();
+  const { authType, setSuccess, setSuccessType } = useAuth();
 
   // login mutate
   const { mutate: loginFun, isPending: loading } = useMutation({
-    mutationFn: (obj: AuthFormType) => postItemsServ(`${API}/auth/login`, obj),
+    mutationFn: (obj: AuthFormType | ForgetPassFormType) =>
+      postItemsServ(`${API}/auth/login`, obj),
     onSuccess: (data: any) => {
       if (data.status_code >= 200 && data.status_code < 400) {
         successToast(t("login.validation.success"));
@@ -36,13 +37,41 @@ export const Login = () => {
   });
 
   // forgetPassword mutate
+  const { mutate: forgetPasswordFun, isPending: forgetPassLoading } =
+    useMutation({
+      mutationFn: (obj: AuthFormType | ForgetPassFormType) =>
+        postItemsServ(`${API}/auth/forget-password`, obj),
+      onSuccess: (data: any) => {
+        if (data.status_code >= 200 && data.status_code < 400) {
+          setSuccess(true);
+          setSuccessType("forgetPassword");
+        } else {
+          const text =
+            data.message == "Username or password incorrect!"
+              ? t("login.validation.error")
+              : data.message;
+          errorToast(text);
+        }
+      },
 
-  const onSubmit = (data: AuthFormType) => {
+      onError: (err) => {
+        console.log({ err });
+      },
+    });
+
+  const onSubmit = (data: AuthFormType | ForgetPassFormType) => {
     if (authType == "login") {
       loginFun(data);
     } else {
+      forgetPasswordFun(data);
     }
   };
 
-  return <AuthForm variant={authType} onSubmit={onSubmit} loading={loading} />;
+  return (
+    <AuthForm
+      variant={authType}
+      onSubmit={onSubmit}
+      loading={loading || forgetPassLoading}
+    />
+  );
 };

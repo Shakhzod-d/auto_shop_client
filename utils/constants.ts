@@ -11,9 +11,9 @@ export const FooterList = [
 ];
 
 export const HomeBanner = {
-  title: "So‘nggi Avtomobil Yangiliklari va Texnologiya Sharhlari",
+  title: "homeBanner.title",
   img: "/imgs/home-hero.jpg",
-  desc: `Bizning platformamizda avtomobil yangiliklari, texnologik yangiliklar va elektr avtomobillar haqida eng so‘nggi ma'lumotlarni topishingiz mumkin. O‘zbekistonlik avtomobil ishqibozlari uchun yangiliklar, sharhlar va qo‘llanmalar – barchasi bir joyda!`,
+  desc: `homeBanner.desc`,
 };
 export const teamBanner = {
   title: "So‘nggi Avtomobil Yangiliklari va Texnologiya Sharhlari",
@@ -68,9 +68,9 @@ export const AuthData = {
       ],
     },
   },
-  resetPassword: {
-    title: "Parolni Tiklash",
-    desc: `Parolni tiklash uchun emailingizni kiriting`,
+  forgetPassword: {
+    title: "forgetPassword.title",
+    desc: `forgetPassword.desc_forget`,
     checkbox: false,
     closebtn: true,
     form: {
@@ -78,15 +78,9 @@ export const AuthData = {
       inputs: [
         {
           id: "1",
-          placeholder: "Emailingiz",
-          label: "Email",
+          placeholder: "forgetPassword.input.email_placeholder",
+          label: "forgetPassword.input.email",
           name: "email",
-        },
-        {
-          id: "2",
-          placeholder: "Parolingiz...",
-          label: "Yangi Parol",
-          name: "password",
         },
       ],
     },
