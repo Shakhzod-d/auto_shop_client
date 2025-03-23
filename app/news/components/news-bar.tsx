@@ -11,7 +11,7 @@ import { LuClock4 } from "react-icons/lu";
 import { MdFiberManualRecord } from "react-icons/md";
 
 interface Props {
-  data: any[] | undefined;
+  data: any[] | [];
   variant: "data" | "loading";
   adsData: { imgUrl: string; id: string }[] | [];
 }

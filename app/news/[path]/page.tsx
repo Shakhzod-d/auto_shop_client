@@ -82,7 +82,7 @@ export default function News({
             variant={isLoading ? "cardListLoading" : "cardList"}
           />
           <NewsBar
-            data={newsBar}
+            data={newsBar??[]}
             variant={isLoading ? "loading" : "data"}
             adsData={mapAdsImg ?? []}
           />

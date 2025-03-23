@@ -60,7 +60,11 @@ export default function Detail() {
             loading
             variant={newsOneLoading ? "isDetailLoading" : "isDetail"}
           />
-          <NewsBar data={NewsData} variant={newsLoading ? "loading" : "data"} />
+          <NewsBar
+            data={NewsData || []}
+            variant={newsLoading ? "loading" : "data"}
+            adsData={[]}
+          />
         </div>
         <NewsAdvertisement data={[]} />
       </main>

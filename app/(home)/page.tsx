@@ -9,17 +9,12 @@ import { NewsList } from "./components/news-list";
 import { fetchItemsServ } from "../../services/items-serv";
 import { AdsResData, NewsResType } from "../../types/news.type";
 import { useEffect, useState } from "react";
-
 import { newsDataMap } from "../../utils/map-data";
 import { useTranslation } from "react-i18next";
 import { useHelper } from "@/store/helper-store";
 import { HomeBanner } from "@/utils/constants";
 import { useAuth } from "@/store/auth-store";
-export const mapAdsBanner = [
-  { imgUrl: "/imgs/home-news-img.png", id: "1" },
-  { imgUrl: "/imgs/byd.jpg", id: "2" },
-  { imgUrl: "/imgs/a.png", id: "3" },
-];
+
 export default function Home() {
   const API = process.env.NEXT_PUBLIC_API_URL;
   const IMG_URL = process.env.NEXT_PUBLIC_IMG_API;
@@ -44,7 +39,7 @@ export default function Home() {
 
   const mapAdsImg: any[] | undefined = photo?.data.map((item) => {
     return {
-      imgUrl:IMG_URL+ item.image.path,
+      imgUrl: IMG_URL + item.image.path,
       id: item.id,
     };
   });
@@ -83,8 +78,8 @@ export default function Home() {
           </h3>
           <div className="flex justify-between  gap-[60px] flex-col items-center xl:items-start xl:flex-row  ">
             <NewsDetail
-              adsData={mapAdsImg ?? []}
-              data={newsDetail}
+              adsData={mapAdsImg || []}
+              data={newsDetail||[]}
               variant={newsLoading ? "loading" : "data"}
             />
             <NewsList
