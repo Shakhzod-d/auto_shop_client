@@ -25,6 +25,18 @@ export default function News({
     queryKey: ["fetchItemsAds"],
     staleTime: 0,
   });
+  const { data: photo } = useQuery<AdsResData>({
+    queryFn: () => fetchItemsServ(`${API}/ad?type=banner`),
+    queryKey: ["AdsBanner"],
+    staleTime: 0,
+  });
+
+  const mapAdsImg: any[] | undefined = photo?.data.map((item) => {
+    return {
+      imgUrl: IMG_URL + item.image.path,
+      id: item.id,
+    };
+  });
 
   // news
   const { data: news, isLoading } = useQuery<NewsResType>({
@@ -69,7 +81,11 @@ export default function News({
             loading={isLoading}
             variant={isLoading ? "cardListLoading" : "cardList"}
           />
-          <NewsBar data={newsBar} variant={isLoading ? "loading" : "data"} />
+          <NewsBar
+            data={newsBar}
+            variant={isLoading ? "loading" : "data"}
+            adsData={mapAdsImg ?? []}
+          />
         </div>
         <NewsAdvertisement data={ads?.data ?? []} />
       </main>

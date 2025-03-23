@@ -1,14 +1,15 @@
+import { FormVariant } from "@/types/auth.type";
 import { create } from "zustand";
 type RegisterType = "register" | "verify";
-type SuccessType = "register" | "login" | "resetPassword";
+type SuccessType = "register" | "login" | "forgetPassword";
 type Store = {
   user_id: string;
   success: boolean;
-  successType: SuccessType;
+  successType: FormVariant;
   authType: SuccessType;
   registerType: RegisterType;
   setRegisterType: (data: RegisterType) => void;
-  setSuccessType: (data: SuccessType) => void;
+  setSuccessType: (data: FormVariant) => void;
   setSuccess: (data: boolean) => void;
   setAuthType: (data: SuccessType) => void;
   setUserId: (id: string) => void;
@@ -25,7 +26,7 @@ export const useAuth = create<Store>()((set) => ({
       registerType: data,
     }));
   },
-  setSuccessType: (data: SuccessType) => {
+  setSuccessType: (data: FormVariant) => {
     set(() => ({
       successType: data,
     }));

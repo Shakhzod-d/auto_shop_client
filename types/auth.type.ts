@@ -1,4 +1,5 @@
 export type AuthFormType = { email: string; password: string };
+export type ForgetPassFormType = { email: string };
 export interface RegisterRes {
   status_code: number;
   data: RegisterData;
@@ -44,5 +45,9 @@ export interface OTPResData {
   access_token: string;
   refresh_token: string;
 }
+export interface ResetPassForm {
+  new_password: string;
+  confirm_password: string;
+}
 
-export type FormVariant = "register" | "login" | "resetPassword";
+export type FormVariant = "register" | "login" | "forgetPassword";

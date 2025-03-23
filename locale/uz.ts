@@ -8,6 +8,8 @@ export const LangueUz = {
     back: "Orqaga",
     register: "Ro'yxatdan o'tish",
     send: "Yuborish",
+    confirmation: "Tasdiqlash",
+    home: "Bosh sahifaga",
   },
   home: {
     latest_news: "So'ngi Yangiliklar",
@@ -58,6 +60,21 @@ export const LangueUz = {
       password: "Parolni kiriting",
       error: "Foydalanuvchi nomi yoki parol noto'g'ri!",
       success: "Muaffaqiyatli!",
+    },
+  },
+  forgetPassword: {
+    title: "Parolni tikalsh",
+    desc: "Yangi parolni kiriting",
+    desc_forget: "Parolni tiklash uchun emailingizni kiriting",
+    validation: {
+      pass1: "parol kiritilmagan",
+      pass2: "parol bir xil emas",
+    },
+    input: {
+      pass1Placeholder: "Yangi parol",
+      pass2Placeholder: "Parolni takrorlash",
+      email: "Email",
+      email_placeholder: "Emailingiz",
     },
   },
 
@@ -148,5 +165,15 @@ Yangiliklardan Xabardor Bo'ling!`,
       title_one: "Ijtimoiy Tarmoqlar",
       title_two: "Murojaat uchun Tel",
     },
+  },
+  success: {
+    register:
+      "Siz Muvafaqqiyatli Ro’yhatdan O’tdingiz Autoshop.uz ga Hush Kelibsiz!",
+    forgetPassword: "Tasdiqlash havolasi emailga yuborildi!",
+    resetPassword: "Sizning Yangi Parolingiz Muvafaqqiyatli Ro’yhatdan O’tdi",
+  },
+  homeBanner: {
+    title: "So‘nggi Avtomobil Yangiliklari va Texnologiya Sharhlari",
+    desc: "Bizning platformamizda avtomobil yangiliklari, texnologik yangiliklar va elektr avtomobillar haqida eng so‘nggi ma'lumotlarni topishingiz mumkin. O‘zbekistonlik avtomobil ishqibozlari uchun yangiliklar, sharhlar va qo‘llanmalar – barchasi bir joyda!",
   },
 };

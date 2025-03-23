@@ -10,13 +10,15 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { formatTimeDifference } from "@/utils/map-data";
 import { Skeleton } from "@/components/ui/skeleton";
+import { AdsCarousel } from "@/components/shared/ads-carusel";
 
 interface Props {
   data: NewsRes;
   variant: "loading" | "data";
+  adsData: { imgUrl: string; id: string }[] | [];
 }
 const IMG_URL = process.env.NEXT_PUBLIC_IMG_API;
-export const NewsDetail = ({ data, variant }: Props) => {
+export const NewsDetail = ({ data, variant, adsData }: Props) => {
   const router = useRouter();
   const createdTime = formatTimeDifference(Number(data.created_at));
   const { t } = useTranslation();
@@ -88,14 +90,7 @@ export const NewsDetail = ({ data, variant }: Props) => {
             {t("btn.more_news")}
           </span>
         </Link>
-
-        <Image
-          src="/imgs/home-news-img.png"
-          alt=""
-          width={750}
-          height={300}
-          className="w-full tablet-max:w-[750px]"
-        />
+        <AdsCarousel data={adsData ?? []} />
       </>
     ),
   };

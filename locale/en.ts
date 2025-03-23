@@ -8,6 +8,8 @@ export const LangueEn = {
     back: "back",
     register: "Sign up",
     send: "Send",
+    confirmation: "Confirmation",
+    home: "Home page",
   },
   home: {
     latest_news: "Latest News",
@@ -57,6 +59,21 @@ export const LangueEn = {
       password: "Enter password",
       error: "Incorrect username or password!",
       success: "Successful!",
+    },
+  },
+  forgetPassword: {
+    title: "Password recovery",
+    desc: "Enter new password",
+    desc_forget: "Enter your email to reset your password.",
+    validation: {
+      pass1: "password not entered",
+      pass2: "the password is not the same",
+    },
+    input: {
+      pass1Placeholder: "New Password",
+      pass2Placeholder: "Repeat password",
+      email: "Email",
+      email_placeholder: "Your email",
     },
   },
   about: {
@@ -133,5 +150,14 @@ Or Media Terms of Use:`,
       title_one: "Social Networks",
       title_two: "For inquiries, please call",
     },
+  },
+  success: {
+    register: "You Have Successfully Registered. Welcome to Autoshop.uz!",
+    forgetPassword: "A confirmation link has been sent to your email!",
+    resetPassword: "Your New Password Has Been Successfully Registered",
+  },
+  homeBanner: {
+    title: "Latest Automotive News and Tech Reviews",
+    desc: "On our platform you can find the latest information about automotive news, technology news and electric cars. News, reviews and guides for Uzbek car enthusiasts - all in one place!",
   },
 };

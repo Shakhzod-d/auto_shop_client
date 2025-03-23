@@ -16,7 +16,16 @@ export const RegisterFormSchema = (t: (key: string) => string) => {
     email: z
       .string({ message: t("register.validation.email") })
       .email({ message: t("register.validation.invalid_email") }),
-    password: z.string({ message: t("register.validation.password") }),
+  });
+};
+export const ResetPasswordFormSchema = (t: (key: string) => string) => {
+  return z.object({
+    new_password: z
+      .string({ message: t("forgetPassword.validation.pass1") })
+      .min(3, { message: t("forgetPassword.validation.pass1") }),
+    confirm_password: z
+      .string({ message: t("forgetPassword.validation.pass2") })
+      .min(3, t("forgetPassword.validation.pass2")),
   });
 };
 
@@ -34,6 +43,6 @@ export const LoginFormSchema = (t: (key: string) => string) => {
 };
 export const CommentFormSchema = (t: (key: string) => string) => {
   return z.object({
-    text: z.string().min(1,{ message: t("news.validation.commit") }),
+    text: z.string().min(1, { message: t("news.validation.commit") }),
   });
 };
