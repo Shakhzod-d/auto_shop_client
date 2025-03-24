@@ -9,7 +9,8 @@ import { useParams, useSearchParams } from "next/navigation";
 
 import { Card } from "../../components/card";
 import { Pagination } from "@/components/ui/pagination";
-import { useEffect, useState } from "react";
+import { JSX, useEffect, useState } from "react";
+import { CardSkeleton } from "@/components/shared/card-skeleton";
 
 export default function AllNews() {
   const IMG_URL = process.env.NEXT_PUBLIC_IMG_API;
@@ -26,7 +27,7 @@ export default function AllNews() {
       ? `${API}/news/search?search=${searchValue}`
       : `${API}/news?page=${count}&page_size=10&subcategory_id=${params.id}`;
 
-  const { data: news } = useQuery<NewsResType>({
+  const { data: news, isPending: newsBarLoading } = useQuery<NewsResType>({
     queryFn: () => fetchItemsServ(ApiUrl),
     queryKey: ["fetchItemsServAll", lang, count],
     staleTime: 0,
@@ -41,9 +42,11 @@ export default function AllNews() {
     params.id === "search-news" ? newsSearch?.data.data : news?.data;
 
   useEffect(() => {
-    console.log(news?.current_page);
+    if (news) {
+      console.log(news?.current_page);
 
-    setCount(news?.current_page ?? 1);
+      setCount(news?.current_page ?? 1);
+    }
   }, [news]);
 
   const NewsData: any[] | undefined = resultData?.map((item) => {
@@ -57,14 +60,27 @@ export default function AllNews() {
       source: item.source,
     };
   });
-
-  return (
-    <div className="container ">
-      <div className="w-full grid grid-cols-1 tablet-middle:grid-cols-3 gap-[50px] gap-y-[87px] mb-10">
+  const fakeArr = Array.from({ length: 6 }, (_, i) => i);
+  const components: Record<string, JSX.Element> = {
+    true: (
+      <div className="w-full grid grid-cols-1 tablet-middle:grid-cols-2 laptop-mn:grid-cols-2 laptop-max:grid-cols-3 gap-[50px] gap-y-[87px] mb-10 justify-center">
+        {fakeArr?.map((i) => (
+          <CardSkeleton key={i} />
+        ))}
+      </div>
+    ),
+    false: (
+      <div className="w-full grid grid-cols-1 tablet-middle:grid-cols-2 laptop-mn:grid-cols-2 laptop-max:grid-cols-3 gap-[50px] gap-y-[87px] mb-10 justify-center">
         {NewsData?.map((item) => (
           <Card data={item} key={item?.id} categoryId={item.categoryId} />
         ))}
       </div>
+    ),
+  };
+
+  return (
+    <div className="container ">
+      {components[String(newsBarLoading)]}
       {params.id !== "search-news" && (
         <Pagination
           count={news?.total_pages ?? 0}

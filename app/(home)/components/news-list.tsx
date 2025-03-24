@@ -27,7 +27,7 @@ export const NewsList = ({ data, setDetailId, variant }: Props) => {
       <>
         {data.map((item, i) => (
           <div
-            className="w-full tablet-middle:w-[355px] xl:w-[436px] flex gap-2 xl:gap-4 mb-[38px]"
+            className="w-full tablet-middle:w-[355px] xl:w-[436px] flex gap-2 xl:gap-4 mb-[24px] sm:mb-[38px]"
             key={i}
             onClick={() => setDetailId(item.id)}
           >
@@ -37,16 +37,16 @@ export const NewsList = ({ data, setDetailId, variant }: Props) => {
                 alt=""
                 height={120}
                 width={220}
-                className="w-full h-full rounded-[8px]"
+                className="rounded-[8px] w-[190px] h-[100px]  xl:w-[220px] xl:h-[120px]"
               />
             </div>
-            <div className="w-full tablet-middle:w-[157px] xl:w-[200px]">
-              <h2
-                className="text-[19px] text-[#000000] font-medium mb-4 title inline break-words"
+            <div className="w-[200px] tablet-middle:w-[157px] xl:w-[200px]">
+              <p
+                className="text-[18px] sm:text-[21px] text-[#000000] font-medium mb-4  inline break-words"
                 style={{ letterSpacing: "0.01em" }}
               >
                 {item?.title}
-              </h2>
+              </p>
               <span className="flex items-center gap-[10px] text-[#666666] text-[16px] mb-4">
                 <LuClock4 />
                 {formatTimeDifference(Number(item.created))}

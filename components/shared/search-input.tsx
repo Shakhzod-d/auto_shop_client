@@ -29,17 +29,20 @@ export const SearchInput = () => {
     }
   }, [searchValue]);
   return (
-    <div className="flex w-full max-w-[80%] justify-between items-center relative">
-      <div className="flex py-4 px-5 border border-[#DDDDDD] rounded-md w-full max-w-[720px] items-center gap-2">
+    <div className="flex w-full max-w-[80%] justify-between items-center relative gap-[14px] sm:gap-[40px] laptop-mn:gap-[70px]">
+      <div className="flex px-2 sm:px-5 border border-[#DDDDDD] rounded-lg w-full max-w-[720px] items-center gap-2 h-[26px] sm:h-[50px]">
         <input
           type="text"
-          className="outline-none w-full  placeholder:text-[#666666] placeholder-[#666666] "
+          className="outline-none w-full  placeholder:text-[#666666] placeholder-[#666666] placeholder:text-[12px] sm:placeholder:text-[18px] text-[12px] sm:text-[18px]"
           placeholder="Qidirish"
           onChange={(e) => setSearchTerm(e.target.value)}
         />
-        <IoSearchOutline size={20} className="cursor-pointer " />
+        <IoSearchOutline
+          size={20}
+          className="cursor-pointer size-[15px] sm:size-[20px]"
+        />
       </div>
-      <X className="cursor-pointer" onClick={setIsSearch} />
+      <X className="cursor-pointer" onClick={setIsSearch} size={30}/>
       {isSearchResult && (
         <SearchResult
           data={news?.data?.data ?? []}

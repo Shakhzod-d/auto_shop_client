@@ -10,7 +10,7 @@
   margin: 0 auto;
   @media (max-width: 500px) {
     padding-right: 16px;
-    padding-right: 16px;
+    padding-left: 16px;
   }
 }
 .bigContainer {

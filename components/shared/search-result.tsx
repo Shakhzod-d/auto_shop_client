@@ -1,7 +1,6 @@
 "use client";
 import { NewsRes } from "@/types/news.type";
 import { Loader2Icon } from "lucide-react";
-import Image from "next/image";
 import { useRouter } from "next/navigation";
 
 interface Props {
@@ -10,7 +9,6 @@ interface Props {
   setIsActive: (val: boolean) => void;
   searchValue: string;
 }
-const IMG_URL = process.env.NEXT_PUBLIC_IMG_API;
 export const SearchResult = ({
   data,
   loading,
@@ -47,16 +45,7 @@ export const SearchResult = ({
             key={item.id}
             onClick={() => onChange(item.category.id, item.id)}
           >
-            <div className="w-[100px]">
-              <Image
-                width={100}
-                height={50}
-                alt="img"
-                src={IMG_URL + item.main_image.path}
-                className="rounded-sm"
-              />
-            </div>
-            <p className="font-medium text">{item.title}</p>
+            <p className="font-medium text-[12px] break-words">{item.title}</p>
           </div>
         );
       }
@@ -66,8 +55,13 @@ export const SearchResult = ({
     <div className="absolute w-[90%]  border bg-[#f1f1f1] shadow-lg rounded-md  top-16 z-10 p-4">
       {data.length > 3 && (
         <div className="flex justify-between items-center mb-2 text-blue-400 cursor-pointer">
-          <p>Yangiliklar ({data.length})</p>
-          <p className="underline" onClick={AllNewsFun}>
+          <p className="text-[10px] sm:text-[18px]">
+            Yangiliklar ({data.length})
+          </p>
+          <p
+            className="underline text-[10px] sm:text-[18px]"
+            onClick={AllNewsFun}
+          >
             {"barchasini ko'rish"}
           </p>
         </div>
