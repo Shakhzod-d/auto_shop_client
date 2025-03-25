@@ -27,7 +27,7 @@ export const NewsList = ({ data, setDetailId, variant }: Props) => {
       <>
         {data.map((item, i) => (
           <div
-            className="w-full tablet-middle:w-[355px] xl:w-[436px] flex gap-2 xl:gap-4 mb-[24px] sm:mb-[38px]"
+            className="w-full tablet-middle:w-[355px] xl:w-[436px] flex gap-2 xl:gap-4 mb-[24px] sm:mb-[38px] border"
             key={i}
             onClick={() => setDetailId(item.id)}
           >
