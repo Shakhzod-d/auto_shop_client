@@ -24,6 +24,7 @@ export const LangueEn = {
     commit: "Comments",
     validation: {
       commit: "Leave a comment",
+      auth: "Log in",
     },
   },
   register: {

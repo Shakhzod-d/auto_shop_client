@@ -44,8 +44,9 @@ export const Comment = ({ id, comment }: Props) => {
       if (data.status_code >= 200 && data.status_code < 400) {
         successToast(t("login.validation.success"));
         form.reset();
-      } else {
-        errorToast("err");
+      }
+      if (data.status_code == 401) {
+        errorToast(t("news.validation.auth"));
       }
     },
     onError: (err) => {

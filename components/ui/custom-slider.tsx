@@ -21,9 +21,9 @@ export function CarouselSize({ data }: Props) {
                 width={305}
                 height={150}
                 alt="img"
-                className="mb-4 h-[100px] sm:h-[150px] "
+                className="mb-4 h-[100px] sm:h-[150px] object-fill"
               />
-              <div className="px-[5px] text-[#666666] sm:text-[16px] tablet-middle:text-[18px] font-montserrat">
+              <div className="px-[5px] text-[#666666] sm:text-[16px] tablet-middle:text-[18px] font-montserrat line-clamp-5">
                 {item.text}
               </div>
             </div>

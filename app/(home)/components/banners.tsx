@@ -24,20 +24,20 @@ export const Banners = ({
   return (
     <section>
       <div
-        className="w-full  py-[25px] mb-20 tablet-max:mb-[100px] bg-no-repeat bg-cover bg-center"
+        className="w-full  py-[25px] mb-[60px] tablet-max:mb-[100px] bg-no-repeat bg-cover bg-center"
         style={{ padding: p, backgroundImage: `url(${banner_img})` }}
       >
         <div className="container">
           <div className={`w-full text-white`} style={{ maxWidth: w }}>
-            <h2 className="text-[28px]  tablet-middle:text-[45px] tablet-max:text-[55px]  font-bold mb-4 font-merriweather">
+            <h2 className="text-[28px]  tablet-middle:text-[45px] tablet-max:text-[55px]  font-bold mb-4 font-merriweather  leading-[38px]  sm:leading-[60px] tablet-max:leading-[70px]">
               {title}
             </h2>
-            <p className="tablet-middle:text-[22px] font-medium mb-8 font-lora">
+            <p className="tablet-middle:text-[22px] font-medium mb-8 font-montserrat">
               {desc}
             </p>
             {btn && (
               <Button className=" px-[51px] bg-[#4DA6FF] font-semibold h-[50px]">
-              {t("btn.detail")}
+                {t("btn.detail")}
               </Button>
             )}
           </div>
@@ -49,7 +49,7 @@ export const Banners = ({
           height={450}
           src="/imgs/advertisement.png"
           alt=""
-          className="w-full mb-20 tablet-max:mb-[115px]"
+          className="w-full h-[250px] tablet-max:h-[450px]  object-cover mb-[60px] tablet-max:mb-[115px]"
         />
       )}
     </section>

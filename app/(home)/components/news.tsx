@@ -68,12 +68,12 @@ export const NewsDetail = ({ data, variant, adsData }: Props) => {
         <Image
           src={IMG_URL + data?.main_image?.path}
           alt=""
-          className="mb-12 rounded-sm"
+          className="mb-12 rounded-sm object-cover"
           width={720}
           height={350}
         />
         <p
-          className="text-xl text-[#666666] mb-8 font-merriweather line-clamp-[10]"
+          className="text-xl text-[#666666] mb-8  line-clamp-[10]"
           dangerouslySetInnerHTML={{
             __html: data.content ? data.content : "",
           }}

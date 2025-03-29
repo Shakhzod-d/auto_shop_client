@@ -72,11 +72,11 @@ export default function Home() {
       />
 
       <main className="container">
-        <section className="mb-[155px]">
+        <section className="mb-[100px]">
           <h3 className="text-[28px] sm:text-[32px] tablet-max:text-4xl font-bold mb-10 font-merriweather">
             {t("home.latest_news")}
           </h3>
-          <div className="flex justify-between  gap-[60px] flex-col items-center xl:items-start xl:flex-row  ">
+          <div className="flex justify-between  gap-[60px] flex-col items-center xl:items-start xl:flex-row">
             <NewsDetail
               adsData={mapAdsImg || []}
               data={newsDetail||[]}

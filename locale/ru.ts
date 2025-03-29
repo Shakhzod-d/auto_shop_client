@@ -19,12 +19,15 @@ export const LangueRu = {
     gmail_text: "Будьте в курсе последних новостей.",
     input_placeholder: "Ваша электронная почта",
   },
+ 
   news: {
     newsBar: "Еще новости",
     commit: "Комментарии",
     validation: {
       commit: "Оставьте комментарий",
+      auth: "Авторизоваться",
     },
+ 
   },
   register: {
     title: "Зарегистрироваться",

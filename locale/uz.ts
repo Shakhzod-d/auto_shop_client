@@ -24,6 +24,7 @@ export const LangueUz = {
     commit: "Sharhlar",
     validation: {
       commit: "Izoh Qoldiring",
+      auth: "Akkauntga kiring",
     },
   },
 

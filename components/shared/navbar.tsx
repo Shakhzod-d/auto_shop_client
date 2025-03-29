@@ -83,7 +83,7 @@ export default function Navbar({ categoryData }: Props) {
                 return (
                   <div
                     key={item.subcategory[0]?.id}
-                    className="text-[#333333] text-[19px] font-medium cursor-pointer"
+                    className="text-[#333333] text-[19px] font-medium cursor-pointer hover:text-[#4DA6FF]"
                     style={{
                       color:
                         pathname == `/news/${item?.subcategory[0]?.path}`
