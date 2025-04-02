@@ -31,10 +31,10 @@ export function AdsCarousel({
   return (
     <div
       className={cn(
-        "flex justify-center items-center w-full max-w-[750px] h-auto overflow-hidden",
+        "flex justify-center items-center w-full max-w-[750px] h-[300px] sm:h-[550px] overflow-hidden",
         className || ""
       )}
-      style={{ maxWidth: width, height: height }}
+      style={{ maxWidth: width, }}
     >
       {data.length > 0 && (
         <Image
@@ -42,7 +42,7 @@ export function AdsCarousel({
           alt="Ad Image"
           width={width}
           height={height}
-          className={cn("w-full h-full object-cover", className || "")}
+          className={cn("w-full h-full ", className || "")}
         />
       )}
     </div>

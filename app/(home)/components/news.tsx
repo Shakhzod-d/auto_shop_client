@@ -10,15 +10,13 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { formatTimeDifference } from "@/utils/map-data";
 import { Skeleton } from "@/components/ui/skeleton";
-import { AdsCarousel } from "@/components/shared/ads-carusel";
 
 interface Props {
   data: NewsRes;
   variant: "loading" | "data";
-  adsData: { imgUrl: string; id: string }[] | [];
 }
 const IMG_URL = process.env.NEXT_PUBLIC_IMG_API;
-export const NewsDetail = ({ data, variant, adsData }: Props) => {
+export const NewsDetail = ({ data, variant }: Props) => {
   const router = useRouter();
   const createdTime = formatTimeDifference(Number(data.created_at));
   const { t } = useTranslation();
@@ -42,7 +40,7 @@ export const NewsDetail = ({ data, variant, adsData }: Props) => {
         <Button className=" text-[10px] xl:text-[12px] bg-[#3399FF]  h-[26px] px-[5px] mb-2">
           {data?.category?.name}
         </Button>
-        <h5 className="text-xl sm:text-[28px] font-semibold mb-4 font-merriweather">
+        <h5 className="text-xl sm:text-[24px] font-semibold mb-4 font-merriweather ">
           {data.title}
         </h5>
         <div className="flex items-center gap-3 sm:gap-6 mb-8 text-[#666666]">
@@ -68,29 +66,28 @@ export const NewsDetail = ({ data, variant, adsData }: Props) => {
         <Image
           src={IMG_URL + data?.main_image?.path}
           alt=""
-          className="mb-12 rounded-sm object-cover"
+          className="mb-4 sm:mb-12 rounded-sm object-cover"
           width={720}
           height={350}
         />
         <p
-          className="text-xl text-[#666666] mb-8  line-clamp-[10]"
+          className="sm:text-xl text-[#666666] mb-8  line-clamp-[10] news-desc"
           dangerouslySetInnerHTML={{
             __html: data.content ? data.content : "",
           }}
         ></p>
         <Button
-          className="bg-[#4DA6FF] w-[166px] h-[50px] mb-[66px]"
+          className="bg-[#4DA6FF] w-[166px] h-[50px] mb-6 sm:mb-10 md:mb-[66px]"
           onClick={() => router.push(`/news/${data.subcategory.id}/${data.id}`)}
         >
           {t("btn.full_information")}
         </Button>
         <Link href={`/news/all/all-news`}>
-          <span className="flex items-center gap-[10px] text-[20px] mb-16 cursor-pointer">
+          <span className="flex items-center gap-[10px] text-[20px]  cursor-pointer">
             <IoMdAdd size={30} />
             {t("btn.more_news")}
           </span>
         </Link>
-        <AdsCarousel data={adsData ?? []} />
       </>
     ),
   };

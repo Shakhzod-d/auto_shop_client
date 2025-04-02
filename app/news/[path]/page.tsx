@@ -25,13 +25,13 @@ export default function News({
     queryKey: ["fetchItemsAds"],
     staleTime: 0,
   });
-  const { data: photo } = useQuery<AdsResData>({
-    queryFn: () => fetchItemsServ(`${API}/ad?type=banner`),
-    queryKey: ["AdsBanner"],
+  const { data: adsCarousel } = useQuery<AdsResData>({
+    queryFn: () => fetchItemsServ(`${API}/ad?type=carousel`),
+    queryKey: ["fetchItemsAdsCarousel"],
     staleTime: 0,
   });
 
-  const mapAdsImg: any[] | undefined = photo?.data.map((item) => {
+  const mapAdsImg: any[] | undefined = ads?.data.map((item) => {
     return {
       imgUrl: IMG_URL + item.image.path,
       id: item.id,
@@ -47,6 +47,14 @@ export default function News({
     queryKey: ["fetchItemsServ"],
     staleTime: 0,
   });
+  const { data: bannerAds } = useQuery<AdsResData>({
+    queryFn: () => fetchItemsServ(`${API}/ad?type=banner`),
+    queryKey: ["NewsAdsBanner"],
+    staleTime: 0,
+  });
+  const AdsBannerImg = bannerAds?.data.map(
+    (item) => `${IMG_URL}${item.image.path}`
+  );
 
   const NewsData: any[] | undefined = news?.data?.map((item) => {
     return {
@@ -70,7 +78,12 @@ export default function News({
 
   return (
     <>
-      <Banner img={bannerImg} text={bannerTitle} w={"900px"} />
+      <Banner
+        img={bannerImg}
+        text={bannerTitle}
+        w={"900px"}
+        ads={AdsBannerImg ?? []}
+      />
       <main className="bigContainer">
         <div className="flex gap-[46px] mb-16 flex-col items-center xl:flex-row xl:items-start">
           <CardList
@@ -82,12 +95,12 @@ export default function News({
             variant={isLoading ? "cardListLoading" : "cardList"}
           />
           <NewsBar
-            data={newsBar??[]}
+            data={newsBar ?? []}
             variant={isLoading ? "loading" : "data"}
             adsData={mapAdsImg ?? []}
           />
         </div>
-        <NewsAdvertisement data={ads?.data ?? []} />
+        <NewsAdvertisement data={adsCarousel?.data ?? []} />
       </main>
     </>
   );

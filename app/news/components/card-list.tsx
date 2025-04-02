@@ -53,13 +53,13 @@ export const CardList = ({
     ),
     cardList: (
       <>
-        <h3 className="text-[32px] tablet-max:text-[36px] font-bold mb-8">
+        <h3 className="text-xl sm:text-[32px] tablet-max:text-[36px] font-bold mb-8">
           {" "}
           {title}
         </h3>
-        <div className="w-full max-w-[830px] grid grid-cols-1 tablet-middle:grid-cols-2 gap-[50px] gap-y-[87px] mb-10">
-          {data?.map((item) => (
-            <Card data={item} key={item?.id} categoryId={categoryId} />
+        <div className="w-full max-w-[830px] grid grid-cols-1 tablet-middle:grid-cols-2 sm:gap-[50px] gap-y-10 sm:gap-y-[87px] mb-5 sm:mb-10" key={1}>
+          {data?.map((item,i) => (
+            <Card data={item} key={i} categoryId={categoryId} />
           ))}
         </div>
         <Link href={`/news/all/${categoryId}`}>

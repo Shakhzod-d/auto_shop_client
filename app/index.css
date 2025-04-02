@@ -23,7 +23,6 @@
     padding-right: 16px;
     padding-left: 16px;
   }
-
 }
 
 @layer base {
@@ -113,7 +112,7 @@
     display: block;
     padding: 15px;
     top: 50px;
-    min-width: 230px;
+    /* width: 150px; */
     padding: 10px;
     background: #ffffff;
     position: absolute;
@@ -123,7 +122,11 @@
     border: 1px solid #dddddd;
   }
 }
-
+.news-desc {
+  a {
+    color: blue;
+  }
+}
 @layer base {
   * {
     @apply border-border outline-ring/50;

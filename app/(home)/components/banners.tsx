@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
 import { Button } from "../../../components/ui/button";
-import Image from "next/image";
+import { ImgSlider } from "@/components/shared/img-slider";
 
 interface Props {
   banner_img: string;
@@ -10,6 +10,7 @@ interface Props {
   p: string;
   btn: boolean;
   img_two: boolean;
+  ads?: string[] | [];
 }
 export const Banners = ({
   banner_img,
@@ -19,17 +20,18 @@ export const Banners = ({
   p,
   btn,
   img_two,
+  ads,
 }: Props) => {
   const { t } = useTranslation();
   return (
     <section>
       <div
-        className="w-full  py-[25px] mb-[60px] tablet-max:mb-[100px] bg-no-repeat bg-cover bg-center"
+        className="w-full  py-[25px] mb-[30px] tablet-max:mb-[70px] bg-no-repeat bg-cover bg-center"
         style={{ padding: p, backgroundImage: `url(${banner_img})` }}
       >
         <div className="container">
           <div className={`w-full text-white`} style={{ maxWidth: w }}>
-            <h2 className="text-[28px]  tablet-middle:text-[45px] tablet-max:text-[55px]  font-bold mb-4 font-merriweather  leading-[38px]  sm:leading-[60px] tablet-max:leading-[70px]">
+            <h2 className="text-[28px]  tablet-middle:text-[45px] tablet-max:text-[45px]  font-bold mb-3 font-merriweather  leading-[38px]  sm:leading-[60px] tablet-max:leading-[60px]">
               {title}
             </h2>
             <p className="tablet-middle:text-[22px] font-medium mb-8 font-montserrat">
@@ -43,15 +45,7 @@ export const Banners = ({
           </div>
         </div>
       </div>
-      {img_two && (
-        <Image
-          width={1440}
-          height={450}
-          src="/imgs/advertisement.png"
-          alt=""
-          className="w-full h-[250px] tablet-max:h-[450px]  object-cover mb-[60px] tablet-max:mb-[115px]"
-        />
-      )}
+      {img_two && <ImgSlider images={ads ??[]} />}
     </section>
   );
 };

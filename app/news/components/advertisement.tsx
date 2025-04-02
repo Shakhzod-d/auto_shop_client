@@ -12,22 +12,20 @@ export const NewsAdvertisement = ({ data }: Props) => {
         {data.map((item, index) => (
           <div
             key={index}
-            className="min-w-[265px] h-[381px] bg-[#F8F8F8] p-[7px] rounded-lg flex flex-col"
+            className="w-[265px] h-[381px] bg-[#F8F8F8] p-[7px] rounded-lg flex flex-col"
           >
-            <div className="flex-1">
-              <div className="w-full h-[150px] bg-[#4DA6FF] mb-4">
+            <div className="flex-1 ">
+              <div className="w-full h-[150px] mb-4">
                 <Image
                   alt="img"
                   width={256}
                   height={150}
                   src={IMG_URL + item.image.path}
+                  className="h-[150px]"
                 />
               </div>
-              <div className="flex items-center gap-[7px] mb-4">
-                <span className="w-[30px] h-[30px] bg-[#D9D9D9] block rounded-full"></span>
-                <p className="text-[17px] text-[#666666]">plus.yandex.uz</p>
-              </div>
-              <h4 className="text-xl font-medium mb-7">{item.description}</h4>
+
+              <p className=" font-medium mb-2 line-clamp-[6]">{item.description}</p>
             </div>
             <a href={item.url} target="_blank">
               <Button className="w-full h-[45px] bg-[#4DA6FF] font-semibold">
