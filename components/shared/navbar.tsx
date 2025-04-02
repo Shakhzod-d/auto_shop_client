@@ -69,7 +69,7 @@ export default function Navbar({ categoryData }: Props) {
         </div>
 
         <nav className="hidden tablet-max:block">
-          <div className="flex items-center gap-6">
+          <div className="flex items-center gap-4">
             {data?.map((item, i) => {
               if (item.isSubCategory) {
                 return (

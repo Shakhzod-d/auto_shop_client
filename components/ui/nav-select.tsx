@@ -24,7 +24,7 @@ export const NavSelect = ({ data, initialTitle }: Props) => {
         {data.map((item) => (
           <p
             key={item.id}
-            className="text-[#333333] text-[18px] mb-4 cursor-pointer border-b border-[#DDDDDD] pb-1 last:border-none hover:text-[#4DA6FF]"
+            className="text-[#333333] text-[14px] mb-4 cursor-pointer border-b border-[#DDDDDD] pb-1 last:border-none hover:text-[#4DA6FF]"
             onClick={() => navigate.push("/news/" + item.path)}
             style={{ color: pathname.endsWith(item.path)  ? "#4DA6FF" : "" }}
           >

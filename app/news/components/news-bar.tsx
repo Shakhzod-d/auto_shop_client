@@ -33,11 +33,10 @@ export const NewsBar = ({ data, variant, adsData }: Props) => {
       <div className="grid grid-cols-1 gap-4 laptop-min:grid-cols-2 xl:block overflow-auto h-[540px] scrollbar-hide mb-3">
         {data?.map((item) => (
           <div
-            className="flex gap-3 mb-8  p-2 cursor-pointer hover:bg-gray-100 transition rounded-md"
+            className="flex gap-2 mb-8  p-2 cursor-pointer hover:bg-gray-100 transition rounded-md"
             key={item.id}
             onClick={() => router.push(`/news/${item.categoryId}/${item.id}`)}
           >
-            {/* ✅ Image to'g'ri ishlashi uchun `layout="fixed"` ishlatildi */}
             <div className="w-[150px] h-[80px] shrink-0">
               <Image
                 src={item.img}
@@ -48,7 +47,7 @@ export const NewsBar = ({ data, variant, adsData }: Props) => {
               />
             </div>
             <div className="w-full">
-              <p className="text-[18px] sm:text-xl font-medium mb-4 break-words">
+              <p className="text-[18px] font-medium mb-4 break-words">
                 {item.title}
               </p>
               <div className="flex items-center text-[#666666] gap-[10px] font-lora">
@@ -68,16 +67,16 @@ export const NewsBar = ({ data, variant, adsData }: Props) => {
     ),
   };
   return (
-    <aside className="w-full  xl:max-w-[444px]  ">
+    <aside className="w-full  xl:max-w-[444px] ">
       <h4 className="text-xl sm:text-[28px] font-bold mb-8">
         {t("news.newsBar")}
       </h4>
-      <div className="flex xl:block justify-between flex-wrap">
+      <div className="flex xl:block justify-between flex-wrap ">
         {barComponent[variant]}
         <AdsCarousel
           data={adsData ?? []}
           height={550}
-          className="object-fill"
+          className="object-cover  h-[300px] sm:h-[550px]"
         />
       </div>
     </aside>

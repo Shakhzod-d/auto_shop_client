@@ -12,7 +12,7 @@ import {
 import { useHelper } from "../../store/helper-store";
 import { ModalSelect } from "../ui/modal-select";
 import { Category } from "@/types";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import LanguageSelector from "../ui/langue-select";
 import { ModalSelectMap } from "@/utils/map-data";
 import { useTranslation } from "react-i18next";
@@ -25,12 +25,17 @@ const AutoShopModal = ({ data }: Props) => {
   const { t } = useTranslation();
   const router = useRouter();
   const modalData = ModalSelectMap(data);
+  const pathname = usePathname();
   const AuthNavigate = () => {
     setIsModal();
 
     router.push("/auth");
   };
 
+  const onClickNavigate = (path: string) => {
+    router.push(path);
+    setIsModal();
+  };
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex  justify-end z-50">
       <div
@@ -52,12 +57,26 @@ const AutoShopModal = ({ data }: Props) => {
             {modalData.map((item, i) => {
               if (i == 1 || item.items.length <= 1) {
                 return (
-                  <p className=" text-[18px] font-medium" key={i}>
+                  <p
+                    className=" text-[18px] font-medium"
+                    key={i}
+                    onClick={() => onClickNavigate(item.items[0].path)}
+                    style={{
+                      color: pathname == item.items[0].path ? "#4DA6FF" : "",
+                    }}
+                  >
                     {item.title}
                   </p>
                 );
               }
-              return <ModalSelect key={i} data={item} defaultActive={i == 0} />;
+              return (
+                <ModalSelect
+                  key={i}
+                  data={item}
+                  defaultActive={i == 0}
+                  onClick={() => setIsModal()}
+                />
+              );
             })}
           </div>
 

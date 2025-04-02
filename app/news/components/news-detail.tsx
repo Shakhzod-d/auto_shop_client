@@ -36,7 +36,7 @@ export const NewsDetail = ({
       />
       <h3 className="font-semibold text-[28px] mb-6">{title}</h3>
       <p
-        className="text-[#666666] text-xl font-lora mb-6 w-full inli"
+        className="text-[#666666] text-xl font-lora mb-6 w-full  news-desc"
         dangerouslySetInnerHTML={{
           __html: desc ? desc : "",
         }}

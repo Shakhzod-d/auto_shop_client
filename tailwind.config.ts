@@ -67,6 +67,7 @@ export default {
         "sm-xl": "670px",
         "laptop-mn": "1120px",
         "laptop-max": "1172px",
+        laptop: "1280px",
       },
     },
   },

@@ -20,7 +20,7 @@ export const Announcements = ({ data }: Props) => {
     };
   });
   return (
-    <section className="mb-[105px]">
+    <section className="mb-10 sm:mb-[80px]">
       <div className="flex justify-between items-center mb-6">
         <div className="max-w-[600px]">
           <h3 className="text-xl sm:text-[36px] font-bold  mb-4 font-merriweather">

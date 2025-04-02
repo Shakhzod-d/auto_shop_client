@@ -31,18 +31,15 @@ export default function Home() {
     queryKey: ["fetchItemsAds"],
     staleTime: 0,
   });
-  const { data: photo } = useQuery<AdsResData>({
+  const { data: bannerAds } = useQuery<AdsResData>({
     queryFn: () => fetchItemsServ(`${API}/ad?type=banner`),
     queryKey: ["AdsBanner"],
     staleTime: 0,
   });
 
-  const mapAdsImg: any[] | undefined = photo?.data.map((item) => {
-    return {
-      imgUrl: IMG_URL + item.image.path,
-      id: item.id,
-    };
-  });
+  const bannerImg = bannerAds?.data.map(
+    (item) => `${IMG_URL}${item.image.path}`
+  );
 
   const [detailId, setDetailId] = useState<string>("");
 
@@ -69,17 +66,17 @@ export default function Home() {
         w="650px"
         btn={true}
         img_two={true}
+        ads={bannerImg ?? []}
       />
 
       <main className="container">
-        <section className="mb-[100px]">
-          <h3 className="text-[28px] sm:text-[32px] tablet-max:text-4xl font-bold mb-10 font-merriweather">
+        <section className="mb-5 sm:mb-[60px]  h-full">
+          <h3 className="text-[28px] sm:text-[32px] tablet-max:text-[32px] font-bold mb-5 font-merriweather">
             {t("home.latest_news")}
           </h3>
-          <div className="flex justify-between  gap-[60px] flex-col items-center xl:items-start xl:flex-row">
+          <div className="flex justify-between  gap-10 sm:gap-[60px] flex-col items-center xl:items-start xl:flex-row  ">
             <NewsDetail
-              adsData={mapAdsImg || []}
-              data={newsDetail||[]}
+              data={newsDetail || []}
               variant={newsLoading ? "loading" : "data"}
             />
             <NewsList
