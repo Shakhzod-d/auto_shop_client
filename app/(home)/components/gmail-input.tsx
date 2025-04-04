@@ -11,7 +11,7 @@ export const GmailInput = () => {
   return (
     <div className="w-full bg-[#E9F4FF] py-[50px] sm:p-[50px]">
       <div className="container flex flex-col  sm:justify-center sm:items-center">
-        <h2 className="text-xl sm:text-[36px] lg:text-4xl  font-bold mb-8 font-merriweather">
+        <h2 className="text-xl sm:text-[25px] lg:text-[30px]  font-bold mb-8 font-merriweather">
           {t("home.gmail_text")}
         </h2>
         <div className="flex">

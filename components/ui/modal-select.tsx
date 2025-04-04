@@ -19,19 +19,20 @@ export const ModalSelect = ({ data, defaultActive, onClick }: Props) => {
         onClick={() => setIsOpen((c) => !c)}
       >
         <h5
-          className="text-[18px] font-medium"
+          className="text-[14px] text-[#666666]"
           style={{
-            color: data?.items.some((item) => item.path == pathname) && !isOpen
-              ? "#4DA6FF"
-              : "",
+            color:
+              data?.items.some((item) => item.path == pathname) && !isOpen
+                ? "#4DA6FF"
+                : "",
           }}
         >
           {data?.title}
         </h5>
         {isOpen ? (
-          <IoChevronUp className="h-4 w-4" />
+          <IoChevronUp className="h-4 w-4 text-[#666666]" />
         ) : (
-          <IoChevronDown className="h-4 w-4" />
+          <IoChevronDown className="h-4 w-4 text-[#666666]" />
         )}
       </div>
 
@@ -41,7 +42,7 @@ export const ModalSelect = ({ data, defaultActive, onClick }: Props) => {
             <div key={item.id} className="mb-4">
               <Link
                 href={item.path}
-                className="text-[#666666] py-2 border-b border-[#CCCCCC] font-medium text-[18px]"
+                className="text-[#666666] py-2 border-b border-[#CCCCCC] text-[14px]"
                 key={item.id}
                 onClick={onClick}
                 style={{

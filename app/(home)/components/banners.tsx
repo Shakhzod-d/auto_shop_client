@@ -1,6 +1,8 @@
+"use client";
 import { useTranslation } from "react-i18next";
 import { Button } from "../../../components/ui/button";
 import { ImgSlider } from "@/components/shared/img-slider";
+import { useRouter } from "next/navigation";
 
 interface Props {
   banner_img: string;
@@ -22,6 +24,7 @@ export const Banners = ({
   img_two,
   ads,
 }: Props) => {
+  const navigate = useRouter();
   const { t } = useTranslation();
   return (
     <section>
@@ -38,14 +41,17 @@ export const Banners = ({
               {desc}
             </p>
             {btn && (
-              <Button className=" px-[51px] bg-[#4DA6FF] font-semibold h-[50px]">
+              <Button
+                className=" px-[51px] bg-[#4DA6FF] font-semibold h-[50px]"
+                onClick={() => navigate.push("/about")}
+              >
                 {t("btn.detail")}
               </Button>
             )}
           </div>
         </div>
       </div>
-      {img_two && <ImgSlider images={ads ??[]} />}
+      {img_two && <ImgSlider images={ads ?? []} />}
     </section>
   );
 };

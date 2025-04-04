@@ -16,23 +16,46 @@ import {
 import { Textarea } from "../../../components/ui/textarea";
 import { useTranslation } from "react-i18next";
 import { ContactsFormSchemaFun } from "@/lib/validation";
-
+import { useMutation } from "@tanstack/react-query";
+import { errorToast, successToast } from "@/lib/toast";
+import { postItemsServ } from "@/services/items-serv";
+import { ContactForm } from "@/types";
+import { Loader2Icon } from "lucide-react";
+const API = process.env.NEXT_PUBLIC_API_URL;
 export function CustomForm() {
+  const { mutate: contactFun, isPending: loading } = useMutation({
+    mutationFn: (obj: ContactForm) => postItemsServ(`${API}/contact`, obj),
+    onSuccess: (data: any) => {
+      if (data.status_code >= 200 && data.status_code < 400) {
+        successToast(t("login.validation.success"));
+        form.reset();
+      }
+      if (data.status_code == 401) {
+        errorToast(t("news.validation.auth"));
+      }
+      if (data.status_code == 422) {
+        errorToast(data.message[0]);
+      }
+    },
+    onError: (err) => {
+      errorToast(err.message || "Something went wrong");
+    },
+  });
   const { t } = useTranslation();
   const ContactsFormSchema = ContactsFormSchemaFun(t);
   const form = useForm<z.infer<typeof ContactsFormSchema>>({
     resolver: zodResolver(ContactsFormSchema),
     defaultValues: {
       name: "",
-      phone: "",
-      mail: "",
-      topic: "",
-      msg: "",
+      phone_number: "",
+      email: "",
+      title: "",
+      message: "",
     },
   });
 
   function onSubmit(data: z.infer<typeof ContactsFormSchema>) {
-    console.log(data);
+    contactFun(data);
   }
 
   return (
@@ -58,7 +81,7 @@ export function CustomForm() {
           />
           <FormField
             control={form.control}
-            name="phone"
+            name="phone_number"
             render={({ field }) => (
               <FormItem>
                 <FormControl>
@@ -75,7 +98,7 @@ export function CustomForm() {
           />
           <FormField
             control={form.control}
-            name="mail"
+            name="email"
             render={({ field }) => (
               <FormItem>
                 <FormControl>
@@ -92,7 +115,7 @@ export function CustomForm() {
           />
           <FormField
             control={form.control}
-            name="topic"
+            name="title"
             render={({ field }) => (
               <FormItem>
                 <FormControl>
@@ -109,7 +132,7 @@ export function CustomForm() {
           />
           <FormField
             control={form.control}
-            name="msg"
+            name="message"
             render={({ field }) => (
               <FormItem>
                 <FormControl>
@@ -126,6 +149,7 @@ export function CustomForm() {
           />
         </div>
         <Button type="submit" className="w-[166px] h-[50px] bg-[#4DA6FF]">
+          {loading && <Loader2Icon />}
           {t("btn.send")}
         </Button>
       </form>

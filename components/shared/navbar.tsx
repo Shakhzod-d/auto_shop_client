@@ -13,6 +13,7 @@ import { useTranslation } from "react-i18next";
 import { SearchInput } from "./search-input";
 import { JSX } from "react";
 import { IoSearchOutline } from "react-icons/io5";
+import Image from "next/image";
 
 interface Props {
   categoryData: Category[];
@@ -40,6 +41,7 @@ export default function Navbar({ categoryData }: Props) {
         >
           {t("btn.entrance")}
         </Button>
+
         <RxHamburgerMenu
           size={34}
           color="#666666"
@@ -55,12 +57,14 @@ export default function Navbar({ categoryData }: Props) {
       <div className="container">
         <div className=" flex justify-between items-center py-5  tablet-max:border-b border-[#888888]  tablet-max:mb-10  ">
           <>
-            <h1
+            <Image
+              src="/imgs/logo.png"
+              alt="autoshop.uz logo"
+              width={60}
+              height={60}
+              className="object-contain cursor-pointer"
               onClick={() => navigate.push("/")}
-              className="cursor-pointer text-[#4DA6FF] font-bold font-merriweather text-[18px] sm:text-[40px] italic    whitespace-nowrap"
-            >
-              {"// AutoShop"}
-            </h1>
+            />
           </>
 
           <div className="items-center flex gap-4 w-full justify-end ">
@@ -69,7 +73,7 @@ export default function Navbar({ categoryData }: Props) {
         </div>
 
         <nav className="hidden tablet-max:block">
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-6">
             {data?.map((item, i) => {
               if (item.isSubCategory) {
                 return (
@@ -83,7 +87,7 @@ export default function Navbar({ categoryData }: Props) {
                 return (
                   <div
                     key={item.subcategory[0]?.id}
-                    className="text-[#333333] text-[19px] font-medium cursor-pointer hover:text-[#4DA6FF]"
+                    className="text-[#333333] text-[18px] font-medium cursor-pointer hover:text-[#4DA6FF]"
                     style={{
                       color:
                         pathname == `/news/${item?.subcategory[0]?.path}`

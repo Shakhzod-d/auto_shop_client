@@ -19,7 +19,7 @@ export const Footer = ({ data }: Props) => {
   return (
     <footer className="bg-[#4DA6FF] py-[30px]">
       <div className="container">
-        <div className=" flex justify-between flex-wrap gap-8 items-center pb-8 border-b mb-16">
+        <div className=" flex justify-between flex-wrap gap-8  pb-8 border-b mb-16">
           <div className="  w-full   flex flex-col sm:flex-row   sm:justify-between sm:flex-wrap laptop-max:max-w-[546px] text-center sm:text-start">
             <div className="flex flex-col gap-4 mb-10 sm:mb-0">
               {FooterList.map((item, i) => (
@@ -69,10 +69,21 @@ export const Footer = ({ data }: Props) => {
                 Obuna Bo’ling
               </p>
               <span className="flex items-center gap-4 sm:justify-self-center justify-center sm:justify-start text-white">
-                <FaTelegram size={30} />
-                <FaInstagram size={30} />
-                <FaFacebook size={30} />
-                <AiOutlineYoutube size={30} />
+                <a href="https://t.me/autoshop_uzz" target="_blank">
+                  <FaTelegram size={30} />
+                </a>
+                <a
+                  href="https://www.instagram.com/autoshop__uz"
+                  target="_blank"
+                >
+                  <FaInstagram size={30} />
+                </a>
+                <a href="https://facebook.com" target="_blank">
+                  <FaFacebook size={30} />
+                </a>
+                <a href="https://youtube.com/@autoshop_uz" target="_blank">
+                  <AiOutlineYoutube size={30} />
+                </a>
               </span>
             </div>
           </div>

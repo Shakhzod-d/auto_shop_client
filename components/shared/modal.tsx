@@ -5,7 +5,6 @@ import {
   FaXTwitter,
   FaYoutube,
   FaTelegram,
-  FaPinterest,
   FaInstagram,
   FaLinkedin,
 } from "react-icons/fa6";
@@ -37,7 +36,7 @@ const AutoShopModal = ({ data }: Props) => {
     setIsModal();
   };
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex  justify-end z-50">
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex  md:justify-end z-50">
       <div
         className={`bg-white shadow-lg  w-[370px] h-screen overflow-y-auto relative p-4`}
       >
@@ -45,20 +44,20 @@ const AutoShopModal = ({ data }: Props) => {
           onClick={setIsModal}
           className="absolute top-4 right-4 text-gray-400 hover:text-gray-600"
         >
-          <IoClose className="h-6 w-6" />
+          <IoClose className="w-10 h-10 md:h-6 md:w-6 absolute right-0" />
         </button>
 
         <div className="p-6">
-          <h1 className="block tablet-middle:hidden text-3xl font-bold text-blue-400 mb-4">
-            AutoShop
+          <h1 className="block tablet-middle:hidden text-2xl font-bold text-blue-400 mb-4 italic   font-merriweather">
+            {"// AutoShop"}
           </h1>
-
-          <div className="space-y-4">
+          <p className="font-merriweather text-black mb-4">Sahifalar</p>
+          <div className="space-y-4 mb-4">
             {modalData.map((item, i) => {
               if (i == 1 || item.items.length <= 1) {
                 return (
                   <p
-                    className=" text-[18px] font-medium"
+                    className=" text-[14px] text-[#666666]"
                     key={i}
                     onClick={() => onClickNavigate(item.items[0].path)}
                     style={{
@@ -79,15 +78,15 @@ const AutoShopModal = ({ data }: Props) => {
               );
             })}
           </div>
-
+          <p className="font-merriweather text-black mb-1">Sozlamalar</p>
           <div className="block tablet-middle:hidden">
-            <div className="mt-6">
+            <div className="">
               <LanguageSelector variant="modal" />
             </div>
 
             {/* Login button */}
             <button
-              className="w-full bg-blue-400 text-white py-2 rounded-md mt-4 hover:bg-blue-500 transition-colors"
+              className="px-8 bg-blue-400 text-white py-2 rounded-md mt-4 hover:bg-blue-500 transition-colors"
               onClick={AuthNavigate}
             >
               {t("btn.entrance")}
@@ -95,31 +94,38 @@ const AutoShopModal = ({ data }: Props) => {
 
             {/* Contact */}
             <div className="mt-6">
-              <div>{t("about.contact.title_one")}</div>
+              <div className="text-black font-merriweather">
+                {t("about.contact.title_one")}
+              </div>
               <div className="text-gray-600 mt-1">+998 93102-59-55</div>
             </div>
 
             <div className="mt-6">
-              <div className="mb-2">{t("contact.social.title_one")}</div>
-              <div className="flex space-x-3">
-                <div className="bg-gray-700 text-white p-1 rounded-md">
-                  <FaXTwitter className="h-5 w-5" />
-                </div>
-                <div className="bg-gray-700 text-white p-1 rounded-md">
-                  <FaTelegram className="h-5 w-5" />
-                </div>
-                <div className="bg-gray-700 text-white p-1 rounded-md">
-                  <FaPinterest className="h-5 w-5" />
-                </div>
-                <div className="bg-gray-700 text-white p-1 rounded-md">
-                  <FaInstagram className="h-5 w-5" />
-                </div>
-                <div className="bg-gray-700 text-white p-1 rounded-md">
-                  <FaLinkedin className="h-5 w-5" />
-                </div>
-                <div className="bg-gray-700 text-white p-1 rounded-md">
-                  <FaYoutube className="h-5 w-5" />
-                </div>
+              <div className="mb-2 text-black font-merriweather">
+                {t("contact.social.title_one")}
+              </div>
+              <div className="flex space-x-3 text-[#666666]">
+                <a href="">
+                  <FaXTwitter className="h-5 w-5" size={24} />
+                </a>
+
+                <a href="https://t.me/autoshop_uzz" target="_blank">
+                  <FaTelegram className="h-5 w-5" size={24} />
+                </a>
+
+                <a
+                  href="https://www.instagram.com/autoshop__uz"
+                  target="_blank"
+                >
+                  <FaInstagram className="h-5 w-5" size={24} />
+                </a>
+
+                <a href="">
+                  <FaLinkedin className="h-5 w-5" size={24} />
+                </a>
+                <a href="https://youtube.com/@autoshop_uz" target="_blank">
+                  <FaYoutube className="h-5 w-5" size={24} />
+                </a>
               </div>
             </div>
           </div>

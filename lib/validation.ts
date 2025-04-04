@@ -3,12 +3,12 @@ import { z } from "zod";
 export const ContactsFormSchemaFun = (t: (key: string) => string) => {
   return z.object({
     name: z.string().min(1, { message: t("contact.validation.name") }),
-    phone: z.string().min(9, { message: t("contact.validation.phone") }),
-    mail: z
+    phone_number: z.string().min(9, { message: t("contact.validation.phone") }),
+    email: z
       .string({ message: t("email.validation.email") })
       .email({ message: t("contact.validation.err_email") }),
-    topic: z.string().min(1, { message: t("contact.validation.message") }),
-    msg: z.string().min(1, { message: t("contact.validation.message") }),
+    title: z.string().min(1, { message: t("contact.validation.topic") }),
+    message: z.string().min(1, { message: t("contact.validation.msg") }),
   });
 };
 export const RegisterFormSchema = (t: (key: string) => string) => {

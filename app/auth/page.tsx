@@ -22,6 +22,7 @@ export default function Auth() {
             alt="auth picture"
             width={570}
             height={450}
+            className="w-full h-full object-cover lg:object-contain lg:w-[570px] lg:h-[450px]"
           />
         </div>
       </div>
