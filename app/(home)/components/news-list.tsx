@@ -36,8 +36,8 @@ export const NewsList = ({ data, setDetailId, variant }: Props) => {
               <Image
                 src={IMG_URL + item.img}
                 alt="autoshop.uz image"
-                layout="fill"
-                objectFit="cover"
+                fill
+                style={{ objectFit: "cover" }}
                 className="rounded-md"
               />
             </div>

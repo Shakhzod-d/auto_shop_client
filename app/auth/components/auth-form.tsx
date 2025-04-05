@@ -72,7 +72,7 @@ export const AuthForm = ({ variant, onSubmit, loading }: Props) => {
           className="flex flex-col gap-8 "
         >
           {data?.form?.inputs?.map((item, i) => (
-            <>
+            
               <FormField
                 key={i}
                 control={form.control}
@@ -104,7 +104,7 @@ export const AuthForm = ({ variant, onSubmit, loading }: Props) => {
                   </FormItem>
                 )}
               />
-            </>
+          
           ))}
           {/* {data.checkbox && (
             <div className="flex items-center space-x-2 text-[#666666] mb-12">

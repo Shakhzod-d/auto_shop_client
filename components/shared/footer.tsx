@@ -4,6 +4,7 @@ import { AiOutlineYoutube } from "react-icons/ai";
 import Link from "next/link";
 import { Category } from "@/types";
 import { FooterList } from "@/utils/constants";
+import Image from "next/image";
 
 interface Props {
   data: Category[] | [];
@@ -19,9 +20,9 @@ export const Footer = ({ data }: Props) => {
   return (
     <footer className="bg-[#4DA6FF] py-[30px]">
       <div className="container">
-        <div className=" flex justify-between flex-wrap gap-8  pb-8 border-b mb-16">
+        <div className=" flex justify-between flex-wrap gap-8  pb-8 border-b mb-10">
           <div className="  w-full   flex flex-col sm:flex-row   sm:justify-between sm:flex-wrap laptop-max:max-w-[546px] text-center sm:text-start">
-            <div className="flex flex-col gap-4 mb-10 sm:mb-0">
+            <div className="flex flex-col gap-2 mb-10 sm:mb-0">
               {FooterList.map((item, i) => (
                 <Link
                   key={i}
@@ -32,7 +33,7 @@ export const Footer = ({ data }: Props) => {
                 </Link>
               ))}
             </div>
-            <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-2">
               {footerData.map((item, i) => {
                 if (i != 2 && i <= 5) {
                   return (
@@ -49,7 +50,7 @@ export const Footer = ({ data }: Props) => {
             </div>
           </div>
           <div className="  w-full   flex flex-col sm:flex-row   sm:justify-between sm:flex-wrap laptop-max:max-w-[546px] text-center sm:text-start">
-            <div className="flex flex-col gap-4 mb-10 sm:mb-0">
+            <div className="flex flex-col gap-2 mb-10 sm:mb-0">
               {footerData.map((item, i) => {
                 if (i >= 6) {
                   return (
@@ -64,7 +65,8 @@ export const Footer = ({ data }: Props) => {
                 }
               })}
             </div>
-            <div className="flex flex-col gap-4">
+
+            <div className="flex flex-col gap-2">
               <p className="text-[18px] font-medium text-[#FFFFFF]">
                 Obuna Bo’ling
               </p>
@@ -89,7 +91,13 @@ export const Footer = ({ data }: Props) => {
           </div>
         </div>
         <div className=" flex  flex-col  text-center gap-4 sm:text-start sm:flex-row  sm:justify-between sm:flex-wrap items-center">
-          <h3 className="text-2xl sm:text-[35px] tablet-max:text-[40px] text-[#FFFFFF] font-semibold italic font-merriweather">{`// AutoShop`}</h3>
+          <Image
+            src="/imgs/logo.png"
+            alt="autoshop.uz logo"
+            width={70}
+            height={70}
+            className="object-contain cursor-pointer"
+          />
           <p className="text-white  w-[280px] tablet-max:w-[500px] ">
             © {date.getFullYear()} AutoShop Yangiliklar. Barcha huquqlar
             himoyalangan.

@@ -74,9 +74,9 @@ export const CardList = ({
     cardListLoading: (
       <div className="w-full max-w-[830px] grid grid-cols-1 tablet-middle:grid-cols-2 gap-[50px] gap-y-[87px] mb-10 border">
         {fakeArray.map((_, i) => (
-          <>
+        
             <CardSkeleton key={i} />
-          </>
+          
         ))}
       </div>
     ),
