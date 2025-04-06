@@ -1,6 +1,23 @@
 import { Category, MapCategoryType } from "../types";
 import { NewsRes } from "../types/news.type";
 
+const onlineShop = {
+  label: "Online Shop",
+  path: "/online-shop",
+  isSubCategory: true,
+  subcategory: [
+    { id: "1", path: "/online-shop", label: "Avtomobil Ehtiyot Qismlari" },
+    { id: "2", path: "/online-shop", label: "Akumulyatorlar" },
+    { id: "3", path: "/online-shop", label: "Inverterlar va Quvvatlovchilar" },
+    {
+      id: "4",
+      path: "/online-shop",
+      label: "Elektr Avtomobillari (EV) Ehtiyot Qismlari",
+    },
+    { id: "5", path: "/online-shop", label: "Avtomobil Aksesuarlar" },
+    { id: "6", path: "/online-shop", label: "Shinalar va G'ildiraklar" },
+  ],
+};
 export const NavbarSelectData = (data: Category[] | []): MapCategoryType[] => {
   const result: MapCategoryType[] = data?.map((item) => {
     return {
@@ -18,6 +35,7 @@ export const NavbarSelectData = (data: Category[] | []): MapCategoryType[] => {
           }),
     };
   });
+  result.push(onlineShop);
   return result;
 };
 
