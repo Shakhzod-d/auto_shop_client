@@ -117,19 +117,19 @@ export const AuthForm = ({ variant, onSubmit, loading }: Props) => {
               </label>
             </div>
           )} */}
-          <div className="flex items-center w-full max-w-[378px] justify-between">
+          <div className="flex items-center w-full max-w-[378px] gap-4">
             {data.closebtn && (
               <Button
                 type="button"
                 onClick={closeBtnChange}
-                className="w-[166px] h-[50px] bg-[#4DA6FFCC]"
+                className="w-[140px] h-[40px] bg-[#4DA6FFCC]"
               >
                 {t("btn.back")}
               </Button>
             )}
             <Button
               type="submit"
-              className="w-[166px] h-[50px] bg-[#4DA6FF]"
+              className="w-[150px] h-[40px] bg-[#4DA6FF]"
               disabled={loading}
             >
               {loading && <Loader2 className="animate-spin" />}

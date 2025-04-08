@@ -28,11 +28,11 @@ export const NewsList = ({ data, setDetailId, variant }: Props) => {
       <div className="grid grid-cols-1 tablet-middle:grid-cols-2  xl:grid-cols-1 gap-4">
         {data.map((item, i) => (
           <div
-            className="flex cursor-pointer gap-2"
+            className="flex cursor-pointer gap-4"
             key={i}
             onClick={() => setDetailId(item.id)}
           >
-            <div className="w-[190px] tablet-max:w-[220px] h-[120px] overflow-hidden rounded-md relative">
+            <div className="w-[220px]  h-[90px] tablet-max:h-[120px] overflow-hidden rounded-md relative">
               <Image
                 src={IMG_URL + item.img}
                 alt="autoshop.uz image"
@@ -49,7 +49,7 @@ export const NewsList = ({ data, setDetailId, variant }: Props) => {
                 <LuClock4 />
                 {formatTimeDifference(Number(item.created))}
               </span>
-              <Button className="text-xs bg-blue-500 text-white py-1 px-2 w-max">
+              <Button className="text-[10px] bg-blue-500 text-white h-6 w-max">
                 {item.category}
               </Button>
             </div>

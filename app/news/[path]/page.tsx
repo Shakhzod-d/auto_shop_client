@@ -20,22 +20,10 @@ export default function News({
 
   // Ads
 
-  const { data: ads } = useQuery<AdsResData>({
-    queryFn: () => fetchItemsServ(`${API}/ad?type=grid`),
-    queryKey: ["fetchItemsAds"],
-    staleTime: 0,
-  });
   const { data: adsCarousel } = useQuery<AdsResData>({
     queryFn: () => fetchItemsServ(`${API}/ad?type=carousel`),
     queryKey: ["fetchItemsAdsCarousel"],
     staleTime: 0,
-  });
-
-  const mapAdsImg: any[] | undefined = ads?.data.map((item) => {
-    return {
-      imgUrl: IMG_URL + item.image.path,
-      id: item.id,
-    };
   });
 
   // news
@@ -97,7 +85,6 @@ export default function News({
           <NewsBar
             data={newsBar ?? []}
             variant={isLoading ? "loading" : "data"}
-            adsData={mapAdsImg ?? []}
           />
         </div>
         <NewsAdvertisement data={adsCarousel?.data ?? []} />

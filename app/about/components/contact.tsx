@@ -49,7 +49,7 @@ export const Contacts = () => {
     <section className="container">
       <div className="max-w-[730px]">
         <h2
-          className="text-[28px] tablet-middle:text-[36px] font-bold mb-4"
+          className="text-[20px] tablet-middle:text-[36px] font-bold mb-4"
           dangerouslySetInnerHTML={{
             __html: t("about.oav.title"),
           }}
@@ -62,9 +62,9 @@ export const Contacts = () => {
           </li>
         ))}
       </ul>
-      <div className="flex  flex-wrap gap-[88px] auto-max:gap-[100px] mb-[110px]">
+      <div className="flex  flex-wrap gap-[50px] tablet-middle:gap-[88px] auto-max:gap-[100px] mb-[110px]">
         <div>
-          <h4 className="text-[28px] font-semibold mb-4">
+          <h4 className="text-xl font-semibold mb-4">
             {t("about.contact.title_one")}
           </h4>
           <ul className=" flex flex-col gap-4">
@@ -85,7 +85,7 @@ export const Contacts = () => {
           </ul>
         </div>
         <div>
-          <h4 className="text-[28px] font-semibold mb-4">
+          <h4 className="text-xl font-semibold mb-4">
             {t("about.contact.title_two")}
           </h4>
           <ul className=" flex flex-col gap-4">
@@ -93,7 +93,7 @@ export const Contacts = () => {
               const Icon = () => item.icon;
               return (
                 <li
-                  className="flex gap-[10px] text-[#666666] items-center text-[20px]"
+                  className="flex gap-[10px] text-[#666666] items-center sm:text-[18px] tablet-max:text-xl"
                   key={item.id}
                 >
                   <div className="w-[52px] h-[52px] tablet-max:w-[58px] tablet-max:h-[58px] rounded-full border border-[#666666] flex justify-center items-center text-[#666666]">

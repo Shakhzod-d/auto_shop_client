@@ -23,14 +23,21 @@ export const Announcements = ({ data }: Props) => {
     <section className="mb-10 sm:mb-[80px]">
       <div className="flex justify-between items-center mb-6">
         <div className="max-w-[600px]">
-          <h3 className="text-xl sm:text-[36px] font-bold  mb-4 font-merriweather">
-            {t("home.announcements")}
-          </h3>
+          <div className="  flex  justify-between items-baseline">
+            <h3 className="text-xl sm:text-[36px] font-bold  mb-4 font-merriweather">
+              {t("home.announcements")}
+            </h3>
+            <div className="flex  tablet-middle:hidden items-center gap-4 text-[#666666]">
+              <CarouselPrevious />
+              <CarouselNext />
+            </div>
+          </div>
+
           <p className="text-[16px] sm:text-xl">
             {t("home.announcements_desc")}
           </p>
         </div>
-        <div className="flex items-center gap-4 text-[#666666]">
+        <div className="hidden tablet-middle:flex items-center gap-4 text-[#666666]">
           <CarouselPrevious />
           <CarouselNext />
         </div>

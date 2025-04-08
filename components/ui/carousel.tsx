@@ -203,12 +203,12 @@ const CarouselPrevious = React.forwardRef<
     <Button
       ref={ref}
       variant={variant}
-      className={cn("h-12 w-12 rounded-full border-[3px] border-[#666666] p-0")}
+      className={cn("h-10 sm:h-12 w-10 sm:w-12 rounded-full border-[3px] border-[#666666] p-0")}
       disabled={!canScrollPrev}
       onClick={scrollPrev}
       {...props}
     >
-      <ArrowLeft className="w-[100px] h-[100px]" size={40} />
+      <ArrowLeft className="w-[10px] h-[10px] sm:w-[100px] sm:h-[100px]" size={10} />
     </Button>
   );
 });
@@ -225,7 +225,7 @@ const CarouselNext = React.forwardRef<
       ref={ref}
       variant={variant}
       size={size}
-      className={cn("h-12 w-12 rounded-full border-[3px] border-[#666666] p-0")}
+      className={cn("h-10 sm:h-12 w-10 sm:w-12 rounded-full border-[3px] border-[#666666] p-0")}
       disabled={!canScrollNext}
       onClick={scrollNext}
       {...props}
