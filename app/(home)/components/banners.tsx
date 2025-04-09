@@ -42,7 +42,7 @@ export const Banners = ({
             </p>
             {btn && (
               <Button
-                className=" px-[51px] bg-[#4DA6FF] font-semibold h-[50px]"
+                className=" px-[21px] bg-[#4DA6FF] font-semibold h-[45px]"
                 onClick={() => navigate.push("/about")}
               >
                 {t("btn.detail")}
@@ -51,7 +51,12 @@ export const Banners = ({
           </div>
         </div>
       </div>
-      {img_two && <ImgSlider images={ads ?? []} />}
+
+      {img_two && (
+        <div className="container">
+          <ImgSlider images={ads ?? []} />
+        </div>
+      )}
     </section>
   );
 };

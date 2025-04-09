@@ -27,7 +27,7 @@ export default function About() {
       {/* add Dockerfile */}
       <Banners
         btn={false}
-        p="137px 0"
+        p="80px 0"
         w="800px"
         title={t("about.banner.title")}
         desc={t("about.banner.desc")}

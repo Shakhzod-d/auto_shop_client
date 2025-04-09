@@ -8,7 +8,7 @@ export const Info = () => {
     <section className="">
       <div className="container w-full bg-[#E9F4FF] py-[50px] flex  justify-center flex-col  tablet-middle:items-center tablet-middle:text-center">
         <div className="w-full max-w-[805px]">
-          <h3 className="text-[28px] tablet-middle:text-[36px] font-bold mb-4">
+          <h3 className="text-xl tablet-middle:text-[36px] font-bold mb-4">
             {t("about.info.box_title")}
           </h3>
           <p className="text-[17px] tablet-middle:text-[20px]">
@@ -27,7 +27,7 @@ export const Info = () => {
             className="mb-12 xl:mb-0"
           />
           <div className="w-full max-w-[678px]">
-            <h3 className="text-[28px] tablet-middle:text-[36px] font-bold mb-4">
+            <h3 className="text-xl tablet-middle:text-[36px] font-bold mb-4">
               {t("about.info.info_title")}
             </h3>
             <p

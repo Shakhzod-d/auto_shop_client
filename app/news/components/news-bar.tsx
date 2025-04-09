@@ -1,6 +1,5 @@
 "use client";
 
-import { AdsCarousel } from "@/components/shared/ads-carusel";
 import { NewsBarLoading } from "@/components/ui/news-bar-loading";
 import { formatTimeDifference } from "@/utils/map-data";
 import Image from "next/image";
@@ -13,10 +12,9 @@ import { MdFiberManualRecord } from "react-icons/md";
 interface Props {
   data: any[] | [];
   variant: "data" | "loading";
-  adsData: { imgUrl: string; id: string }[] | [];
 }
 
-export const NewsBar = ({ data, variant, adsData }: Props) => {
+export const NewsBar = ({ data, variant }: Props) => {
   const { t } = useTranslation();
   const router = useRouter();
   const fakeArr = Array.from({ length: 6 }, (_, i) => i);
@@ -73,11 +71,6 @@ export const NewsBar = ({ data, variant, adsData }: Props) => {
       </h4>
       <div className="flex xl:block justify-between flex-wrap ">
         {barComponent[variant]}
-        <AdsCarousel
-          data={adsData ?? []}
-          height={550}
-          className="object-cover  h-[300px] sm:h-[550px]"
-        />
       </div>
     </aside>
   );

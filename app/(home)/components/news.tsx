@@ -37,22 +37,22 @@ export const NewsDetail = ({ data, variant }: Props) => {
     ),
     data: (
       <>
-        <Button className=" text-[10px] xl:text-[12px] bg-[#3399FF]  h-[26px] px-[5px] mb-2">
+        <Button className=" text-[10px] xl:text-[12px] bg-[#3399FF]  h-[26px] px-[5px] mb-4">
           {data?.category?.name}
         </Button>
         <h5 className="text-xl sm:text-[24px] font-semibold mb-4 font-merriweather ">
           {data.title}
         </h5>
-        <div className="flex items-center gap-3 sm:gap-6 mb-8 text-[#666666]">
-          <span className="flex items-center gap-1 sm:gap-[10px] text-[15px] sm:text-xl">
+        <div className="flex items-center gap-3  mb-8 text-[#666666]">
+          <span className="flex items-center gap-1 sm:gap-[10px] text-[12px] sm:text-xl">
             <LuClock4 />
             {createdTime}
           </span>
-          <span className="flex items-center gap-1 sm:gap-[10px] text-[15px] sm:text-xl">
+          <span className="flex items-center gap-1 sm:gap-[10px] text-[12px] sm:text-xl">
             <MdFiberManualRecord size={25} />
             {data.source}
           </span>
-          <span className="flex items-center gap-1 sm:gap-[10px] text-[15px] sm:text-xl">
+          <span className="flex items-center gap-1 sm:gap-[10px] text-[12px] sm:text-xl">
             <Image
               src="/msg.svg"
               alt=""

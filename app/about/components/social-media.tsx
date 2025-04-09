@@ -57,7 +57,7 @@ export const SocialMedia = () => {
   return (
     <section className="container">
       <div className="w-full max-w-[700px] m-auto">
-        <h2 className="text-[28px] tablet-middle:text-[36px] font-bold tablet-middle:text-center mb-4">
+        <h2 className="text-xl tablet-middle:text-[36px] font-bold tablet-middle:text-center mb-4">
           {t("about.social.title")}
         </h2>
         <p className="text-start tablet-middle:text-center tablet-middle:text-[20px] text-[#666666] mb-8">
@@ -67,7 +67,7 @@ export const SocialMedia = () => {
       <div className="w-full grid m-auto  grid-cols-2 justify-center items-center text-center tablet-middle:grid-cols-3 xl:grid-cols-4 tablet-middle:justify-between  gap-4 xl:gap-8  mb-20 tablet-max:mb-[120px]">
         {socialArr.map((item) => (
           <div
-            className="w-[165px]  tablet-middle:w-[230px] xl:w-[254px] h-[220px] bg-[#F8F8F8] flex flex-col justify-center items-center "
+            className="w-[170px]  tablet-middle:w-[230px] xl:w-[254px] h-[180px] md:h-[220px] bg-[#F8F8F8] flex flex-col justify-center items-center "
             key={item.id}
           >
             <Image
@@ -75,7 +75,7 @@ export const SocialMedia = () => {
               alt=""
               className="mb-5"
               width={50}
-              height={80}
+              height={70}
             />
             <p className="text-[18px] tablet-middle:text-[21px] font-medium mb-5">
               {item.userName}
