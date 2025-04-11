@@ -22,8 +22,7 @@ export const NewsDetail = ({
   comment,
 }: Props) => {
   const createdTime = formatTimeDifference(Number(created));
-  console.log({ img });
-  console.log({ IMG_URL });
+
 
   return (
     <div className="w-full max-w-[800px] mb-16">

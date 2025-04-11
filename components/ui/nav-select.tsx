@@ -1,7 +1,7 @@
 "use client";
 
 import { usePathname, useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { MdKeyboardArrowDown } from "react-icons/md";
 interface Props {
   initialTitle: string;
@@ -15,8 +15,27 @@ export const NavSelect = ({ data, initialTitle }: Props) => {
     navigate.push("/news/" + path);
     setIsOpen(false);
   };
+
+  const selectRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        selectRef.current &&
+        !selectRef.current.contains(event.target as Node)
+      ) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   return (
-    <div className="relative max-w-max">
+    <div className="relative max-w-max" ref={selectRef}>
       <span
         className="flex items-center gap-[5px] text-[18px] font-medium cursor-pointer hover:text-[#4DA6FF]"
         style={{
