@@ -27,7 +27,7 @@ export const Footer = ({ data }: Props) => {
                 <Link
                   key={i}
                   href={item.path}
-                  className="text-[18px] font-medium text-[#FFFFFF]"
+                  className="text-[18px] font-medium text-[#FFFFFF] hover:opacity-70 transition-all"
                 >
                   {item.label}
                 </Link>
@@ -40,7 +40,7 @@ export const Footer = ({ data }: Props) => {
                     <Link
                       key={item.id}
                       href={`/news/${item.id}`}
-                      className="text-[18px] font-medium text-[#FFFFFF]"
+                      className="text-[18px] font-medium text-[#FFFFFF] hover:opacity-70 transition-all"
                     >
                       {item.label}
                     </Link>
@@ -57,7 +57,7 @@ export const Footer = ({ data }: Props) => {
                     <Link
                       key={item.id}
                       href={`/news/${item.id}`}
-                      className="text-[18px] font-medium text-[#FFFFFF]"
+                      className="text-[18px] font-medium text-[#FFFFFF] hover:opacity-70 transition-all"
                     >
                       {item.label}
                     </Link>
@@ -72,19 +72,22 @@ export const Footer = ({ data }: Props) => {
               </p>
               <span className="flex items-center gap-4 sm:justify-self-center justify-center sm:justify-start text-white">
                 <a href="https://t.me/autoshop_uzz" target="_blank">
-                  <FaTelegram size={30} />
+                  <FaTelegram
+                    size={24}
+                    className="hover:translate-y-[-5px] transition-all"
+                  />
                 </a>
                 <a
                   href="https://www.instagram.com/autoshop__uz"
                   target="_blank"
                 >
-                  <FaInstagram size={30} />
+                  <FaInstagram size={24} className="hover:translate-y-[-5px] transition-all"/>
                 </a>
                 <a href="https://facebook.com" target="_blank">
-                  <FaFacebook size={30} />
+                  <FaFacebook size={24} className="hover:translate-y-[-5px] transition-all"/>
                 </a>
                 <a href="https://youtube.com/@autoshop_uz" target="_blank">
-                  <AiOutlineYoutube size={30} />
+                  <AiOutlineYoutube size={24}  className="hover:translate-y-[-5px] transition-all"/>
                 </a>
               </span>
             </div>

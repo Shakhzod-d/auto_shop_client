@@ -15,6 +15,7 @@ import { usePathname, useRouter } from "next/navigation";
 import LanguageSelector from "../ui/langue-select";
 import { ModalSelectMap } from "@/utils/map-data";
 import { useTranslation } from "react-i18next";
+import Image from "next/image";
 
 interface Props {
   data: Category[] | [];
@@ -40,17 +41,24 @@ const AutoShopModal = ({ data }: Props) => {
       <div
         className={`bg-white shadow-lg  w-[370px] h-screen overflow-y-auto relative p-4`}
       >
-        <button
-          onClick={setIsModal}
-          className="absolute top-4 right-4 text-gray-400 hover:text-gray-600"
-        >
-          <IoClose className="w-10 h-10 md:h-6 md:w-6 absolute right-0" />
-        </button>
+        <div>
+          <div className="flex justify-between items-center mb-4">
+            <Image
+              src="/imgs/logo.png"
+              alt="autoshop.uz logo"
+              width={60}
+              height={60}
+              className="object-contain cursor-pointer"
+              onClick={() => router.push("/")}
+            />
+            <button
+              onClick={setIsModal}
+              className=" text-gray-400 hover:text-gray-600"
+            >
+              <IoClose className="w-10 h-8 md:h-6 md:w-6 " />
+            </button>
+          </div>
 
-        <div className="p-6">
-          <h1 className="block tablet-middle:hidden text-2xl font-bold text-blue-400 mb-4 italic   font-merriweather">
-            {"// AutoShop"}
-          </h1>
           <p className="font-merriweather text-black mb-4">Sahifalar</p>
           <div className="space-y-4 mb-4">
             {modalData.map((item, i) => {

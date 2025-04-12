@@ -43,7 +43,7 @@ export const NewsDetail = ({ data, variant }: Props) => {
         <h5 className="text-xl sm:text-[24px] font-semibold mb-4 font-merriweather ">
           {data.title}
         </h5>
-        <div className="flex items-center gap-3  mb-8 text-[#666666]">
+        <div className="flex items-center gap-3  mb-4 text-[#666666]">
           <span className="flex items-center gap-1 sm:gap-[10px] text-[12px] sm:text-xl">
             <LuClock4 />
             {createdTime}
@@ -66,7 +66,7 @@ export const NewsDetail = ({ data, variant }: Props) => {
         <Image
           src={IMG_URL + data?.main_image?.path}
           alt=""
-          className="mb-4 sm:mb-12 rounded-sm object-cover"
+          className="mb-4 sm:mb-8 rounded-sm object-cover"
           width={720}
           height={350}
         />
