@@ -57,7 +57,7 @@ export const SocialMedia = () => {
   return (
     <section className="container">
       <div className="w-full max-w-[700px] m-auto">
-        <h2 className="text-xl tablet-middle:text-[36px] font-bold tablet-middle:text-center mb-4">
+        <h2 className="text-xl tablet-middle:text-[36px] font-bold tablet-middle:text-center mb-4 font-merriweather tablet-middle:leading-[36px]">
           {t("about.social.title")}
         </h2>
         <p className="text-start tablet-middle:text-center tablet-middle:text-[20px] text-[#666666] mb-8">

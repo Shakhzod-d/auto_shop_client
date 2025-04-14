@@ -33,12 +33,12 @@ export const Card = ({ data, categoryId }: Props) => {
           alt="cardImg"
           width={390}
           height={240}
-          className="mb-2 sm:mb-8 rounded-[4px] w-[390px] h-[240px]"
+          className="mb-2 sm:mb-6 rounded-[4px] w-[390px] h-[240px]"
         />
-        <h4 className="text-[18px] sm:text-[24px] tablet-max:text-[28px] font-semibold mb-2 line-clamp-2">
+        <h4 className="text-[18px] sm:text-[24px] tablet-max:text-[24px] font-semibold mb-2 line-clamp-2 font-merriweather">
           {data.title}
         </h4>
-        <span className="flex items-center gap-1 text-[#666666] mb-4 break-words">
+        <span className="text-sm flex items-center gap-1 text-[#666666] mb-4 break-words">
           <Clock4Icon />
           {createdTime}
         </span>

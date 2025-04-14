@@ -40,19 +40,19 @@ export const NewsDetail = ({ data, variant }: Props) => {
         <Button className=" text-[10px] xl:text-[12px] bg-[#3399FF]  h-[26px] px-[5px] mb-4">
           {data?.category?.name}
         </Button>
-        <h5 className="text-xl sm:text-[24px] font-semibold mb-4 font-merriweather ">
+        <h5 className="text-xl sm:text-[24px] font-medium mb-4 font-merriweather ">
           {data.title}
         </h5>
-        <div className="flex items-center gap-3  mb-4 text-[#666666]">
-          <span className="flex items-center gap-1 sm:gap-[10px] text-[12px] sm:text-xl">
-            <LuClock4 />
+        <div className="flex items-center gap-4 mb-8 text-[#666666]">
+          <span className="flex items-center gap-1 sm:gap-[10px] text-[12px] sm:text-[14px]">
+            <LuClock4 size={25}/>
             {createdTime}
           </span>
-          <span className="flex items-center gap-1 sm:gap-[10px] text-[12px] sm:text-xl">
+          <span className="flex items-center gap-1 sm:gap-[10px] text-[12px] sm:text-sm">
             <MdFiberManualRecord size={25} />
             {data.source}
           </span>
-          <span className="flex items-center gap-1 sm:gap-[10px] text-[12px] sm:text-xl">
+          <span className="flex items-center gap-1 sm:gap-[10px] text-[12px] sm:text-sm">
             <Image
               src="/msg.svg"
               alt=""
@@ -71,13 +71,13 @@ export const NewsDetail = ({ data, variant }: Props) => {
           height={350}
         />
         <p
-          className="sm:text-xl text-[#666666] mb-8  line-clamp-[10] news-desc"
+          className="sm:text-[18px] text-[#666666] mb-8  line-clamp-[10] news-desc"
           dangerouslySetInnerHTML={{
             __html: data.content ? data.content : "",
           }}
         ></p>
         <Button
-          className="bg-[#4DA6FF] w-[166px] h-[50px] mb-6 sm:mb-10 md:mb-[66px]"
+          className="bg-[#4DA6FF] w-[150px] h-[45px] mb-6 sm:mb-10 md:mb-[66px]"
           onClick={() => router.push(`/news/${data.subcategory.id}/${data.id}`)}
         >
           {t("btn.full_information")}

@@ -52,11 +52,7 @@ export const Banners = ({
         </div>
       </div>
 
-      {img_two && (
-        <div className="container">
-          <ImgSlider images={ads ?? []} />
-        </div>
-      )}
+      {img_two && <ImgSlider images={ads ?? []} />}
     </section>
   );
 };

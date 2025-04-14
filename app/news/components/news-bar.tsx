@@ -45,15 +45,15 @@ export const NewsBar = ({ data, variant }: Props) => {
               />
             </div>
             <div className="w-full">
-              <p className="text-[18px] font-medium mb-4 break-words">
+              <p className="text-[18px] font-medium mb-4 break-words font-merryweather">
                 {item.title}
               </p>
               <div className="flex items-center text-[#666666] gap-[10px] font-lora">
-                <span className="flex items-center gap-1 text-[15px] sm:text-[17px]">
+                <span className="flex items-center gap-1 text-sm font-montserrat">
                   <LuClock4 />
                   {formatTimeDifference(Number(item.created))}
                 </span>
-                <span className="flex items-center">
+                <span className="flex items-center font-montserrat text-sm">
                   <MdFiberManualRecord size={25} />
                   {item.source}
                 </span>
@@ -66,7 +66,7 @@ export const NewsBar = ({ data, variant }: Props) => {
   };
   return (
     <aside className="w-full  xl:max-w-[444px] ">
-      <h4 className="text-xl sm:text-[28px] font-bold mb-8">
+      <h4 className="text-xl sm:text-[28px] font-semibold mb-8 font-merriweather">
         {t("news.newsBar")}
       </h4>
       <div className="flex xl:block justify-between flex-wrap ">
