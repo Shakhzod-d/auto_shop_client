@@ -29,7 +29,7 @@ export const NewsBar = ({ data, variant }: Props) => {
     ),
     data: (
       <div className="grid grid-cols-1 gap-4 laptop-min:grid-cols-2 xl:block overflow-auto h-[540px] scrollbar-hide mb-3">
-        {data?.map((item) => (
+        {data.length >0? data?.map((item) => (
           <div
             className="flex gap-2 mb-8  p-2 cursor-pointer hover:bg-gray-100 transition rounded-md"
             key={item.id}
@@ -60,7 +60,9 @@ export const NewsBar = ({ data, variant }: Props) => {
               </div>
             </div>
           </div>
-        ))}
+        )):<>
+        <p className="text-sm text-gray-400">Hozirda yangilik mavjud emas : (</p>
+        </>}
       </div>
     ),
   };

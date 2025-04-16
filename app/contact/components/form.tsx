@@ -148,7 +148,7 @@ export function CustomForm() {
             )}
           />
         </div>
-        <Button type="submit" className="w-[166px] h-[50px] bg-[#4DA6FF]">
+        <Button type="submit" className="sm:w-[166px] sm:h-[50px] bg-[#4DA6FF]">
           {loading && <Loader2Icon />}
           {t("btn.send")}
         </Button>

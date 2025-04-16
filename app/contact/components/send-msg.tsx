@@ -42,24 +42,24 @@ export const SendMessage = () => {
             {t("contact.social.title_one")}
           </p>
           <ul className="flex gap-4 items-center">
-            <li className="w-[55px] h-[55px] rounded-[8px]  bg-[#CCCCCC] flex justify-center items-center text-white">
+            <li className="w-[35px] sm:w-[55px] h-[35px] sm:h-[55px] rounded-[8px]  bg-[#CCCCCC] flex justify-center items-center text-white">
               <a href="https://t.me/autoshop_uzz" target="_blank">
-                <PiTelegramLogo size={28} />
+                <PiTelegramLogo className="size-4 sm:size-6"/>
               </a>
             </li>
-            <li className="w-[55px] h-[55px] rounded-[8px]  bg-[#CCCCCC] flex justify-center items-center text-white">
+            <li className="w-[35px] sm:w-[55px] h-[35px] sm:h-[55px] rounded-[8px]  bg-[#CCCCCC] flex justify-center items-center text-white">
               <a href="https://facebook.com" target="_blank">
-                <SlSocialFacebook size={28} />
+                <SlSocialFacebook  className="size-4 sm:size-6"/>
               </a>
             </li>
-            <li className="w-[55px] h-[55px] rounded-[8px]  bg-[#CCCCCC] flex justify-center items-center text-white">
+            <li className="w-[35px] sm:w-[55px] h-[35px] sm:h-[55px] rounded-[8px]  bg-[#CCCCCC] flex justify-center items-center text-white">
               <a href="https://www.instagram.com/autoshop__uz" target="_blank">
-                <IoLogoInstagram size={28} />
+                <IoLogoInstagram  className="size-4 sm:size-6"/>
               </a>
             </li>
-            <li className="w-[55px] h-[55px] rounded-[8px]  bg-[#CCCCCC] flex justify-center items-center text-white">
+            <li className="w-[35px] sm:w-[55px] h-[35px] sm:h-[55px] rounded-[8px]  bg-[#CCCCCC] flex justify-center items-center text-white">
               <a href="https://youtube.com/@autoshop_uz" target="_blank">
-                <AiOutlineYoutube size={28} />
+                <AiOutlineYoutube  className="size-4 sm:size-6"/>
               </a>
             </li>
           </ul>

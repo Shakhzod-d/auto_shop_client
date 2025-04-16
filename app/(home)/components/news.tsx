@@ -77,7 +77,7 @@ export const NewsDetail = ({ data, variant }: Props) => {
           }}
         ></p>
         <Button
-          className="bg-[#4DA6FF] w-[150px] h-[45px] mb-6 sm:mb-10 md:mb-[66px]"
+          className="bg-[#4DA6FF] h-[41] w-[160px] sm:w-[150px] sm:h-[45px] mb-6 sm:mb-10 md:mb-[66px] text-[14px] font-montserrat"
           onClick={() => router.push(`/news/${data.subcategory.id}/${data.id}`)}
         >
           {t("btn.full_information")}

@@ -57,7 +57,7 @@ export const AuthForm = ({ variant, onSubmit, loading }: Props) => {
   return (
     <div>
       <div className="w-full max-w-[532px] mb-[35px]">
-        <h1 className="text-[28px] sm:text-[32px] lg:text-[36px] font-bold mb-4 flex items-center gap-3">
+        <h1 className="text-[24px] sm:text-[32px] lg:text-[36px] font-bold mb-4 flex items-center gap-3">
           {t(data.title)}
           {variant == "register" && <IoMdPersonAdd size={38} />}
           {variant == "forgetPassword" && <LuLockKeyhole size={38} />}
@@ -87,7 +87,7 @@ export const AuthForm = ({ variant, onSubmit, loading }: Props) => {
                           <Input
                             placeholder={t(item.placeholder)}
                             {...field}
-                            className="w-[400px] h-[50px] border border-[#DDDDDD] placeholder:text-[15px] placeholder:text-[#666666]"
+                            className="max-w-[400px] h-[50px] border border-[#DDDDDD] placeholder:text-[15px] placeholder:text-[#666666]"
                           />
                         </FormControl>
                         <FormMessage />

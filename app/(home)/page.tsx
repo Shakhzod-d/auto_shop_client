@@ -70,7 +70,7 @@ export default function Home() {
       />
 
       <main className="container">
-        <section className="mb-5 sm:mb-[60px]  h-full">
+        <section className="mb-12 sm:mb-[60px]  h-full">
           <h3 className="text-[28px] sm:text-[32px] tablet-max:text-[32px] font-bold mb-4 font-merriweather">
             {t("home.latest_news")}
           </h3>
