@@ -39,7 +39,7 @@ export const Card = ({ data, categoryId }: Props) => {
           {data.title}
         </h4>
         <span className="text-sm flex items-center gap-1 text-[#666666] mb-4 break-words">
-          <Clock4Icon />
+          <Clock4Icon size={20}/>
           {createdTime}
         </span>
 
