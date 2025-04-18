@@ -19,11 +19,11 @@ export const GmailInput = () => {
         <div className="flex">
           <Input
             type="email"
-            className="w-[260px] sm:w-[430px]  lg:w-[550px] rounded-r-none h-[40px] sm:h-[54px] bg-[#FFFFFF] border border-[#DDDDDD] border-r-0 placeholder:text-[15px] text-[#666666]"
+            className="w-full sm:w-[430px]  lg:w-[550px] rounded-r-none h-[40px] sm:h-[54px] bg-[#FFFFFF] border border-[#DDDDDD] border-r-0 placeholder:text-[15px] text-[#666666]"
             placeholder={t("home.input_placeholder")}
           />
           <Button
-            className="h-10 sm:h-[54px] bg-[#4DA6FF] py-4 font-semibold px-6 lg:px-[31px] rounded-s-none "
+            className="h-10 sm:h-[54px] bg-[#4DA6FF] py-4 font-semibold sm:px-6 lg:px-[31px] rounded-s-none "
             onClick={() => router.push("/auth")}
           >
             {t("btn.submit")} <FaArrowRightLong />

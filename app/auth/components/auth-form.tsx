@@ -40,7 +40,7 @@ export const AuthForm = ({ variant, onSubmit, loading }: Props) => {
   });
 
   const closeBtnChange = () => {
-   setAuthType("login");
+    setAuthType("login");
   };
   const btnText = (variant: FormVariant) => {
     switch (variant) {
@@ -72,51 +72,39 @@ export const AuthForm = ({ variant, onSubmit, loading }: Props) => {
           className="flex flex-col gap-8 "
         >
           {data?.form?.inputs?.map((item, i) => (
-            
-              <FormField
-                key={i}
-                control={form.control}
-                // @ts-ignore
-                name={item.name}
-                render={({ field }) => (
-                  <FormItem key={item.id}>
-                    <label className="text-[#666666]">{t(item.label)}</label>
-                    <div className="  flex sm-xl:items-center sm-xl:gap-4  lg:w-[635px] flex-col sm-xl:flex-row">
-                      <div>
-                        <FormControl>
-                          <Input
-                            placeholder={t(item.placeholder)}
-                            {...field}
-                            className="max-w-[400px] h-[50px] border border-[#DDDDDD] placeholder:text-[15px] placeholder:text-[#666666]"
-                          />
-                        </FormControl>
-                        <FormMessage />
-                      </div>
-                      {item.name == "password" && variant == "login" && (
-                        <p
-                          className="max-w-[400px] sm-xl:w-full   text-end sm-xl:text-start bottom-[40px] text-[#3399FF] text-[18px] lg:text-xl font-lora cursor-pointer"
-                          onClick={() => setAuthType("forgetPassword")}
-                        >
-                          {t("login.forget_pass")}
-                        </p>
-                      )}
+            <FormField
+              key={i}
+              control={form.control}
+              // @ts-ignore
+              name={item.name}
+              render={({ field }) => (
+                <FormItem key={item.id}>
+                  <label className="text-[#666666]">{t(item.label)}</label>
+                  <div className="  flex sm-xl:items-center sm-xl:gap-4  lg:w-[635px] flex-col sm-xl:flex-row">
+                    <div>
+                      <FormControl>
+                        <Input
+                          placeholder={t(item.placeholder)}
+                          {...field}
+                          className="max-w-[400px] sm:w-[400px] h-[50px] border border-[#DDDDDD] placeholder:text-[15px] placeholder:text-[#666666]"
+                        />
+                      </FormControl>
+                      <FormMessage />
                     </div>
-                  </FormItem>
-                )}
-              />
-          
+                    {item.name == "password" && variant == "login" && (
+                      <p
+                        className="max-w-[400px] sm-xl:w-full   text-end sm-xl:text-start bottom-[40px] text-[#3399FF] sm:text-[18px] lg:text-xl font-lora cursor-pointer mt-1"
+                        onClick={() => setAuthType("forgetPassword")}
+                      >
+                        {t("login.forget_pass")}
+                      </p>
+                    )}
+                  </div>
+                </FormItem>
+              )}
+            />
           ))}
-          {/* {data.checkbox && (
-            <div className="flex items-center space-x-2 text-[#666666] mb-12">
-              <Checkbox id="terms" className="w-[19px] h-[19px] " />
-              <label
-                htmlFor="terms"
-                className="text-[18px] text-[#666666] font-lora cursor-pointer"
-              >
-                {t("register.checkLabel")}
-              </label>
-            </div>
-          )} */}
+
           <div className="flex items-center w-full max-w-[378px] gap-4">
             {data.closebtn && (
               <Button
@@ -137,7 +125,7 @@ export const AuthForm = ({ variant, onSubmit, loading }: Props) => {
             </Button>
           </div>
           {variant === "login" && (
-            <p className=" mt-[32px] text-[18px] lg:text-xl font-lora ">
+            <p className=" mt-6 sm:mt-[32px] sm:text-[18px] lg:text-xl font-lora ">
               {t("login.register")}
               <span
                 className="text-[#3399FF] cursor-pointer"

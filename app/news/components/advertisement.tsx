@@ -1,6 +1,7 @@
 import { Ads } from "@/types/news.type";
 import { Button } from "../../../components/ui/button";
 import Image from "next/image";
+import { useTranslation } from "react-i18next";
 
 interface Props {
   data: Ads[] | [];
@@ -8,7 +9,7 @@ interface Props {
 
 export const NewsAdvertisement = ({ data }: Props) => {
   const IMG_URL = process.env.NEXT_PUBLIC_IMG_API;
-
+  const { t } = useTranslation();
   return (
     <section className="w-full mb-[115px]">
       <div className="flex gap-4 overflow-x-auto md:overflow-x-hidden scrollbar-hide">
@@ -33,7 +34,7 @@ export const NewsAdvertisement = ({ data }: Props) => {
             </div>
             <a href={item.url} target="_blank" rel="noopener noreferrer">
               <Button className="w-full h-[45px] bg-[#4DA6FF] font-semibold">
-                To’liq Malumot Olish
+                {t("btn.full_information")}
               </Button>
             </a>
           </div>

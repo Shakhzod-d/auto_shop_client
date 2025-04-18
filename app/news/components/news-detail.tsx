@@ -2,7 +2,8 @@ import Image from "next/image";
 import React from "react";
 import { LuClock4 } from "react-icons/lu";
 import { Comment } from "./comment";
-import { formatTimeDifference } from "@/utils/map-data";
+import { FormatTimeDifference } from "@/utils/map-data";
+import { useTranslation } from "react-i18next";
 interface Props {
   img: string;
   title: string;
@@ -21,8 +22,8 @@ export const NewsDetail = ({
   id,
   comment,
 }: Props) => {
-  const createdTime = formatTimeDifference(Number(created));
-
+  const { t } = useTranslation();
+  const createdTime = FormatTimeDifference(Number(created), t);
 
   return (
     <div className="w-full max-w-[800px] mb-16">
@@ -55,7 +56,7 @@ export const NewsDetail = ({
             height={25}
             className="w-5 sm:w-[25px]"
           />
-          {comment ? comment : 0} sharhlar
+          {comment ? comment : 0} {t("home.comments")}
         </span>
       </div>
 

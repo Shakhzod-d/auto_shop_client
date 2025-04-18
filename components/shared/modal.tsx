@@ -59,7 +59,7 @@ const AutoShopModal = ({ data }: Props) => {
             </button>
           </div>
 
-          <p className="font-merriweather text-black mb-4">Sahifalar</p>
+          <p className="font-merriweather text-black mb-4">{t("modal.page")}</p>
           <div className="space-y-4 mb-4">
             {modalData.map((item, i) => {
               if (i == 1 || item.items.length <= 1) {
@@ -86,7 +86,9 @@ const AutoShopModal = ({ data }: Props) => {
               );
             })}
           </div>
-          <p className="font-merriweather text-black mb-1">Sozlamalar</p>
+          <p className="font-merriweather text-black mb-1">
+            {t("modal.settings")}
+          </p>
           <div className="block tablet-middle:hidden">
             <div className="">
               <LanguageSelector variant="modal" />

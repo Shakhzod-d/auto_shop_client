@@ -1,6 +1,5 @@
 import { Category, MapCategoryType } from "../types";
 import { NewsRes } from "../types/news.type";
-
 const onlineShop = {
   label: "Online Shop",
   path: "/online-shop",
@@ -68,8 +67,12 @@ export const ModalSelectMap = (data: Category[] | []) => {
   });
 };
 
-export const formatTimeDifference = (timestamp: number): string => {
+export const FormatTimeDifference = (
+  timestamp: number,
+  t: (key: string) => void
+) => {
   const now = Date.now();
+
   const diff = now - timestamp;
   const seconds = Math.floor(diff / 1000);
   const minutes = Math.floor(seconds / 60);
@@ -77,9 +80,11 @@ export const formatTimeDifference = (timestamp: number): string => {
   const days = Math.floor(hours / 24);
 
   if (hours < 24) {
-    return hours > 0 ? `${hours} soat oldin` : `${minutes} daqiqa oldin`;
+    return hours > 0
+      ? `${hours} ${t("time.hours")}`
+      : `${minutes} ${t("time.min")}`;
   } else if (days < 3) {
-    return `${days} kun oldin`;
+    return `${days} ${t("time.day")}`;
   } else {
     const date = new Date(timestamp);
     return date.toLocaleDateString("uz-UZ"); // Masalan, 07.03.2025

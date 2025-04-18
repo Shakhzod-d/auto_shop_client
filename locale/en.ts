@@ -11,6 +11,15 @@ export const LangueEn = {
     confirmation: "Confirmation",
     home: "Home page",
   },
+  modal: {
+    page: "Pages",
+    settings: "Settings",
+  },
+  time: {
+    day: " day before",
+    hours: "hour ago",
+    min: "minutes ago",
+  },
   home: {
     latest_news: "Latest News",
     announcements: "Announcements",
@@ -18,6 +27,7 @@ export const LangueEn = {
       "For any questions regarding advertising, you can contact us at +998 93 102 59 55.",
     gmail_text: "Stay informed about the news.",
     input_placeholder: "Your email",
+    comments: "Comments",
   },
   news: {
     newsBar: "More News",
@@ -40,8 +50,10 @@ export const LangueEn = {
       email: "Enter your email address!",
       invalid_email: "Invalid email address!",
       password: "Create a password",
-      password_invalid: " password is not strong enough.",
+      password_invalid: "The password must be at least 6 characters long.",
       exist_user: "User already exists!",
+      pass_inv:
+        "The password must be at least 6 characters long, contain at least one uppercase letter and one number",
     },
     checkLabel: "I agree to the terms of use.",
   },
@@ -160,5 +172,14 @@ Or Media Terms of Use:`,
   homeBanner: {
     title: "Latest Automotive News and Tech Reviews",
     desc: "On our platform you can find the latest information about automotive news, technology news and electric cars. News, reviews and guides for Uzbek car enthusiasts - all in one place!",
+  },
+
+  footer: {
+    about: "About",
+    team: "Team",
+    contacts: "Contacts",
+    new: "Premiere",
+    subscribe: "Subscribe",
+    faq: " AutoShop News. All rights reserved.",
   },
 };

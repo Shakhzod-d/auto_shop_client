@@ -3,11 +3,9 @@ import { Language } from "../types";
 import { LoginFormSchema, RegisterFormSchema } from "@/lib/validation";
 
 export const FooterList = [
-  { label: "Biz Haqimizda", path: "/about" },
-  { label: "Jamoa", path: "/team" },
-  { label: "Bog’lanish", path: "/contact" },
-  { label: "Online Shop", path: "/" },
-  { label: "Premyera", path: "/" },
+  { label: "footer.about", path: "/about" },
+  { label: "footer.team", path: "/team" },
+  { label: "footer.contacts", path: "/contact" },
 ];
 
 export const HomeBanner = {
@@ -102,5 +100,17 @@ export const languages: Language[] = [
     code: "en",
     name: "En",
     flag: "/en.svg",
+  },
+];
+
+export const AuthErrors = [
+  {
+    key: "register.validation.pass_inv",
+    label:
+      "Password must be at least 6 characters long, contain at least one uppercase letter and one number",
+  },
+  {
+    key: "register.validation.exist_user",
+    label: "User already exists!",
   },
 ];

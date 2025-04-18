@@ -1,8 +1,8 @@
+"use client";
 import { useTranslation } from "react-i18next";
 import { CiClock2 } from "react-icons/ci";
 import { MdMailOutline, MdOutlinePhone } from "react-icons/md";
 import { PiTelegramLogo } from "react-icons/pi";
-
 
 const list = [
   "condition1",
@@ -40,7 +40,6 @@ const contactList2 = [
     label: " Dush. - Shan.  9:00 - 18:00",
   },
 ];
-
 
 export const Contacts = () => {
   const { t } = useTranslation();

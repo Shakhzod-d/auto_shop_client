@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Category } from "@/types";
 import { FooterList } from "@/utils/constants";
 import Image from "next/image";
+import { useTranslation } from "react-i18next";
 
 interface Props {
   data: Category[] | [];
@@ -17,6 +18,7 @@ export const Footer = ({ data }: Props) => {
   });
 
   const date = new Date();
+  const { t } = useTranslation();
   return (
     <footer className="bg-[#4DA6FF] py-[30px]">
       <div className="container">
@@ -29,7 +31,7 @@ export const Footer = ({ data }: Props) => {
                   href={item.path}
                   className="text-[18px] font-medium text-[#FFFFFF] hover:opacity-70 transition-all"
                 >
-                  {item.label}
+                  {t(item.label)}
                 </Link>
               ))}
             </div>
@@ -68,7 +70,7 @@ export const Footer = ({ data }: Props) => {
 
             <div className="flex flex-col gap-2">
               <p className="text-[18px] font-medium text-[#FFFFFF]">
-                Obuna Bo’ling
+              {t("footer.subscribe")}
               </p>
               <span className="flex items-center gap-4 sm:justify-self-center justify-center sm:justify-start text-white">
                 <a href="https://t.me/autoshop_uzz" target="_blank">
@@ -81,13 +83,22 @@ export const Footer = ({ data }: Props) => {
                   href="https://www.instagram.com/autoshop__uz"
                   target="_blank"
                 >
-                  <FaInstagram size={24} className="hover:translate-y-[-5px] transition-all"/>
+                  <FaInstagram
+                    size={24}
+                    className="hover:translate-y-[-5px] transition-all"
+                  />
                 </a>
                 <a href="https://facebook.com" target="_blank">
-                  <FaFacebook size={24} className="hover:translate-y-[-5px] transition-all"/>
+                  <FaFacebook
+                    size={24}
+                    className="hover:translate-y-[-5px] transition-all"
+                  />
                 </a>
                 <a href="https://youtube.com/@autoshop_uz" target="_blank">
-                  <AiOutlineYoutube size={24}  className="hover:translate-y-[-5px] transition-all"/>
+                  <AiOutlineYoutube
+                    size={24}
+                    className="hover:translate-y-[-5px] transition-all"
+                  />
                 </a>
               </span>
             </div>
@@ -102,8 +113,7 @@ export const Footer = ({ data }: Props) => {
             className="object-contain cursor-pointer"
           />
           <p className="text-white  w-[280px] tablet-max:w-[500px] ">
-            © {date.getFullYear()} AutoShop Yangiliklar. Barcha huquqlar
-            himoyalangan.
+            © {date.getFullYear()} {t("footer.faq")}
           </p>
         </div>
       </div>

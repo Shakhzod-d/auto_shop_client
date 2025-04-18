@@ -12,6 +12,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { errorToast, successToast } from "@/lib/toast";
 import { CommentFormSchema } from "@/lib/validation";
 import { postItemsServ } from "@/services/items-serv";
+import { getLocaleStorage } from "@/utils/locale-storage";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation } from "@tanstack/react-query";
@@ -30,13 +31,16 @@ interface Props {
 export const Comment = ({ id, comment }: Props) => {
   const navigate = useRouter();
   const { t } = useTranslation();
+  const token = getLocaleStorage("userToken");
   const formSchema = CommentFormSchema(t);
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       text: "",
     },
   });
+
   const { mutate: commentFun, isPending: loading } = useMutation({
     mutationFn: (obj: { text: string; news_id: string }) =>
       postItemsServ(`${API}/comment`, obj),
@@ -59,7 +63,7 @@ export const Comment = ({ id, comment }: Props) => {
   };
 
   return (
-    <div className="px-[50px] py-5 bg-[#F8F8F8] w-full max-w-[670px] rounded-sm">
+    <div className="px-6 sm:px-[50px] py-5 bg-[#F8F8F8] w-full max-w-[670px] rounded-sm">
       <div className="flex justify-between items-center mb-8">
         <span className="flex items-center gap-1 sm:gap-[10px] text-[15px] sm:text-[17px] font-lora">
           <Image
@@ -71,12 +75,14 @@ export const Comment = ({ id, comment }: Props) => {
           />
           {comment ? comment : 0} {t("news.commit")}
         </span>
-        <Button
-          className="py-[12px]     w-[130px]  h-10 md:w-[142px] md:h-11 bg-[#4DA6FF] rounded-md text-white font-semibold "
-          onClick={() => navigate.push("/auth")}
-        >
-          {t("btn.entrance")}
-        </Button>
+        {token?.length == 0 && (
+          <Button
+            className="py-[12px]     w-[130px]  h-10 md:w-[142px] md:h-11 bg-[#4DA6FF] rounded-md text-white font-semibold "
+            onClick={() => navigate.push("/auth")}
+          >
+            {t("btn.entrance")}
+          </Button>
+        )}
       </div>
       <p className="text-[21px] font-medium mb-4">
         {t("news.validation.commit")}

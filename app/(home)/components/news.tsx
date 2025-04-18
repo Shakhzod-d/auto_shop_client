@@ -8,18 +8,20 @@ import { NewsRes } from "../../../types/news.type";
 import { useTranslation } from "react-i18next";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { formatTimeDifference } from "@/utils/map-data";
+import { FormatTimeDifference } from "@/utils/map-data";
 import { Skeleton } from "@/components/ui/skeleton";
 
 interface Props {
   data: NewsRes;
   variant: "loading" | "data";
+  currentRef: React.RefObject<HTMLButtonElement | null>;
 }
 const IMG_URL = process.env.NEXT_PUBLIC_IMG_API;
-export const NewsDetail = ({ data, variant }: Props) => {
-  const router = useRouter();
-  const createdTime = formatTimeDifference(Number(data.created_at));
+export const NewsDetail = ({ data, variant, currentRef }: Props) => {
   const { t } = useTranslation();
+
+  const router = useRouter();
+  const createdTime = FormatTimeDifference(Number(data.created_at), t);
   const component = {
     loading: (
       <>
@@ -37,7 +39,10 @@ export const NewsDetail = ({ data, variant }: Props) => {
     ),
     data: (
       <>
-        <Button className=" text-[10px] xl:text-[12px] bg-[#3399FF]  h-[26px] px-[5px] mb-4">
+        <Button
+          className=" text-[10px] xl:text-[12px] bg-[#3399FF]  h-[26px] px-[5px] mb-4"
+          ref={currentRef}
+        >
           {data?.category?.name}
         </Button>
         <h5 className="text-xl sm:text-[24px] font-medium mb-4 font-merriweather ">
@@ -45,7 +50,7 @@ export const NewsDetail = ({ data, variant }: Props) => {
         </h5>
         <div className="flex items-center gap-4 mb-8 text-[#666666]">
           <span className="flex items-center gap-1 sm:gap-[10px] text-[12px] sm:text-[14px]">
-            <LuClock4 size={25}/>
+            <LuClock4 size={20} className="size-4 sm:size-5"/>
             {createdTime}
           </span>
           <span className="flex items-center gap-1 sm:gap-[10px] text-[12px] sm:text-sm">
@@ -58,9 +63,9 @@ export const NewsDetail = ({ data, variant }: Props) => {
               alt=""
               width={25}
               height={25}
-              className="w-5 sm:w-[25px]"
+              className="w-5 sm:w-[20px]"
             />
-            {data.comment_count} Sharhlar
+            {data.comment_count} {t("home.comments")}
           </span>
         </div>
         <Image
@@ -77,7 +82,7 @@ export const NewsDetail = ({ data, variant }: Props) => {
           }}
         ></p>
         <Button
-          className="bg-[#4DA6FF] h-[41] w-[160px] sm:w-[150px] sm:h-[45px] mb-6 sm:mb-10 md:mb-[66px] text-[14px] font-montserrat"
+          className="bg-[#4DA6FF] h-[41px] px-4  sm:h-[45px] mb-6 sm:mb-10 md:mb-[66px] text-[14px] font-montserrat"
           onClick={() => router.push(`/news/${data.subcategory.id}/${data.id}`)}
         >
           {t("btn.full_information")}

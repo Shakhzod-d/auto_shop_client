@@ -18,6 +18,11 @@ const errMsg = [
     code: "register.validation.password_invalid",
   },
   {
+    code: "register.validation.pass_inv",
+    validation:
+      "Password must be at least 6 characters long, contain at least one uppercase letter and one number",
+  },
+  {
     validation: "User already exists!",
     code: "register.validation.exist_user",
   },
@@ -35,24 +40,30 @@ export const Register = () => {
 
   const { mutate: createCategoryFn, isPending: loading } = useMutation({
     mutationFn: (obj: AuthFormType | ForgetPassFormType) =>
-      postItemsServ<AuthFormType |ForgetPassFormType, RegisterRes>(`${API}/auth/register`, obj),
+      postItemsServ<AuthFormType | ForgetPassFormType, RegisterRes>(
+        `${API}/auth/register`,
+        obj
+      ),
     onSuccess: (data) => {
-      if (data.status_code >= 200 && data.status_code < 400) {
+      console.log({ data });
+
+      if (data.status_code >= 200 && data.status_code <= 400) {
         setUserId(data.data.id);
         setRegisterType("verify");
       } else {
         const errText =
           typeof data.message === "object" ? data.message[0] : data.message;
+        console.log(errText);
+
         errorFun(errText);
       }
     },
     onError: (error: any) => {
-      errorToast(error.message || "Something went wrong");
+      console.log(error);
     },
   });
   const onSubmit = (data: AuthFormType | ForgetPassFormType) => {
     createCategoryFn(data);
-    console.log({ register: data });
   };
   return (
     <div>

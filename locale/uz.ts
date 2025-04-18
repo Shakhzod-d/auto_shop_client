@@ -11,6 +11,16 @@ export const LangueUz = {
     confirmation: "Tasdiqlash",
     home: "Bosh sahifaga",
   },
+
+  modal: {
+    page: "Sahifalar",
+    settings: "Sozlamalar",
+  },
+  time: {
+    day: "kun oldin",
+    hours: "soat oldin",
+    min: "minut oldin",
+  },
   home: {
     latest_news: "So'ngi Yangiliklar",
     announcements: "E'lonlar",
@@ -18,6 +28,7 @@ export const LangueUz = {
       "Reklama bilan bog‘liq istalgan savollar bo‘yicha+998 93 102 59 55 telefoni orqali bog‘lanishingiz mumkin.",
     gmail_text: "Yangiliklardan Xabardor Bo‘ling",
     input_placeholder: "Elektron pochtangiz",
+    comments: "Sharhlar",
   },
   news: {
     newsBar: "Ko'proq Yangiliklar",
@@ -41,8 +52,10 @@ export const LangueUz = {
       email: "Email pochtani kiriting !",
       invalid_email: "Email pochta manzili yaroqsiz !",
       password: "Parol yarating",
-      password_invalid: "parol yetarli darajada kuchli emas",
+      password_invalid: "parol kamida 6 ta belgidan iborat bulishi kerak",
       exist_user: "Foydalanuvchi allaqachon mavjud!",
+      pass_inv:
+        "Parol kamida 6 ta belgidan iborat bo'lishi kerak, kamida bitta katta harf va bitta raqamdan iborat bo'lishi kerak",
     },
     checkLabel: "Foydalanish shartiga rozilik bildiraman",
   },
@@ -176,5 +189,13 @@ Yangiliklardan Xabardor Bo'ling!`,
   homeBanner: {
     title: "So‘nggi Avtomobil Yangiliklari va Texnologiya Sharhlari",
     desc: "Bizning platformamizda avtomobil yangiliklari, texnologik yangiliklar va elektr avtomobillar haqida eng so‘nggi ma'lumotlarni topishingiz mumkin. O‘zbekistonlik avtomobil ishqibozlari uchun yangiliklar, sharhlar va qo‘llanmalar – barchasi bir joyda!",
+  },
+  footer: {
+    about: "Biz Haqimizda",
+    team: "Jamoa",
+    contacts: "Bog'lanish",
+    new: "Primyera",
+    subscribe: "Obuna bo'ling",
+    faq: " AutoShop Yangiliklar. Barcha huquqlar himoyalangan.",
   },
 };

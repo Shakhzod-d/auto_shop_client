@@ -1,7 +1,7 @@
 "use client";
 
 import { NewsBarLoading } from "@/components/ui/news-bar-loading";
-import { formatTimeDifference } from "@/utils/map-data";
+import { FormatTimeDifference } from "@/utils/map-data";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { JSX } from "react";
@@ -51,7 +51,7 @@ export const NewsBar = ({ data, variant }: Props) => {
               <div className="flex items-center text-[#666666] gap-[10px] font-lora">
                 <span className="flex items-center gap-1 text-sm font-montserrat">
                   <LuClock4 />
-                  {formatTimeDifference(Number(item.created))}
+                  {FormatTimeDifference(Number(item.created),t)}
                 </span>
                 <span className="flex items-center font-montserrat text-sm">
                   <MdFiberManualRecord size={25} />

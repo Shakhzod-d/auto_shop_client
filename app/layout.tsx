@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Montserrat, Lora,  Poppins } from "next/font/google";
+import { Montserrat, Lora, Poppins } from "next/font/google";
 import "./index.css";
 import AppLayout from "./app-layout";
 import QueryProvider from "../providers/query-provider";

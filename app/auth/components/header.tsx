@@ -7,7 +7,7 @@ export const Header = () => {
   const navigate = useRouter();
 
   return (
-    <header className="py-[30px] bg-[#F8F8F8]  mb-[90px] lg:mb-28">
+    <header className="py-[10px] sm:py-[30px] bg-[#F8F8F8]   mb-12 tablet-middle:mb-[90px] lg:mb-28">
       <div className="container flex justify-between items-center">
         <Image
           src="/imgs/logo.png"

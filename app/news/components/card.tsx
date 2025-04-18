@@ -1,9 +1,10 @@
 "use client";
 
-import { formatTimeDifference } from "@/utils/map-data";
+import { FormatTimeDifference } from "@/utils/map-data";
 import { Clock4Icon } from "lucide-react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { useTranslation } from "react-i18next";
 
 interface Props {
   data: {
@@ -17,13 +18,14 @@ interface Props {
 }
 
 export const Card = ({ data, categoryId }: Props) => {
-  const createdTime = formatTimeDifference(Number(data.created));
+  const { t } = useTranslation();
+  const createdTime = FormatTimeDifference(Number(data.created), t);
   const router = useRouter();
   const onChange = () => {
     router.push(`/news/${categoryId}/${data.id}`);
   };
   return (
-    <div className="flex justify-center"  >
+    <div className="flex justify-center">
       <div
         className="w-[398px] tablet-middle:w-[335px] tablet-max:w-[390px] cursor-pointer"
         onClick={onChange}
@@ -39,7 +41,7 @@ export const Card = ({ data, categoryId }: Props) => {
           {data.title}
         </h4>
         <span className="text-sm flex items-center gap-1 text-[#666666] mb-4 break-words">
-          <Clock4Icon size={20}/>
+          <Clock4Icon size={20} />
           {createdTime}
         </span>
 

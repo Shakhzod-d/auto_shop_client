@@ -3,18 +3,30 @@ import { LuClock4 } from "react-icons/lu";
 import Image from "next/image";
 import { Button } from "../../../components/ui/button";
 import { NewsListType } from "../../../types/news.type";
-import { formatTimeDifference } from "@/utils/map-data";
+import { FormatTimeDifference } from "@/utils/map-data";
 import { NewsBarLoading } from "@/components/ui/news-bar-loading";
 import { JSX } from "react";
+import { useTranslation } from "react-i18next";
 
 interface Props {
   data: NewsListType[];
   setDetailId: (data: string) => void;
   variant: "loading" | "data";
+  onClickScroll: () => void;
 }
 
 const IMG_URL = process.env.NEXT_PUBLIC_IMG_API;
-export const NewsList = ({ data, setDetailId, variant }: Props) => {
+export const NewsList = ({
+  data,
+  setDetailId,
+  variant,
+  onClickScroll,
+}: Props) => {
+  const onClickNews = (id: string) => {
+    onClickScroll();
+    setDetailId(id);
+  };
+  const { t } = useTranslation();
   const fakeArray = Array.from({ length: 8 }, (_, i) => i);
   const component: Record<string, JSX.Element> = {
     loading: (
@@ -30,7 +42,7 @@ export const NewsList = ({ data, setDetailId, variant }: Props) => {
           <div
             className="flex cursor-pointer gap-4"
             key={i}
-            onClick={() => setDetailId(item.id)}
+            onClick={() => onClickNews(item.id)}
           >
             <div className="w-[220px]  h-[90px] tablet-max:h-[120px] overflow-hidden rounded-md relative">
               <Image
@@ -47,7 +59,7 @@ export const NewsList = ({ data, setDetailId, variant }: Props) => {
               </p>
               <span className="flex items-center gap-2 text-gray-600 text-sm">
                 <LuClock4 />
-                {formatTimeDifference(Number(item.created))}
+                {FormatTimeDifference(Number(item.created),t)}
               </span>
               <Button className="text-[10px] bg-blue-500 text-white h-6 w-max">
                 {item.category}
@@ -60,7 +72,10 @@ export const NewsList = ({ data, setDetailId, variant }: Props) => {
   };
   return (
     <div className="w-full xl:w-[430px]">
-      <p className="text-2xl font-semibold mb-8 font-merriweather">{`Ko'proq Yangiliklar`}</p>
+      <p className="text-2xl font-semibold mb-8 font-merriweather">
+        {" "}
+        {t("news.newsBar")}
+      </p>
       <div className="overflow-y-auto overflow-x-hidden scrollbar-hide xl:h-[100vh]">
         {component[variant]}
       </div>

@@ -24,11 +24,7 @@ export const Login = () => {
         setLocaleStorage("UserToken", data.data.access_token);
         router.push("/");
       } else {
-        const text =
-          data.message == "Username or password incorrect!"
-            ? t("login.validation.error")
-            : "";
-        errorToast(text);
+        errorToast(t("login.validation.error"));
       }
     },
     onError: (err) => {
