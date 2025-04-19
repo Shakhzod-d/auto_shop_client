@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Montserrat, Lora, Poppins } from "next/font/google";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import "./index.css";
 import AppLayout from "./app-layout";
 import QueryProvider from "../providers/query-provider";
@@ -38,9 +39,12 @@ export default function RootLayout({
         className={`${montserrat.variable} ${lora.variable} ${merriweather.variable} antialiased`}
       >
         <QueryProvider>
-          <AppLayout>{children}</AppLayout>
+          <AppLayout>
+            {children}
+          </AppLayout>
         </QueryProvider>
       </body>
+            <GoogleAnalytics gaId="G-H6P5VN8VJG" />
     </html>
   );
 }
