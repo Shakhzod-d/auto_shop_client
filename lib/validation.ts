@@ -16,9 +16,17 @@ export const RegisterFormSchema = (t: (key: string) => string) => {
     email: z
       .string({ message: t("register.validation.email") })
       .email({ message: t("register.validation.invalid_email") }),
-      password:z.string({message:t("register.validation.password")}).min(6,{message:t("register.validation.password_invalid")})
+    password: z
+      .string({ message: t("register.validation.password") })
+      .min(6, { message: t("register.validation.password_invalid") }),
   });
-
+};
+export const ForgetPassFormSchema = (t: (key: string) => string) => {
+  return z.object({
+    email: z
+      .string({ message: t("register.validation.email") })
+      .email({ message: t("register.validation.invalid_email") }),
+  });
 };
 export const ResetPasswordFormSchema = (t: (key: string) => string) => {
   return z.object({

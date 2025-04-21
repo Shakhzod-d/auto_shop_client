@@ -10,6 +10,7 @@ export const LangueUz = {
     send: "Yuborish",
     confirmation: "Tasdiqlash",
     home: "Bosh sahifaga",
+    logout: "chiqish",
   },
 
   modal: {

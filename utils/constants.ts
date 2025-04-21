@@ -1,6 +1,10 @@
 "use client";
 import { Language } from "../types";
-import { LoginFormSchema, RegisterFormSchema } from "@/lib/validation";
+import {
+  ForgetPassFormSchema,
+  LoginFormSchema,
+  RegisterFormSchema,
+} from "@/lib/validation";
 
 export const FooterList = [
   { label: "footer.about", path: "/about" },
@@ -72,7 +76,7 @@ export const AuthData = {
     checkbox: false,
     closebtn: true,
     form: {
-      validate: RegisterFormSchema,
+      validate: ForgetPassFormSchema,
       inputs: [
         {
           id: "1",

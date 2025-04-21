@@ -10,6 +10,7 @@ export const LangueRu = {
     send: "Отправлять",
     confirmation: "Подтверждение",
     home: "домашняя страница",
+    logout: "Выход",
   },
   modal: {
     page: "Страницы",

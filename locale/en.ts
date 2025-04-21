@@ -10,6 +10,7 @@ export const LangueEn = {
     send: "Send",
     confirmation: "Confirmation",
     home: "Home page",
+    logout: "logout",
   },
   modal: {
     page: "Pages",

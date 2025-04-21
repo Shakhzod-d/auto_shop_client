@@ -16,6 +16,8 @@ import LanguageSelector from "../ui/langue-select";
 import { ModalSelectMap } from "@/utils/map-data";
 import { useTranslation } from "react-i18next";
 import Image from "next/image";
+import { getLocaleStorage } from "@/utils/locale-storage";
+import { LogOut } from "lucide-react";
 
 interface Props {
   data: Category[] | [];
@@ -23,6 +25,8 @@ interface Props {
 const AutoShopModal = ({ data }: Props) => {
   const { setIsModal } = useHelper();
   const { t } = useTranslation();
+
+  const token = getLocaleStorage("UserToken");
   const router = useRouter();
   const modalData = ModalSelectMap(data);
   const pathname = usePathname();
@@ -34,6 +38,10 @@ const AutoShopModal = ({ data }: Props) => {
 
   const onClickNavigate = (path: string) => {
     router.push(path);
+    setIsModal();
+  };
+  const logout = () => {
+    localStorage.removeItem("UserToken");
     setIsModal();
   };
   return (
@@ -95,12 +103,25 @@ const AutoShopModal = ({ data }: Props) => {
             </div>
 
             {/* Login button */}
-            <button
-              className="px-8 bg-blue-400 text-white py-2 rounded-md mt-4 hover:bg-blue-500 transition-colors"
-              onClick={AuthNavigate}
-            >
-              {t("btn.entrance")}
-            </button>
+            {!token ? (
+              <button
+                className="px-8 bg-blue-400 text-white py-2 rounded-md mt-4 hover:bg-blue-500 transition-colors"
+                onClick={AuthNavigate}
+              >
+                {t("btn.entrance")}
+              </button>
+            ) : (
+              <>
+                <span
+                  className="flex gap-2 items-center text-sm text-red-500 cursor-pointer my-4"
+                  onClick={logout}
+                >
+                  <LogOut size={18} />
+
+                  {t("btn.logout")}
+                </span>
+              </>
+            )}
 
             {/* Contact */}
             <div className="mt-6">

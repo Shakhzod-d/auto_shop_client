@@ -11,9 +11,11 @@ import { Category } from "../../types";
 import { NavbarSelectData } from "../../utils/map-data";
 import { useTranslation } from "react-i18next";
 import { SearchInput } from "./search-input";
-import { JSX } from "react";
+import { JSX, useEffect, useRef, useState } from "react";
 import { IoSearchOutline } from "react-icons/io5";
 import Image from "next/image";
+import { getLocaleStorage } from "@/utils/locale-storage";
+import { LogOut, UserCircle } from "lucide-react";
 
 interface Props {
   categoryData: Category[];
@@ -21,6 +23,31 @@ interface Props {
 export default function Navbar({ categoryData }: Props) {
   const { setIsModal, isSearch, setIsSearch } = useHelper();
   const navigate = useRouter();
+  const [isProfile, setIsProfile] = useState(false);
+  const token = getLocaleStorage("UserToken");
+
+  const selectRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        selectRef.current &&
+        !selectRef.current.contains(event.target as Node)
+      ) {
+        setIsProfile(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+  const logout = () => {
+    localStorage.removeItem("UserToken");
+    setIsProfile(false);
+  };
+
   const pathname = usePathname();
   const data = NavbarSelectData(categoryData ? categoryData : []);
   const { t } = useTranslation();
@@ -35,12 +62,35 @@ export default function Navbar({ categoryData }: Props) {
           className="cursor-pointer"
         />
         <LanguageSelector />
-        <Button
-          className="py-[12px]     w-[130px]  h-10 md:w-[142px] md:h-11 bg-[#4DA6FF] rounded-md text-white font-semibold hidden tablet-middle:block"
-          onClick={() => navigate.push("/auth")}
-        >
-          {t("btn.entrance")}
-        </Button>
+        {!token ? (
+          <Button
+            className="py-[12px]     w-[130px]  h-10 md:w-[142px] md:h-11 bg-[#4DA6FF] rounded-md text-white font-semibold hidden tablet-middle:block"
+            onClick={() => navigate.push("/auth")}
+          >
+            {t("btn.entrance")}
+          </Button>
+        ) : (
+          <div className="relative hidden tablet-middle:block" ref={selectRef}>
+            <UserCircle
+              color={"#666666"}
+              size={25}
+              className="cursor-pointer"
+              onClick={() => setIsProfile((c) => !c)}
+            />
+            {isProfile && (
+              <div className="flex flex-col gap-2 absolute top-10 right-0 bg-white shadow-md rounded-md p-3 w-[150px] border">
+                <span
+                  className="flex gap-2 items-center text-sm text-red-500 cursor-pointer "
+                  onClick={logout}
+                >
+                  <LogOut size={18} />
+
+                  {t("btn.logout")}
+                </span>
+              </div>
+            )}
+          </div>
+        )}
 
         <RxHamburgerMenu
           size={34}
