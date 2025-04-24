@@ -57,12 +57,12 @@ export const AuthForm = ({ variant, onSubmit, loading }: Props) => {
   return (
     <div>
       <div className="w-full max-w-[532px] mb-[35px]">
-        <h1 className="text-[24px] sm:text-[32px] lg:text-[36px] font-bold mb-4 flex items-center gap-3">
+        <h1 className="text-[24px] sm:text-[32px] lg:text-[36px] font-bold mb-4 flex items-center gap-3 font-merriweather">
           {t(data.title)}
           {variant == "register" && <IoMdPersonAdd size={38} />}
           {variant == "forgetPassword" && <LuLockKeyhole size={38} />}
         </h1>
-        <p className="text-[18px] lg:text-xl text-[#666666] font-lora">
+        <p className="text-[18px] lg:text-xl text-[#666666] font-montserrat">
           {t(data.desc)}
         </p>
       </div>
@@ -93,7 +93,7 @@ export const AuthForm = ({ variant, onSubmit, loading }: Props) => {
                     </div>
                     {item.name == "password" && variant == "login" && (
                       <p
-                        className="max-w-[400px] sm-xl:w-full   text-end sm-xl:text-start bottom-[40px] text-[#3399FF] sm:text-[18px] lg:text-xl font-lora cursor-pointer mt-1"
+                        className="max-w-[400px] sm-xl:w-full   text-end sm-xl:text-start bottom-[40px] text-[#3399FF]  lg:text-[18px] font-montserrat cursor-pointer mt-1 "
                         onClick={() => setAuthType("forgetPassword")}
                       >
                         {t("login.forget_pass")}
@@ -125,7 +125,7 @@ export const AuthForm = ({ variant, onSubmit, loading }: Props) => {
             </Button>
           </div>
           {variant === "login" && (
-            <p className=" mt-6 sm:mt-[32px] sm:text-[18px] lg:text-xl font-lora ">
+            <p className=" mt-6 sm:mt-[32px] sm:text-[18px] lg:text-xl font-montserrat text-[#666666]">
               {t("login.register")}
               <span
                 className="text-[#3399FF] cursor-pointer"

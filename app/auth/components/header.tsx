@@ -18,7 +18,7 @@ export const Header = () => {
           onClick={() => navigate.push("/")}
         />
 
-        <span className="flex  items-center gap-[5px] cursor-pointer uppercase text-xl text-[#666666] font-medium">
+        <span className="flex  items-center gap-[5px] cursor-pointer  text-xl text-[#666666] font-medium">
           <LanguageSelector />
         </span>
       </div>

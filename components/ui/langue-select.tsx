@@ -45,7 +45,7 @@ export default function LanguageSelector({ variant }: Props) {
         className="flex items-center gap-2 cursor-pointer"
         onClick={() => setIsOpen(!isOpen)}
       >
-        <span className="font-medium text-[#666666] text-[18px]">
+        <span className="font-medium text-[#666666] text-[18px] ">
           {selectedLanguage?.name}
         </span>
         <ChevronDown

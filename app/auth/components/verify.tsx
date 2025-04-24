@@ -60,11 +60,11 @@ export const Verify = () => {
   return (
     <div>
       <div className="w-full max-w-[540px] mb-[35px]">
-        <h1 className="text-[24px] sm:text-[36px] font-bold mb-4 flex items-center gap-3">
+        <h1 className="text-[24px] sm:text-[36px] font-bold mb-4 flex items-center gap-3 font-poppins">
           {t("verify.title")}
           <AiOutlineMessage size={38} />
         </h1>
-        <p className="text-xl text-[#666666] font-lora">{t("verify.desc")}</p>
+        <p className="text-xl text-[#666666] font-montserrat">{t("verify.desc")}</p>
       </div>
       <Form {...form}>
         <form
@@ -116,7 +116,7 @@ export const Verify = () => {
             )}
           />
 
-          <div className="flex items-center w-full max-w-[378px] justify-between">
+          <div className="flex items-center w-full max-w-[378px] gap-4">
             <Button
               type="button"
               className="w-[166px] h-[50px] bg-[#4DA6FFCC]"
